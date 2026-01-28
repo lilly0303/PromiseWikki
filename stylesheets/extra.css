@@ -141,7 +141,7 @@
     font-weight: 700 !important;
     
     /* 📝 改这里：标题字号 */
-    font-size: 1.15rem !important; 
+    font-size: 0.9rem !important; 
 }
 
 /* 2. 卡片内容：大号字体 */
@@ -151,7 +151,7 @@
     color: #444 !important;
     
     /* 📝 改这里：内容字号 */
-    font-size: 1.05rem !important; 
+    font-size: 0.9rem !important; 
     line-height: 1.8 !important;
 }
 
@@ -159,7 +159,7 @@
 .md-typeset p, 
 .md-typeset ul li, 
 .md-typeset ol li {
-    font-size: 1.05rem !important;
+    font-size: 0.9rem !important;
     line-height: 1.9 !important;
     margin-bottom: 0.6em !important;
 }
