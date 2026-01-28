@@ -115,19 +115,19 @@
     padding: 12px 15px !important; 
     color: #333333 !important;
     font-weight: 700 !important;
-    font-size: 0.7rem !important; 
+    font-size: 0.75rem !important; 
 }
 /* 内容 */
 .md-typeset .admonition-content,
 .md-typeset details .md-typeset-details__content {
     padding: 20px !important;
     color: #444 !important;
-    font-size: 0.7rem !important; 
+    font-size: 0.75rem !important; 
     line-height: 1.8 !important;
 }
 /* 全局文字 */
 .md-typeset p, .md-typeset ul li, .md-typeset ol li {
-    font-size: 0.7rem !important;
+    font-size: 0.75rem !important;
     line-height: 1.9 !important;
 }
 
@@ -169,32 +169,47 @@
    📱 7. 手机端/平板端 终极适配 (修复挤扁问题)
    ========================================================================== */
 @media screen and (max-width: 76.1875em) {
+
+    /* ⭐️ 新增：隐藏桌面端的左侧边栏 */
+    .md-sidebar--primary {
+        display: none !important;
+    }
+
+    /* ⭐️ 新增：移除主内容区域为侧边栏预留的左边距 */
+    .md-main__inner {
+        margin: 0 !important;
+    }
+
     /* 1. 强制重置中间内容区域：去掉信纸，铺满屏幕 */
     [data-md-color-scheme="default"] .md-content__inner {
-        padding: 0px !important; /* 关键！去掉大边距 */
+        padding: 0 !important; /* 关键！去掉大边距 */
         margin-top: 0 !important;
         background-color: transparent !important; /* 去掉白底 */
         box-shadow: none !important;
         border-top: none !important;
+        border-radius: 0; /* 在手机上去掉圆角，更和谐 */
     }
     
     /* 2. 稍微给正文留一点呼吸空间，不要贴着屏幕边 */
     .md-content {
-        padding: 15px !important; 
+        /* 为了更好的视觉效果，将左右边距调整得一致 */
+        padding: 0 20px !important; 
     }
 
-    /* 3. 修复左上角弹出菜单 (汉堡菜单) */
+    /* 3. 修复左上角弹出菜单 (汉堡菜单) - 你的代码已经很棒了，保留 */
     .md-drawer {
         background-color: #f5f0e1 !important; /* 菜单背景改成护眼米色 */
     }
     .md-drawer .md-nav--primary .md-nav__title {
         background-color: var(--md-primary-fg-color) !important; /* 顶部标题栏变粉 */
         color: white !important;
+        /* 增加一点内边距，让标题不那么挤 */
+        padding-left: 1.2rem !important;
     }
     .md-drawer .md-nav__link {
         color: #5c5252 !important; /* 菜单文字颜色 */
-        font-size: 0.7rem !important; /* 菜单文字加大 */
-        padding: 12px 0 !important; /* 更好点 */
+        font-size: 0.8rem !important; /* 菜单文字稍微加大一点点 */
+        padding: 10px 1.2rem !important; /* 调整内边距，更好点击 */
     }
     .md-drawer .md-nav__link--active {
         color: var(--md-primary-fg-color) !important; /* 选中变粉 */
