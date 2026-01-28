@@ -183,49 +183,52 @@
 .md-content { margin: 0 auto !important; }
 
 /* ==========================================================================
-   📱 7. 手机端适配 - 最终修复版 ✅
+   📱 7. 手机端/平板端 终极适配 (最终决战版：清除内边距)
    ========================================================================== */
 @media screen and (max-width: 76.1875em) {
 
-    /* ⭐ 1. 强制汉堡菜单背景为米色（关键修复！） */
-    [data-md-color-scheme="default"] .md-overlay {
-        background-color: rgba(245, 240, 225, 0.95) !important;
-    }
-    
+    /* ------------------------------------------------------------
+       A. 强制给汉堡菜单刷上米色背景 (覆盖摩卡色)
+       ------------------------------------------------------------ */
     [data-md-color-scheme="default"] .md-drawer {
         background-color: #f5f0e1 !important;
-        border-right: none !important;
-    }
-    
-    /* ⭐ 2. 导航链接文字改成深色（关键修复！） */
-    [data-md-color-scheme="default"] .md-nav__link {
-        color: #2c2c2c !important;  /* 深灰色 */
-        background-color: transparent !important;
-        font-weight: 500 !important;
-        padding: 12px 24px !important;
-        display: block !important;
-        white-space: normal !important;  /* 允许换行 */
-        overflow: visible !important;
-        line-height: 1.6 !important;
-    }
-    
-    /* ⭐ 3. 选中/悬停保持粉色 */
-    [data-md-color-scheme="default"] .md-nav__link--active,
-    [data-md-color-scheme="default"] .md-nav__link:hover {
-        color: var(--md-primary-fg-color) !important;
-        background-color: rgba(224, 148, 160, 0.15) !important;
     }
 
-    /* 4. 顶部标题栏（PromiseWikki粉色条） */
-    [data-md-color-scheme="default"] .md-nav__title {
-        background-color: var(--md-primary-fg-color) !important;
-        color: white !important;
-        border-radius: 0 !important;
+    /* ------------------------------------------------------------
+       B. 🚨 强制重置所有内外边距 (核武器！)
+       把电脑端的茶色框和它的边距彻底清零，防止文字被挤走
+       ------------------------------------------------------------ */
+    [data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap,
+    [data-md-color-scheme="default"] .md-drawer .md-nav {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important; /* 👈 就是你！去死吧！ */
         margin: 0 !important;
-        padding: 16px !important;
     }
 
-    /* 5. 中间内容区域（白色卡片） */
+    /* ------------------------------------------------------------
+       C. 强制菜单内的文字变成深色，并加上安全的内边距
+       ------------------------------------------------------------ */
+    [data-md-color-scheme="default"] .md-drawer .md-nav__link {
+        color: #5c5252 !important;
+        font-weight: 500 !important;
+        font-size: 0.95rem !important;
+        
+        /* 为了让链接好点，给它加上左右内边距 */
+        display: block;
+        padding: 0 24px !important;
+        line-height: 3 !important;
+    }
+    /* 选中/悬停变粉 */
+    [data-md-color-scheme="default"] .md-drawer .md-nav__link--active,
+    [data-md-color-scheme="default"] .md-drawer .md-nav__link:hover {
+        color: var(--md-primary-fg-color) !important;
+    }
+
+    /* ------------------------------------------------------------
+       D. 中间内容区的白色卡片样式 (保持不变)
+       ------------------------------------------------------------ */
     [data-md-color-scheme="default"] .md-content__inner {
         background-color: #ffffff !important;
         color: #444444 !important;
@@ -235,41 +238,18 @@
         box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
         border-top: none !important;
     }
-    
-    /* 隐藏胶带装饰 */
-    [data-md-color-scheme="default"] .md-content__inner::before {
-        display: none !important;
-    }
+    [data-md-color-scheme="default"] .md-content__inner::before { display: none !important; }
 
-    /* 6. 布局重置 */
-    .md-content {
-        padding: 0 !important;
-        margin: 0 !important;
-        width: 100% !important;
-    }
-    
-    .md-main__inner {
-        grid-template-columns: 1fr !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    
-    .md-sidebar--primary .md-sidebar__scrollwrap {
-        background-color: transparent !important;
-        border: none !important;
+    /* 其他基础布局 */
+    .md-content, .md-main__inner { margin: 0 !important; padding: 0 !important; }
+    .md-main__inner { grid-template-columns: 1fr !important; }
+
+    /* 菜单顶部标题栏 */
+    .md-drawer .md-nav--primary .md-nav__title {
+        background-color: var(--md-primary-fg-color) !important;
+        color: white !important;
         box-shadow: none !important;
-        padding: 0 !important;
+        border-radius: 0 !important;
         margin: 0 !important;
-        height: auto !important;
-    }
-    
-    /* 7. 确保菜单项可见 */
-    [data-md-color-scheme="default"] .md-nav__item {
-        opacity: 1 !important;
-    }
-    
-    /* 8. 子菜单也要深色文字 */
-    [data-md-color-scheme="default"] .md-nav--secondary .md-nav__link {
-        color: #3d3d3d !important;
     }
 }
