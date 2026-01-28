@@ -220,10 +220,10 @@
         background-color: #f5f0e1 !important;
     }
 
-/* 文字用深色（因为背景是浅色） */
-[data-md-color-scheme="default"] .md-drawer .md-nav__link {
-    color: #3d3d3d !important;
-}
+    /* 文字用深色（因为背景是浅色） */
+    [data-md-color-scheme="default"] .md-drawer .md-nav__link {
+        color: #3d3d3d !important;
+    }
 
     /* ------------------------------------------------------------
        B. 🚨 强制重置所有内外边距 (关键修复！)
