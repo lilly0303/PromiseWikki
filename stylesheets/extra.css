@@ -210,11 +210,16 @@
    📱 7. 手机端/平板端 终极适配
    ========================================================================== */
 @media screen and (max-width: 76.1875em) {
-
-    /* ⭐️ 1. 汉堡菜单背景 + 文字颜色 */
+    /* 超强选择器：确保汉堡菜单文字可见 */
+    [data-md-color-scheme="default"] .md-drawer .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link,
+    [data-md-color-scheme="default"] .md-drawer .md-nav__link {
+        color: #2c2c2c !important;
+        background-color: transparent !important;
+    }
+    
+    /* 确保背景是米色 */
     [data-md-color-scheme="default"] .md-drawer {
-        background-color: #f5f0e1 !important;
-        border-right: none !important;
+        background: #f5f0e1 !important;
     }
     
     [data-md-color-scheme="default"] .md-drawer .md-nav--primary {
