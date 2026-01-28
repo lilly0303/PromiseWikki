@@ -26,51 +26,42 @@
 }
 
 /* ==========================================================================
-   ✨ 核心修复：彻底消灭重叠图标 & 优化卡片
+   ✨ 核心修复：字号加大版
    ========================================================================== */
 
-/* 1. 卡片主体：磨砂白底 */
+/* 1. 卡片主体 */
 .md-typeset details,
 .md-typeset .admonition {
-    /* 背景：90%不透明白色，看不清文字是因为太透了，这里加深一点 */
     background-color: rgba(255, 255, 255, 0.95) !important;
-    
-    /* 边框和阴影 */
     border: 1px solid rgba(255, 255, 255, 0.8) !important;
-    border-left: 5px solid var(--md-primary-fg-color) !important; /* 左边粉线加粗一点 */
+    border-left: 5px solid var(--md-primary-fg-color) !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
     border-radius: 12px !important;
-    
-    /* 间距 */
     margin-bottom: 24px !important;
 }
 
-/* 2. 【核弹级修复】彻底隐藏默认图标，防止重叠！ */
+/* 2. 隐藏默认图标 */
 .md-typeset details > summary::before,
 .md-typeset .admonition > .admonition-title::before,
 .md-typeset .admonition.quote > .admonition-title::before {
-    content: none !important;      /* 这种写法最狠，直接把内容清空 */
-    display: none !important;      /* 隐藏元素 */
-    width: 0 !important;           /* 宽度归零 */
-    margin: 0 !important;          /* 边距归零 */
-    background-image: none !important;
+    content: none !important;
+    display: none !important;
 }
 
-/* 3. 标题栏：修正间距 & 加深文字 */
+/* 3. 标题栏：字号加大！ */
 .md-typeset summary,
 .md-typeset .admonition-title {
     background-color: transparent !important;
     border-bottom: 1px solid rgba(0,0,0,0.05) !important;
-    
-    /* 【重点】因为图标没了，我们把原本给图标留的左边距(40px)去掉，改小一点 */
     padding-left: 15px !important; 
     padding-top: 12px !important;
     padding-bottom: 12px !important;
 
-    /* 强制文字变深灰，解决看不清的问题 */
     color: #333333 !important;
     font-weight: 700 !important;
-    font-size: 1rem !important;
+    
+    /* 🚀 修改这里：从 1rem 改到了 1.2rem (标题变大) */
+    font-size: 1.2rem !important; 
 }
 
 /* 4. 鼠标悬停 */
@@ -79,9 +70,21 @@
     cursor: pointer;
 }
 
-/* 5. 内容区域微调 */
+/* 5. 内容区域：字号加大！ */
 .md-typeset .admonition-content,
 .md-typeset details .md-typeset-details__content {
     padding: 20px !important;
-    color: #444 !important; /* 内容文字也加深一点 */
+    color: #444 !important;
+    
+    /* 🚀 修改这里：内容文字变大 */
+    font-size: 1.1rem !important;  /* 以前比较小，现在加大 */
+    
+    /* 🚀 修改这里：行间距拉开，不挤 */
+    line-height: 1.8 !important;   
+}
+
+/* 6. 特别针对列表（像你的“工具仓库”那种列表） */
+.md-typeset .admonition-content ul li,
+.md-typeset .admonition-content ol li {
+    margin-bottom: 0.5em !important; /* 让列表项之间别挨太紧 */
 }
