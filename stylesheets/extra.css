@@ -34,14 +34,14 @@
 }
 
 /* ==========================================================================
-   ✨ 3. 内容卡片和字体样式 (你原来的好看样式)
+   ✨ 3. 内容卡片和字体样式
    ========================================================================== */
 /* 卡片 (白底粉边) */
 .md-typeset details,
 .md-typeset .admonition {
     background-color: rgba(255, 255, 255, 0.95) !important;
     border: 1px solid rgba(255, 255, 255, 0.8) !important;
-    border-left: 6px solid var(--md-primary-fg-color) !important;
+    border-left: 4px solid var(--md-primary-fg-color) !important; /* <-- 边框改细了 */
     box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
     border-radius: 12px !important;
     margin-bottom: 24px !important;
@@ -69,26 +69,25 @@
 
 /* ==========================================================================
    💻 4. 电脑端专属样式 (min-width: 76.25em)
-   这个笼子锁住了电脑样式，绝对不会污染手机！
    ========================================================================== */
 @media screen and (min-width: 76.25em) {
-    /* 左侧边栏 (茶色框) */
+    /* 左侧边栏 (磨砂玻璃质感) */
     [data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap {
-        background-color: #e6dace !important;
-        border: 1px solid #d8c8b8 !important;
-        box-shadow: 0 4px 15px rgba(92, 82, 82, 0.05);
+        background-color: rgba(255, 255, 255, 0.05) !important; /* <-- 半透明白，磨砂感 */
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;   /* <-- 淡淡的白边 */
+        box-shadow: none !important;
         border-radius: 12px;
         padding: 15px 10px !important;
         margin: 10px 0 10px 10px;
     }
     
-    /* 侧边栏文字颜色 */
+    /* 侧边栏文字颜色 (改成浅色) */
     [data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link {
-        color: #6d5c55 !important;
+        color: #e6dace !important; /* <-- 文字变亮 */
     }
     [data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link--active,
     [data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link:hover {
-        color: var(--md-primary-fg-color) !important;
+        color: #ffffff !important; /* <-- 选中变纯白 */
         font-weight: 700;
     }
 
@@ -101,6 +100,11 @@
         margin-top: 1rem;
         border-top: 4px solid var(--md-primary-fg-color);
         position: relative;
+    }
+    
+    /* 大标题变粉色 */
+    [data-md-color-scheme="default"] .md-typeset h1 {
+        color: var(--day-pink);
     }
     
     /* 顶部的粉色和纸胶带 */
@@ -128,7 +132,7 @@
 @media screen and (max-width: 76.1875em) {
     /* --- 菜单 (Drawer) --- */
     [data-md-color-scheme="default"] .md-drawer {
-        background-color: #f5f0e1 !important; /* 强制菜单背景为米色 */
+        background-color: #f5f0e1 !important;
     }
     [data-md-color-scheme="default"] .md-drawer .md-nav__title {
         background-color: var(--md-primary-fg-color) !important;
