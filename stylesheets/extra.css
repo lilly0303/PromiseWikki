@@ -80,6 +80,7 @@
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
         box-shadow: none !important;
         border-radius: 12px;
+        height: fit-content !important; /* <-- 就是这句！让高度自适应内容 */
         padding: 15px 10px !important;
         margin: 10px 0 10px 10px;
     }
