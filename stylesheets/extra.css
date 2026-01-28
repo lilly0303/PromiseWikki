@@ -163,7 +163,7 @@
 
     /* --- ☀️ 白天模式手机背景 (红豆奶茶色/修正发绿问题) --- */
     [data-md-color-scheme="default"] {
-        background-color: var(--warm-beige) !important; 
+        background-color: #8f8681 !important; 
     }
 
     /* --- 菜单 (Drawer) --- */
