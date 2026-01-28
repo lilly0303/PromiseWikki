@@ -1,73 +1,275 @@
 /* ==========================================================================
-   🌸 全局变量：定义两套粉色
+   🌸 1. 全局配色 & 基础设置
    ========================================================================== */
 :root {
-  /* ☀️ 白天的粉色：干枯玫瑰 (Dusty Rose)
-     比之前的暗一点，带一点灰调，高级且不刺眼，
-     而且能保证导航栏上的白色文字看得很清楚。
-  */
-  --day-pink: #d68a94; 
-
-  /* 🌙夜晚的粉色：樱花汽水 (Sakura Soda)
-     比白天浅，带一点荧光感，在黑色背景上会发光。
-  */
-  --night-pink: #ffb7c5;
-  
-  /* 📜 护眼米色：加重了黄色调，像热牛奶一样的颜色 */
+  --day-pink: #e094a0;   
+  --night-pink: #ffb7c5; 
   --warm-beige: #f5f0e1; 
 }
 
+/* 选中文字变粉 */
+::selection {
+  background: rgba(214, 138, 148, 0.3);
+  color: #a85a66;
+}
+
 /* ==========================================================================
-   ☀️ 白天模式 (Day Mode)
+   ☀️ 2. 白天模式 (电脑端：信纸风格)
    ========================================================================== */
 [data-md-color-scheme="default"] {
-  /* 应用我们定义的“干枯玫瑰粉” */
-  --md-primary-fg-color:        var(--day-pink);
-  --md-primary-fg-color--light: var(--day-pink);
-  --md-primary-fg-color--dark:  #c27882; /* 鼠标悬停时再深一点 */
-  --md-accent-fg-color:         var(--day-pink);
+    --md-primary-fg-color:        var(--day-pink);
+    --md-primary-fg-color--light: var(--day-pink);
+    --md-primary-fg-color--dark:  #c27882;
+    --md-accent-fg-color:         var(--day-pink);
+    
+    /* 摩卡底色 + 浅色波点 */
+    background-color: #5e504a !important; 
+    background-image: 
+        radial-gradient(#857670 2.5px, transparent 3px),
+        radial-gradient(#857670 2.5px, transparent 3px) !important;
+    background-size: 30px 30px !important;
+    background-position: 0 0, 15px 15px !important; 
+    
+    --md-default-bg-color: #5e504a;
+}
 
-  /* 应用“热牛奶”米色背景 */
-  --md-default-bg-color: var(--warm-beige); 
-  
-  /* 侧边栏稍微深一点点，增加层次 */
-  --md-bg-color--secondary: #ebe6d6;
+/* ☀️ 白天：左侧边栏 (茶色) */
+[data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap {
+    position: relative;
+    background-color: #e6dace !important;
+    border: 1px solid #d8c8b8 !important;
+    box-shadow: 0 4px 15px rgba(92, 82, 82, 0.05);
+}
 
-  /* 文字颜色：用深暖咖色，比纯黑更温柔 */
-  --md-text-color: #5c5252; 
+/* ☀️ 白天：中间内容区域 (白色信纸) */
+[data-md-color-scheme="default"] .md-content__inner {
+    background-color: #ffffff; 
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    margin-top: 1rem;
+    border-top: 4px solid var(--md-primary-fg-color);
+    position: relative;
+}
+
+/* 顶部的粉色纸胶带效果 */
+[data-md-color-scheme="default"] .md-content__inner::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-1deg);
+    width: 140px;
+    height: 35px;
+    background-color: rgba(224, 148, 160, 0.6); 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    backdrop-filter: blur(2px); 
+    z-index: 10;
+    pointer-events: none;
 }
 
 /* ==========================================================================
-   🌙 黑夜模式 (Night Mode)
+   🌙 3. 夜间模式
    ========================================================================== */
 [data-md-color-scheme="slate"] {
-  /* 应用我们定义的“樱花汽水粉” */
   --md-primary-fg-color:        var(--night-pink);
   --md-primary-fg-color--light: var(--night-pink);
-  --md-primary-fg-color--dark:  #ffcfd6; 
+  --md-primary-fg-color--dark:  #ffcfd6;
   --md-accent-fg-color:         var(--night-pink);
-  
-  /* 背景保持深色，但文字变成浅粉色，像霓虹灯 */
-  --md-typeset-a-color: var(--night-pink);
+  --md-typeset-a-color:         var(--night-pink);
+}
+
+/* 🌙 夜间：侧边栏透明 */
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* 🌙 夜间：去掉白纸背景 */
+[data-md-color-scheme="slate"] .md-content__inner {
+    background-color: transparent !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-top: none !important;
+}
+
+/* 🌙 夜间：卡片变深灰 */
+[data-md-color-scheme="slate"] .md-typeset details,
+[data-md-color-scheme="slate"] .md-typeset .admonition {
+    background-color: #3e404a !important; 
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #e0e0e0 !important; 
+}
+[data-md-color-scheme="slate"] .md-typeset summary,
+[data-md-color-scheme="slate"] .md-typeset .admonition-title {
+    color: #ffffff !important;
+}
+[data-md-color-scheme="slate"] .md-typeset .admonition-content {
+    color: #d0d0d0 !important;
+}
+[data-md-color-scheme="slate"] .md-nav__link {
+    color: #cfcfcf !important;
 }
 
 /* ==========================================================================
-   ✨ 细节微调 (让它更精致)
+   ✨ 4. 卡片样式
    ========================================================================== */
-
-/* 1. 顶部导航栏：去掉阴影，加一条细细的白线，更有“手账感” */
-.md-header {
-  box-shadow: none !important;
-  border-bottom: 2px solid rgba(255,255,255,0.4);
+.md-typeset details,
+.md-typeset .admonition {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border-left: 6px solid var(--md-primary-fg-color) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+    border-radius: 12px !important;
+    margin-bottom: 24px !important;
 }
 
-/* 2. 调整正文字体：尝试使用电脑里自带的圆体 */
-body {
-  font-family: "Microsoft YaHei", "Hiragino Sans GB", "Yuanti SC", sans-serif;
+/* 隐藏默认图标 */
+.md-typeset details > summary::before,
+.md-typeset .admonition > .admonition-title::before {
+    display: none !important;
 }
 
-/* 3. 让代码块的背景也稍微暖一点，不要死黑 */
-[data-md-color-scheme="default"] .md-typeset pre > code {
-  background-color: #fff9f0; /* 极淡的米色代码块 */
-  border: 1px solid #eaddcf; /* 加个边框 */
+/* ==========================================================================
+   🅰️ 5. 字体大小控制
+   ========================================================================== */
+.md-typeset summary, .md-typeset .admonition-title {
+    padding: 12px 15px !important; 
+    color: #333333 !important;
+    font-weight: 700 !important;
+    font-size: 0.75rem !important; 
+}
+.md-typeset .admonition-content,
+.md-typeset details .md-typeset-details__content {
+    padding: 20px !important;
+    color: #444 !important;
+    font-size: 0.75rem !important; 
+    line-height: 1.8 !important;
+}
+.md-typeset p, .md-typeset ul li, .md-typeset ol li {
+    font-size: 0.75rem !important;
+    line-height: 1.9 !important;
+}
+
+/* ==========================================================================
+   🍵 6. 侧边栏完美修复
+   ========================================================================== */
+.md-sidebar--primary .md-sidebar__scrollwrap {
+    background-color: #e6dace !important; 
+    border: 1px solid #d8c8b8 !important;
+    height: fit-content !important; 
+    border-radius: 12px;
+    padding: 15px 10px !important;
+    margin: 10px 0 10px 10px;
+}
+.md-sidebar--primary .md-nav__item,
+.md-sidebar--primary .md-nav__link {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+.md-sidebar--primary .md-nav__link {
+    color: #6d5c55 !important; 
+}
+.md-sidebar--primary .md-nav__link--active,
+.md-sidebar--primary .md-nav__link:hover {
+    color: var(--md-primary-fg-color) !important; 
+    font-weight: 700 !important; 
+    background: transparent !important; 
+}
+.md-sidebar--secondary { display: none !important; }
+.md-grid { max-width: 1200px !important; }
+.md-content { margin: 0 auto !important; }
+
+/* ==========================================================================
+   📱 7. 手机端适配 - 最终修复版 ✅
+   ========================================================================== */
+@media screen and (max-width: 76.1875em) {
+
+    /* ⭐ 1. 强制汉堡菜单背景为米色（关键修复！） */
+    [data-md-color-scheme="default"] .md-overlay {
+        background-color: rgba(245, 240, 225, 0.95) !important;
+    }
+    
+    [data-md-color-scheme="default"] .md-drawer {
+        background-color: #f5f0e1 !important;
+        border-right: none !important;
+    }
+    
+    /* ⭐ 2. 导航链接文字改成深色（关键修复！） */
+    [data-md-color-scheme="default"] .md-nav__link {
+        color: #2c2c2c !important;  /* 深灰色 */
+        background-color: transparent !important;
+        font-weight: 500 !important;
+        padding: 12px 24px !important;
+        display: block !important;
+        white-space: normal !important;  /* 允许换行 */
+        overflow: visible !important;
+        line-height: 1.6 !important;
+    }
+    
+    /* ⭐ 3. 选中/悬停保持粉色 */
+    [data-md-color-scheme="default"] .md-nav__link--active,
+    [data-md-color-scheme="default"] .md-nav__link:hover {
+        color: var(--md-primary-fg-color) !important;
+        background-color: rgba(224, 148, 160, 0.15) !important;
+    }
+
+    /* 4. 顶部标题栏（PromiseWikki粉色条） */
+    [data-md-color-scheme="default"] .md-nav__title {
+        background-color: var(--md-primary-fg-color) !important;
+        color: white !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        padding: 16px !important;
+    }
+
+    /* 5. 中间内容区域（白色卡片） */
+    [data-md-color-scheme="default"] .md-content__inner {
+        background-color: #ffffff !important;
+        color: #444444 !important;
+        margin: 15px 12px !important;
+        padding: 20px 15px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+        border-top: none !important;
+    }
+    
+    /* 隐藏胶带装饰 */
+    [data-md-color-scheme="default"] .md-content__inner::before {
+        display: none !important;
+    }
+
+    /* 6. 布局重置 */
+    .md-content {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+    
+    .md-main__inner {
+        grid-template-columns: 1fr !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .md-sidebar--primary .md-sidebar__scrollwrap {
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        height: auto !important;
+    }
+    
+    /* 7. 确保菜单项可见 */
+    [data-md-color-scheme="default"] .md-nav__item {
+        opacity: 1 !important;
+    }
+    
+    /* 8. 子菜单也要深色文字 */
+    [data-md-color-scheme="default"] .md-nav--secondary .md-nav__link {
+        color: #3d3d3d !important;
+    }
 }
