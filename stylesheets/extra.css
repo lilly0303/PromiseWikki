@@ -214,3 +214,28 @@
         padding: 1.5rem 1rem !important; /* 手机端也加上内边距 */
     }
 }
+/* -- 👇 在这里粘贴下面的代码 -- */
+
+/* ==========================================================================
+   ✨ 4. 夜间模式最终美化
+   ========================================================================== */
+
+/* 1. 给夜间模式加上“磨砂玻璃”侧边栏 (和你白天的质感一样！) */
+@media screen and (min-width: 76.25em) {
+    [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
+        position: sticky !important;
+        top: 20px !important;
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 12px;
+    }
+}
+
+/* 2. 让夜间模式卡片里的链接文字变亮！(解决看不清的问题) */
+[data-md-color-scheme="slate"] .md-typeset .admonition a,
+[data-md-color-scheme="slate"] .md-typeset details a {
+    color: var(--night-pink) !important; /* 强制使用最亮的粉色 */
+    font-weight: 500 !important;
+    text-decoration: underline !important; /* 加上下划线更清晰 */
+    text-decoration-color: rgba(255, 183, 197, 0.5) !important; /* 下划线是半透明粉色 */
+}
