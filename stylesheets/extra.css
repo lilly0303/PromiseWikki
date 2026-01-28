@@ -210,10 +210,28 @@
         margin: 0 !important;
     }
 
+/* ...前面的代码保持不变... */
+
     /* 6. 汉堡菜单 (Drawer) 整体背景设置 */
     .md-drawer {
-        background-color: #f5f0e1 !important; /* 护眼米色背景 */
+        background-color: #f5f0e1 !important; 
     }
+    
+    /* ⭐️ 修复：菜单顶部标题栏 (填补缺角) */
+    .md-drawer .md-nav--primary .md-nav__title {
+        background-color: var(--md-primary-fg-color) !important;
+        color: white !important;
+        box-shadow: none !important;
+        
+        /* 👇 新增这两行来填补缺角 */
+        border-radius: 0 !important; /* 强制变成直角，填满角落 */
+        margin: 0 !important;        /* 确保紧贴边缘，没有缝隙 */
+        
+        /* 稍微增加一点左边距，让文字好看点 */
+        padding-left: 20px !important; 
+    }
+    
+    /* ...后面的代码保持不变... */
     
     /* 菜单顶部标题栏 */
     .md-drawer .md-nav--primary .md-nav__title {
