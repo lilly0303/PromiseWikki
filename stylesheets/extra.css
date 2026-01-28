@@ -1,3 +1,5 @@
+--- START OF FILE extra.css ---
+
 /* ==========================================================================
    🌸 1. 全局配色 & 基础设置
    ========================================================================== */
@@ -41,7 +43,7 @@
 .md-typeset .admonition {
     background-color: rgba(255, 255, 255, 0.95) !important;
     border: 1px solid rgba(255, 255, 255, 0.8) !important;
-    border-left: 4px solid var(--md-primary-fg-color) !important; /* <-- 边框改细了 */
+    border-left: 4px solid var(--md-primary-fg-color) !important; 
     box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
     border-radius: 12px !important;
     margin-bottom: 24px !important;
@@ -72,8 +74,8 @@
     line-height: 1.9 !important;
 }
 
-    /* ==========================================================================
-   💻 4. 电脑端专属样式 (包含白天+黑夜侧边栏适配)
+/* ==========================================================================
+   💻 4. 电脑端专属样式 (min-width: 76.25em)
    ========================================================================== */
 @media screen and (min-width: 76.25em) {
 
@@ -93,34 +95,28 @@
         color: #e6dace !important;
     }
 
-    /* --- 🌙 黑夜模式侧边栏 (要求和白天一模一样，只换颜色) --- */
+    /* --- 🌙 黑夜模式侧边栏 --- */
     [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
-        /* 1. 继承白天的结构要求 */
         position: sticky !important;
         top: 20px !important;
         height: fit-content !important;
         padding: 15px 10px !important;
         margin: 10px 0 10px 10px;
         border-radius: 12px;
-        
-        /* 2. 调整颜色：更深的磨砂感 */
-        background-color: rgba(0, 0, 0, 0.2) !important; /* 深色半透明 */
+        background-color: rgba(0, 0, 0, 0.2) !important; 
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
     }
-    
-    /* 黑夜侧边栏文字颜色 */
     [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link {
-        color: rgba(255, 255, 255, 0.7) !important; /* 平时是浅灰色 */
+        color: rgba(255, 255, 255, 0.7) !important; 
     }
     [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link--active,
     [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link:hover {
-        color: var(--night-pink) !important; /* 选中或悬停变成亮粉色 */
+        color: var(--night-pink) !important; 
         font-weight: 700;
     }
 
-
-    /* 中间内容区域 (白色信纸) */
+    /* --- ☀️ 白天模式中间内容 (白色信纸) --- */
     [data-md-color-scheme="default"] .md-content__inner {
         background-color: #ffffff; 
         padding: 40px 50px; 
@@ -136,7 +132,7 @@
         color: var(--day-pink);
     }
     
-/* 🎀 电脑端：顶部的粉色和纸胶带 (白天黑夜通用版) */
+    /* 🎀 电脑端：顶部的粉色和纸胶带 */
     .md-content__inner::before {
         content: "";
         position: absolute;
@@ -154,18 +150,26 @@
 
     .md-sidebar--secondary { display: none !important; }
     .md-grid { max-width: 1200px !important; }
-} /* <--- 这个是大括号（media query）的结尾，一定要保留 */
+} 
 
 /* ==========================================================================
    📱 5. 手机端/平板端 终极适配 (max-width: 76.1875em)
    ========================================================================== */
 @media screen and (max-width: 76.1875em) {
-
-    /* --- ☀️ 白天模式手机背景 (红豆奶茶色/修正发绿问题) --- */
+/* --- ☀️ 白天模式手机背景 (还原草莓巧克力波点图) --- */
     [data-md-color-scheme="default"] {
-        background-color: #8a7373 !important; 
+        /* 1. 底色：提取自图片的浅粉色 */
+        background-color: #ffe3e6 !important; 
+        
+        /* 2. 波点：提取自图片的深红棕色 */
+        background-image: 
+            radial-gradient(#7a5559 2.5px, transparent 3px),
+            radial-gradient(#7a5559 2.5px, transparent 3px) !important;
+            
+        /* 3. 波点间距：保持和电脑端一致的排列 */
+        background-size: 30px 30px !important;
+        background-position: 0 0, 15px 15px !important; 
     }
-
     /* --- 菜单 (Drawer) --- */
     [data-md-color-scheme="default"] .md-drawer {
         background-color: #f5f0e1 !important;
@@ -202,9 +206,9 @@
 
     /* --- 🌙 夜间模式手机端适配 (形状大小和白天完全一致，但保持透明) --- */
     [data-md-color-scheme="slate"] .md-content__inner {
-        /* 1. 形状与位置 (复制白天的手机端参数) */
+        /* 1. 形状与位置 (手机端小边距) */
         margin: 1rem 0.8rem !important;
-        padding: 1.5rem 1rem !important;
+        padding: 1.5rem 1rem !important; /* <--- 关键：这里是小边距 */
         border-radius: 12px !important;
         
         /* 2. 颜色与质感 (保持夜间的透明磨砂) */
@@ -219,7 +223,7 @@
         box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
     }
 
-} /* <--- 必须在这里结束第5部分，千万不要漏掉这个括号 */
+} /* <--- 5. 手机端适配结束 */
 
 
 /* ==========================================================================
@@ -229,7 +233,7 @@
   --md-primary-fg-color:        var(--night-pink);
   --md-primary-fg-color--light: var(--night-pink);
   
-  /* ⭐️ 核心修改 1：夜间模式也要有波点！ */
+  /* ⭐️ 核心修改 1：夜间模式波点背景 */
   background-color: #1a1b1e !important; 
   background-image: 
       radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 2px),
@@ -257,22 +261,26 @@
     color: #cfcfcf !important; 
 }
 
-/* ⭐️ 核心修改 3：夜间模式 - 保持透明磨砂，但把肚子“撑大” (PC端) */
+/* ⭐️ 核心修改 3：夜间模式 - 基础质感 (全局生效) */
 [data-md-color-scheme="slate"] .md-content__inner {
-    /* --- 1. 保持透明磨砂质感 --- */
+    /* 1. 材质：透明磨砂 */
     background-color: rgba(255, 255, 255, 0.03) !important; 
     backdrop-filter: blur(15px) !important;
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
     
-    /* --- 2. 关键修改：PC端撑开内部空间 --- */
-    padding: 40px 50px !important;  
-    border-radius: 12px !important; 
-    margin-top: 1rem !important;    
-    
-    /* --- 3. 装饰细节 --- */
+    /* 2. 装饰细节 */
     border-top: 4px solid var(--night-pink) !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
     position: relative; 
+}
+
+/* ⭐️ 核心修改 3.5：【关键修正】仅在电脑端把肚子撑大！ */
+@media screen and (min-width: 76.25em) {
+    [data-md-color-scheme="slate"] .md-content__inner {
+        padding: 40px 50px !important;  /* 大内边距仅限电脑 */
+        border-radius: 12px !important; 
+        margin-top: 1rem !important;    
+    }
 }
 
 /* ⭐️ 核心修改 4：夜间模式侧边栏美化 (PC端) */
@@ -282,9 +290,6 @@
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
         backdrop-filter: blur(10px);
         color: #cfcfcf !important;
-    }
-    [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link {
-        color: rgba(255, 255, 255, 0.7) !important;
     }
 }
 
