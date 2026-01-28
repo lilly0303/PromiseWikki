@@ -85,101 +85,104 @@
 }
 
 /* ==========================================================================
-   📏 布局与细节 (所有模式通用)
+   🍵 9. 左侧边栏 (茶色奶茶风 - 终极去背景版)
    ========================================================================== */
 
-/* 1. 左侧边栏：高度自适应 & 链接样式优化 */
+/* 1. 侧边栏容器：茶色背景，高度自适应 */
 .md-sidebar--primary .md-sidebar__scrollwrap {
+    /* 🍵 奶茶色背景 */
+    background-color: #e6dace !important; 
+    border: 1px solid #d8c8b8 !important;
+    
+    /* 高度自适应：内容多少，框就多高 */
     height: fit-content !important; 
     min-height: auto !important;
     max-height: 85vh !important;
+    
+    /* 圆角 & 阴影 */
     border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(92, 82, 82, 0.05);
+    
+    /* 内部间距 */
     padding: 15px 10px !important;
     margin: 10px 0 10px 10px;
 }
 
-/* 2. 【核心修复】侧边栏链接样式 (去油腻，更清爽) */
-.md-nav__link {
-    color: #6d5c55 !important; /* 默认文字：深咖色 */
-    transition: all 0.2s ease;
+/* 2. 【核弹级去背景】针对所有层级的链接 (首页、工具、Pocket...) */
+/* 不管你是顶级目录还是子目录，背景统统透明！ */
+.md-sidebar--primary .md-nav__item,
+.md-sidebar--primary .md-nav__link,
+.md-sidebar--primary .md-nav__link--active,
+.md-sidebar--primary .md-nav__link--section {
+    background: transparent !important;      /* 去掉背景色 */
+    background-color: transparent !important; /* 双重保险 */
+    background-image: none !important;       /* 去掉渐变色 */
+    box-shadow: none !important;             /* 去掉阴影 */
+    border: none !important;                 /* 去掉边框 */
+}
+
+/* 3. 文字颜色控制 */
+/* 默认状态：深咖色 */
+.md-sidebar--primary .md-nav__link {
+    color: #6d5c55 !important; 
     margin-top: 2px !important;
+    transition: all 0.2s ease;
 }
 
-/* 选中状态/鼠标悬停：只变文字，不要背景色！ */
-.md-nav__link--active,
-.md-nav__link:hover {
-    background: transparent !important; /* 【关键】去掉突兀的背景色 */
-    box-shadow: none !important;        /* 去掉阴影 */
-    color: var(--md-primary-fg-color) !important; /* 文字变粉 */
+/* 选中状态 / 鼠标悬停：只变粉色粗体 */
+.md-sidebar--primary .md-nav__link--active,
+.md-sidebar--primary .md-nav__link:hover {
+    color: var(--md-primary-fg-color) !important; /* 你的主题粉 */
     font-weight: 700 !important; /* 加粗 */
+    background: transparent !important; /* 再次强调不要背景 */
 }
 
-/* 修正夜间模式下的侧边栏文字颜色 */
+/* --- 夜间模式适配 (保持之前修复好的效果) --- */
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
+    background-color: transparent !important; /* 夜间背景透明 */
+    border: none !important;
+    box-shadow: none !important;
+}
 [data-md-color-scheme="slate"] .md-nav__link {
-    color: #cfcfcf !important;
+    color: #cfcfcf !important; /* 夜间文字浅灰 */
 }
-[data-md-color-scheme="slate"] .md-nav__link--active,
-[data-md-color-scheme="slate"] .md-nav__link:hover {
-    color: var(--md-primary-fg-color) !important;
+[data-md-color-scheme="slate"] .md-nav__link:hover,
+[data-md-color-scheme="slate"] .md-nav__link--active {
+    color: var(--md-primary-fg-color) !important; /* 夜间选中变粉 */
 }
 
-/* 3. 隐藏右侧目录栏 */
+/* --- 隐藏右侧目录 --- */
 .md-sidebar--secondary { display: none !important; }
+/* ==========================================================================
+   🅰️ 10. 字体大小控制 (在这里修改所有文字大小)
+   ========================================================================== */
 
-/* 4. 中间内容居中 & 加宽 */
-.md-grid { max-width: 1400px !important; }
-.md-content { margin: 0 auto !important; }
-
-/* 5. 卡片样式 (白底粉边) */
-.md-typeset details,
-.md-typeset .admonition {
-    background-color: #fffafa; 
-    border: 1px solid rgba(0,0,0,0.05);
-    border-left: 6px solid var(--md-primary-fg-color) !important; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-    border-radius: 10px !important;
-    margin-bottom: 24px !important;
-    transition: all 0.3s ease;
-}
-
-/* 鼠标悬停发光 */
-.md-typeset details:hover,
-.md-typeset .admonition:hover {
-    box-shadow: 0 8px 25px rgba(214, 138, 148, 0.25) !important;
-    transform: translateY(-2px);
-}
-
-/* 6. 隐藏默认图标 */
-.md-typeset details > summary::before,
-.md-typeset .admonition > .admonition-title::before {
-    display: none !important;
-}
-
-/* 7. 字体大小 */
-.md-typeset summary, .md-typeset .admonition-title {
+/* 1. 卡片标题栏 (比如“小说资源合集”那行字) */
+.md-typeset summary,
+.md-typeset .admonition-title {
+    /* 这里控制标题大小，1.2rem 就是加大版，想小一点就改 1.1rem */
+    font-size: 1.2rem !important; 
+    
     padding: 12px 15px !important; 
     font-weight: 700 !important;
-    font-size: 1.1rem !important;
-    color: #6d4c50; 
-}
-.md-typeset .admonition-content {
-    padding: 20px !important;
-    font-size: 1.0rem !important;
-    line-height: 1.8 !important;
-    color: #5c5252;
 }
 
-/* 8. 手机端适配 */
-@media screen and (max-width: 76.1875em) {
-    .md-content__inner {
-        padding: 20px !important;
-        background-color: transparent !important;
-        box-shadow: none !important;
-        border-top: none !important;
-    }
-    .md-sidebar--primary .md-sidebar__scrollwrap {
-        background: transparent !important;
-        border: none !important;
-        padding: 0 !important;
-    }
+/* 2. 卡片里的内容 (比如具体的链接) */
+.md-typeset .admonition-content,
+.md-typeset details .md-typeset-details__content {
+    /* 这里控制卡片内容大小 */
+    font-size: 1.1rem !important; 
+    
+    padding: 20px !important;
+    line-height: 1.8 !important; /* 行间距，越大越透气 */
+}
+
+/* 3. 全局普通文字 (比如首页导航指引、普通段落) */
+/* 如果你不加这一段，首页的列表就会很小 (可能是默认的 0.8rem) */
+.md-typeset p, 
+.md-typeset ul li, 
+.md-typeset ol li {
+    font-size: 1.1rem !important; /* 统一加大到 1.1倍 */
+    line-height: 1.9 !important;   
+    margin-bottom: 0.6em !important;
 }
