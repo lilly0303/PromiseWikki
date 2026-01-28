@@ -66,6 +66,11 @@
 .md-typeset .admonition > .admonition-title::before {
     display: none !important;
 }
+/* 全局正文文字 */
+.md-typeset p, .md-typeset ul li, .md-typeset ol li {
+    font-size: 0.75rem !important;
+    line-height: 1.9 !important;
+}
 
 /* ==========================================================================
    💻 4. 电脑端专属样式 (min-width: 76.25em)
