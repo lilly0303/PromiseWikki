@@ -173,16 +173,44 @@
     }
 }
 
+
 /* ==========================================================================
-   🌙 6. 夜间模式 (Night Mode) - 保持不变
+   🌙 6. 夜间模式 (Night Mode) - 暗夜信纸版
    ========================================================================== */
 [data-md-color-scheme="slate"] {
   --md-primary-fg-color:        var(--night-pink);
   --md-primary-fg-color--light: var(--night-pink);
 }
-[data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap,
+
+/* -- 1. 暗夜信纸核心样式！ -- */
 [data-md-color-scheme="slate"] .md-content__inner {
-    background-color: transparent !important;
+    background-color: rgba(44, 47, 56, 0.8) !important; /* 半透明炭黑色 */
+    backdrop-filter: blur(10px) !important;             /* 磨砂玻璃效果 */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-top: 4px solid var(--night-pink) !important; /* 夜间模式的粉色顶边 */
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37) !important;
+    margin-top: 1rem !important;
+}
+
+/* -- 2. 确保夜间模式侧边栏是完全透明的，突出信纸 -- */
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
+    background: transparent !important;
     border: none !important;
     box-shadow: none !important;
+}
+
+/* -- 3. 统一桌面端和移动端的信纸内外边距 -- */
+/* 桌面端内边距 (padding) */
+@media screen and (min-width: 76.25em) {
+    [data-md-color-scheme="slate"] .md-content__inner {
+        padding: 40px 50px !important;
+    }
+}
+/* 手机端外边距 (margin) */
+@media screen and (max-width: 76.1875em) {
+    [data-md-color-scheme="slate"] .md-content__inner {
+        margin: 1rem 0.8rem !important;
+        padding: 1.5rem 1rem !important; /* 手机端也加上内边距 */
+    }
 }
