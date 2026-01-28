@@ -16,15 +16,28 @@
 /* ==========================================================================
    ☀️ 2. 白天模式 (电脑端：信纸风格)
    ========================================================================== */
+/* ==========================================================================
+   🍪 只改背景：摩卡色底 + 浅色交错波点
+   ========================================================================== */
 [data-md-color-scheme="default"] {
-  --md-primary-fg-color:        var(--day-pink);
-  --md-primary-fg-color--light: var(--day-pink);
-  --md-primary-fg-color--dark:  #c27882;
-  --md-accent-fg-color:         var(--day-pink);
-  --md-default-bg-color:        var(--warm-beige);
-  --md-bg-color--secondary:     #ebe6d6;
-  --md-text-color:              #5c5252;
+    /* 1. 设置摩卡底色 (深咖啡色) */
+    background-color: #5e504a !important; 
+
+    /* 2. 设置浅色波点 (比底色稍浅的奶咖色) */
+    background-image: 
+        radial-gradient(#857670 2.5px, transparent 3px),
+        radial-gradient(#857670 2.5px, transparent 3px) !important;
+
+    /* 3. 波点大小与间距 */
+    background-size: 30px 30px !important;
+
+    /* 4. 关键：交错排列 (梅花桩式分布) */
+    background-position: 0 0, 15px 15px !important; 
+    
+    /* 保持原来的变量，防止其他地方出错，但背景已被上面覆盖 */
+    --md-default-bg-color: #5e504a;
 }
+
 
 /* ☀️ 白天：左侧边栏 (茶色) */
 [data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap {   position: relative;
@@ -66,14 +79,7 @@
     pointer-events: none;  /* 让鼠标可以穿透胶带点击后面的文字 */
 }
 
-/* 给白天模式的背景增加可爱的波点纹理 */
-[data-md-color-scheme="default"] {
-    /* 这里的 #d8c8b8 是波点的颜色，transparent 是背景透明 */
-    background-image: radial-gradient(#d8c8b8 1.5px, transparent 1.5px);
-    /* 这里的 24px 是波点的间距，越大越稀疏 */
-    background-size: 24px 24px;
-    background-color: var(--warm-beige); /* 保持原来的底色 */
-}
+
 
 /* ==========================================================================
    🌙 3. 夜间模式 (Night Mode)
