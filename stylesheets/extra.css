@@ -1,10 +1,11 @@
 /* ==========================================================================
-   🌸 1. 全局配色 (保持不变)
+   🌸 1. 全局配色：定义你的粉色世界
    ========================================================================== */
 :root {
-  --day-pink: #d68a94;
-  --night-pink: #ffb7c5;
-  --warm-beige: #f5f0e1;
+  /* 调亮了一点，让粉色更显眼、更可爱 */
+  --day-pink: #e094a0;   
+  --night-pink: #ffb7c5; 
+  --warm-beige: #f5f0e1; 
 }
 
 [data-md-color-scheme="default"] {
@@ -25,20 +26,68 @@
   --md-typeset-a-color:         var(--night-pink);
 }
 
-/* ==========================================================================
-   ✨ 2. 卡片样式 (白底粉边大卡片)
-   ========================================================================== */
-.md-typeset details,
-.md-typeset .admonition {
-    background-color: rgba(255, 255, 255, 0.95) !important;
-    border: 1px solid rgba(255, 255, 255, 0.8) !important;
-    border-left: 5px solid var(--md-primary-fg-color) !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
-    border-radius: 12px !important;
-    margin-bottom: 24px !important;
+/* 💖 新增：选中文字时，变成粉色背景 */
+::selection {
+  background: rgba(214, 138, 148, 0.3);
+  color: #a85a66;
 }
 
-/* 3. 隐藏默认图标 */
+/* ==========================================================================
+   💌 2. 布局调整：信纸模式 (保留你喜欢的白纸效果)
+   ========================================================================== */
+.md-grid {
+    max-width: 1400px !important;
+}
+
+.md-content__inner {
+    background-color: #ffffff; 
+    padding: 40px 50px !important; 
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    margin-top: 1rem;
+    
+    /* 💖 新增：给整张信纸顶部加一条细细的粉线，更有质感 */
+    border-top: 4px solid var(--md-primary-fg-color);
+}
+
+/* 手机端适配 */
+@media screen and (max-width: 76.1875em) {
+    .md-content__inner {
+        padding: 20px !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+        border-top: none;
+    }
+}
+
+/* ==========================================================================
+   ✨ 3. 卡片样式：粉色回归 & 加强版！
+   ========================================================================== */
+
+/* 卡片主体 */
+.md-typeset details,
+.md-typeset .admonition {
+    background-color: #fffafa !important; /* 极淡的雪粉色背景 */
+    
+    /* ⚠️ 修复关键：先把四周设为淡灰，再强制把左边设为粉色！ */
+    border: 1px solid rgba(0,0,0,0.05) !important;
+    border-left: 6px solid var(--md-primary-fg-color) !important; /* 粉色边框加粗！回归！ */
+    
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important;
+    border-radius: 10px !important;
+    margin-bottom: 24px !important;
+    transition: all 0.3s ease; /* 加个动画，让鼠标放上去时有丝滑变化 */
+}
+
+/* 💖 新增：鼠标悬停在卡片上时，整个卡片微微发粉光 */
+.md-typeset details:hover,
+.md-typeset .admonition:hover {
+    box-shadow: 0 8px 25px rgba(214, 138, 148, 0.25) !important; /* 粉色光晕 */
+    border-color: rgba(214, 138, 148, 0.3) !important; /* 边框也变粉 */
+    transform: translateY(-2px); /* 微微上浮 */
+}
+
+/* 4. 隐藏默认图标 (防止重叠) */
 .md-typeset details > summary::before,
 .md-typeset .admonition > .admonition-title::before,
 .md-typeset .admonition.quote > .admonition-title::before {
@@ -46,94 +95,59 @@
     display: none !important;
 }
 
-/* 4. 卡片标题栏：大号字体 */
+/* 5. 卡片标题栏 */
 .md-typeset summary,
 .md-typeset .admonition-title {
     background-color: transparent !important;
     border-bottom: 1px solid rgba(0,0,0,0.05) !important;
     padding: 12px 15px !important; 
-    color: #333333 !important;
+    
+    /* 💖 修改：标题文字颜色改成深粉灰色，不再是死黑 */
+    color: #6d4c50 !important; 
     font-weight: 700 !important;
-    font-size: 0.8rem !important; /* 标题字号 */
+    font-size: 1.1rem !important;
 }
 
-/* 5. 鼠标悬停 */
-.md-typeset summary:hover {
-    background-color: rgba(255, 255, 255, 0.5) !important;
-    cursor: pointer;
-}
-
-/* 6. 卡片内容区域：大号字体 */
+/* 6. 卡片内容区域 */
 .md-typeset .admonition-content,
 .md-typeset details .md-typeset-details__content {
     padding: 20px !important;
-    font-size: 0.8rem !important; /* 卡片内文字号 */
+    font-size: 1.0rem !important;
     line-height: 1.8 !important;
+    color: #5c5252 !important;
 }
 
 /* ==========================================================================
-   🌍 7. 全局文字放大 (这是新加的！专门修你首页那个列表)
+   🎀 4. 更多粉色细节 (你想要的很多粉色！)
    ========================================================================== */
 
-/* 让全站所有的“段落”和“列表项”都变大，不只在卡片里生效 */
+/* 💖 标题 (H1) 变成粉色 */
+.md-typeset h1 {
+    color: var(--md-primary-fg-color) !important;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* 💖 普通链接变成粉色，鼠标放上去会有虚线 */
+.md-typeset a {
+    color: var(--md-primary-fg-color);
+    transition: all 0.2s;
+}
+.md-typeset a:hover {
+    color: #c27882; /* 深粉色 */
+    text-decoration: underline dashed 2px; /* 虚线下划线，很可爱 */
+}
+
+/* 💖 列表前面的小圆点变成粉色 */
+.md-typeset ul li::marker {
+    color: var(--md-primary-fg-color);
+}
+
+/* 全局文字大小 */
 .md-typeset p, 
 .md-typeset ul li, 
 .md-typeset ol li {
-    font-size: 0.8rem !important; /* 统一加大到 1.15倍 */
-    line-height: 1.9 !important;   /* 行间距拉大，看起来更舒服 */
-    color: #444 !important;        /* 统一深灰，清晰护眼 */
-}
-
-/* 既然字变大了，列表的圆点可能会觉得挤，调整一下间距 */
-.md-typeset ul li, 
-.md-typeset ol li {
-    margin-bottom: 0.6em !important; /* 列表项之间松快一点 */
-}
-/* ==========================================================================
-   💌 8. 布局调整：加宽页面 + 信纸效果 (Letter Paper Mode)
-   ========================================================================== */
-
-/* 1. 【加宽】让页面内容变宽，不再挤在中间 */
-.md-grid {
-    max-width: 1400px !important; /* 默认是 1220px 左右，这里改大 */
-    margin-right: auto !important;
-    margin-left: auto !important;
-}
-
-/* 2. 【信纸】给正文区域加一个“白纸”背景 */
-.md-content__inner {
-    /* 背景色：纯白，模拟纸张 */
-    background-color: #ffffff; 
-    
-    /* 内边距：让文字不要贴着纸的边缘，留出呼吸感 */
-    padding: 40px 50px !important; 
-    
-    /* 装饰：圆角 + 微微的阴影（模拟纸张浮在桌面上的感觉） */
-    border-radius: 8px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-    
-    /* 上边距：跟标题栏稍微拉开一点距离 */
-    margin-top: 1rem;
-}
-
-/* 3. 【适配】因为底变成了白纸，我们需要微调卡片的边框颜色，
-      否则“白卡片”放在“白纸”上会看不清边界 */
-.md-typeset details,
-.md-typeset .admonition {
-    /* 把卡片背景稍微调灰一点点，或者保持白色但加深边框 */
-    background-color: #fffcfc !important; /* 极淡的粉白，区分于底纸的纯白 */
-    border: 1px solid rgba(0,0,0,0.08) !important; /* 边框加深一点点 */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.02) !important; /* 阴影变淡，扁平化 */
-}
-
-/* 4. 手机端适配：手机屏幕小，就不要左右留白了 */
-@media screen and (max-width: 76.1875em) {
-    .md-content__inner {
-        padding: 20px !important; /* 手机上边距小一点 */
-        background-color: transparent !important; /* 手机上取消信纸框，直接显示 */
-        box-shadow: none !important;
-    }
-    .md-grid {
-        max-width: 100% !important;
-    }
+    font-size: 1.0rem !important;
+    line-height: 1.9 !important;
+    margin-bottom: 0.6em !important;
 }
