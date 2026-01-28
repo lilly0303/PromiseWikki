@@ -54,7 +54,7 @@
     padding: 12px 15px !important; 
     color: #333333 !important;
     font-weight: 700 !important;
-    font-size: 1.25rem !important; /* 标题字号 */
+    font-size: 1rem !important; /* 标题字号 */
 }
 
 /* 5. 鼠标悬停 */
@@ -67,7 +67,7 @@
 .md-typeset .admonition-content,
 .md-typeset details .md-typeset-details__content {
     padding: 20px !important;
-    font-size: 1.15rem !important; /* 卡片内文字号 */
+    font-size: 1rem !important; /* 卡片内文字号 */
     line-height: 1.8 !important;
 }
 
