@@ -71,10 +71,13 @@
    💻 4. 电脑端专属样式 (min-width: 76.25em)
    ========================================================================== */
 @media screen and (min-width: 76.25em) {
-    /* 左侧边栏 (磨砂玻璃质感) */
+    /* 左侧边栏 (粘性定位的磨砂玻璃) */
     [data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap {
-        background-color: rgba(255, 255, 255, 0.05) !important; /* <-- 半透明白，磨砂感 */
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;   /* <-- 淡淡的白边 */
+        position: sticky !important; /* <-- 变成粘性定位 */
+        top: 20px !important;        /* <-- 距离顶部20px时粘住 */
+
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
         box-shadow: none !important;
         border-radius: 12px;
         padding: 15px 10px !important;
