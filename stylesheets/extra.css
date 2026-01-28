@@ -115,19 +115,19 @@
     padding: 12px 15px !important; 
     color: #333333 !important;
     font-weight: 700 !important;
-    font-size: 0.6rem !important; 
+    font-size: 0.7rem !important; 
 }
 /* 内容 */
 .md-typeset .admonition-content,
 .md-typeset details .md-typeset-details__content {
     padding: 20px !important;
     color: #444 !important;
-    font-size: 0.6rem !important; 
+    font-size: 0.7rem !important; 
     line-height: 1.8 !important;
 }
 /* 全局文字 */
 .md-typeset p, .md-typeset ul li, .md-typeset ol li {
-    font-size: 0.6rem !important;
+    font-size: 0.7rem !important;
     line-height: 1.9 !important;
 }
 
