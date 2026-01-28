@@ -72,33 +72,53 @@
     line-height: 1.9 !important;
 }
 
-/* ==========================================================================
-   💻 4. 电脑端专属样式 (min-width: 76.25em)
+    /* ==========================================================================
+   💻 4. 电脑端专属样式 (包含白天+黑夜侧边栏适配)
    ========================================================================== */
 @media screen and (min-width: 76.25em) {
-    /* 左侧边栏 (粘性定位的磨砂玻璃) */
-    [data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap {
-        position: sticky !important; /* <-- 变成粘性定位 */
-        top: 20px !important;        /* <-- 距离顶部20px时粘住 */
 
+    /* --- ☀️ 白天模式侧边栏 --- */
+    [data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap {
+        position: sticky !important;
+        top: 20px !important;
         background-color: rgba(255, 255, 255, 0.05) !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
         box-shadow: none !important;
         border-radius: 12px;
-        height: fit-content !important; /* <-- 就是这句！让高度自适应内容 */
+        height: fit-content !important; 
         padding: 15px 10px !important;
         margin: 10px 0 10px 10px;
     }
-    
-    /* 侧边栏文字颜色 (改成浅色) */
     [data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link {
-        color: #e6dace !important; /* <-- 文字变亮 */
+        color: #e6dace !important;
     }
-    [data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link--active,
-    [data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link:hover {
-        color: #ffffff !important; /* <-- 选中变纯白 */
+
+    /* --- 🌙 黑夜模式侧边栏 (要求和白天一模一样，只换颜色) --- */
+    [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
+        /* 1. 继承白天的结构要求 */
+        position: sticky !important;
+        top: 20px !important;
+        height: fit-content !important;
+        padding: 15px 10px !important;
+        margin: 10px 0 10px 10px;
+        border-radius: 12px;
+        
+        /* 2. 调整颜色：更深的磨砂感 */
+        background-color: rgba(0, 0, 0, 0.2) !important; /* 深色半透明 */
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    /* 黑夜侧边栏文字颜色 */
+    [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link {
+        color: rgba(255, 255, 255, 0.7) !important; /* 平时是浅灰色 */
+    }
+    [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link--active,
+    [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link:hover {
+        color: var(--night-pink) !important; /* 选中或悬停变成亮粉色 */
         font-weight: 700;
     }
+
 
     /* 中间内容区域 (白色信纸) */
     [data-md-color-scheme="default"] .md-content__inner {
@@ -116,8 +136,8 @@
         color: var(--day-pink);
     }
     
-    /* 顶部的粉色和纸胶带 */
-    [data-md-color-scheme="default"] .md-content__inner::before {
+/* 🎀 电脑端：顶部的粉色和纸胶带 (白天黑夜通用版) */
+    .md-content__inner::before {
         content: "";
         position: absolute;
         top: -15px;
@@ -125,15 +145,16 @@
         transform: translateX(-50%) rotate(-1deg);
         width: 140px;
         height: 35px;
-        background-color: rgba(224, 148, 160, 0.6); 
+        background-color: var(--md-primary-fg-color) !important;
+        opacity: 0.7; 
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         z-index: 10;
         pointer-events: none;
     }
-    
+
     .md-sidebar--secondary { display: none !important; }
     .md-grid { max-width: 1200px !important; }
-}
+} /* <--- 这个是大括号（media query）的结尾，一定要保留 */
 
 /* ==========================================================================
    📱 5. 手机端/平板端 终极适配 (max-width: 76.1875em)
@@ -174,68 +195,67 @@
 }
 
 
+
 /* ==========================================================================
-   🌙 6. 夜间模式 (Night Mode) - 暗夜信纸版
+   🌙 6. 夜间模式 (Night Mode) - 沉浸式深夜可可风格
    ========================================================================== */
 [data-md-color-scheme="slate"] {
   --md-primary-fg-color:        var(--night-pink);
   --md-primary-fg-color--light: var(--night-pink);
+  
+  /* ⭐️ 核心修改 1：夜间模式也要有波点！(深夜可可质感) */
+  background-color: #1a1b1e !important; /* 极深灰底色 */
+  background-image: 
+      radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 2px),
+      radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 2px) !important;
+  background-size: 30px 30px !important;
+  background-position: 0 0, 15px 15px !important;
+  
+  /* 覆盖原本的深色变量 */
+  --md-default-bg-color: #1a1b1e;
 }
 
-/* -- 1. 暗夜信纸核心样式！ -- */
-[data-md-color-scheme="slate"] .md-content__inner {
-    background-color: rgba(44, 47, 56, 0.8) !important; /* 半透明炭黑色 */
-    backdrop-filter: blur(10px) !important;             /* 磨砂玻璃效果 */
+/* ⭐️ 核心修改 2：把白天那个“白色卡片”在夜间变成“深夜卡片” */
+[data-md-color-scheme="slate"] .md-typeset details,
+[data-md-color-scheme="slate"] .md-typeset .admonition {
+    background-color: rgba(30, 31, 35, 0.8) !important; /* 深灰色透明底 */
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-top: 4px solid var(--night-pink) !important; /* 夜间模式的粉色顶边 */
-    border-radius: 12px !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37) !important;
-    margin-top: 1rem !important;
+    border-left: 4px solid var(--night-pink) !important; /* 亮粉色侧边 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+[data-md-color-scheme="slate"] .md-typeset summary, 
+[data-md-color-scheme="slate"] .md-typeset .admonition-title {
+    color: #ffffff !important; /* 标题变白 */
+}
+[data-md-color-scheme="slate"] .md-typeset .admonition-content,
+[data-md-color-scheme="slate"] .md-typeset details .md-typeset-details__content {
+    color: #cfcfcf !important; /* 正文变浅灰 */
 }
 
-/* -- 2. 确保夜间模式侧边栏是完全透明的，突出信纸 -- */
-[data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
+/* ⭐️ 核心修改 3：夜间模式的“信纸”也变透明磨砂 */
+[data-md-color-scheme="slate"] .md-content__inner {
+    background-color: rgba(255, 255, 255, 0.03) !important; 
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-top: 4px solid var(--night-pink) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* -- 3. 统一桌面端和移动端的信纸内外边距 -- */
-/* 桌面端内边距 (padding) */
-@media screen and (min-width: 76.25em) {
-    [data-md-color-scheme="slate"] .md-content__inner {
-        padding: 40px 50px !important;
-    }
-}
-/* 手机端外边距 (margin) */
-@media screen and (max-width: 76.1875em) {
-    [data-md-color-scheme="slate"] .md-content__inner {
-        margin: 1rem 0.8rem !important;
-        padding: 1.5rem 1rem !important; /* 手机端也加上内边距 */
-    }
-}
-/* -- 👇 在这里粘贴下面的代码 -- */
-
-/* ==========================================================================
-   ✨ 4. 夜间模式最终美化
-   ========================================================================== */
-
-/* 1. 给夜间模式加上“磨砂玻璃”侧边栏 (和你白天的质感一样！) */
+/* ⭐️ 核心修改 4：夜间模式侧边栏美化 (真正的磨砂玻璃) */
 @media screen and (min-width: 76.25em) {
     [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
-        position: sticky !important;
-        top: 20px !important;
         background-color: rgba(255, 255, 255, 0.05) !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        border-radius: 12px;
+        backdrop-filter: blur(10px);
+        color: #cfcfcf !important;
+    }
+    [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link {
+        color: rgba(255, 255, 255, 0.7) !important;
     }
 }
 
-/* 2. 让夜间模式卡片里的链接文字变亮！(解决看不清的问题) */
-[data-md-color-scheme="slate"] .md-typeset .admonition a,
-[data-md-color-scheme="slate"] .md-typeset details a {
-    color: var(--night-pink) !important; /* 强制使用最亮的粉色 */
-    font-weight: 500 !important;
-    text-decoration: underline !important; /* 加上下划线更清晰 */
-    text-decoration-color: rgba(255, 183, 197, 0.5) !important; /* 下划线是半透明粉色 */
+/* ⭐️ 核心修改 5：正文标题颜色修复 */
+[data-md-color-scheme="slate"] .md-typeset h1, 
+[data-md-color-scheme="slate"] .md-typeset h2 {
+    color: var(--night-pink) !important;
 }
