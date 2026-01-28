@@ -1,5 +1,5 @@
 /* ==========================================================================
-   🌸 全局配色：干枯玫瑰 + 护眼米色
+   🌸 全局配色：干枯玫瑰 + 护眼米色 (这部分没动)
    ========================================================================== */
 :root {
   --day-pink: #d68a94;   /* 干枯玫瑰 */
@@ -13,9 +13,9 @@
   --md-primary-fg-color--light: var(--day-pink);
   --md-primary-fg-color--dark:  #c27882;
   --md-accent-fg-color:         var(--day-pink);
-  --md-default-bg-color:        var(--warm-beige); /* 背景变米色 */
+  --md-default-bg-color:        var(--warm-beige);
   --md-bg-color--secondary:     #ebe6d6;
-  --md-text-color:              #5c5252; /* 深暖咖色文字 */
+  --md-text-color:              #5c5252;
 }
 
 /* 🌙 黑夜模式 */
@@ -28,44 +28,49 @@
 }
 
 /* ==========================================================================
-   ✨ 核心修改：让折叠块变成“白底粉边卡片”
+   ✨ 核心修改：磨砂感半透明大卡片
    ========================================================================== */
 
-/* 1. 强制选中所有类型的折叠块 (Quote, Note, Abstract 等) */
+/* 1. 卡片主体样式 */
 .md-typeset details,
 .md-typeset .admonition,
-.md-typeset .admonition.quote,
-.md-typeset .admonition.note,
-.md-typeset .admonition.abstract {
-    background-color: #ffffff !important;       /* 【关键】背景改纯白，才有卡片感 */
-    border: 1px solid rgba(0,0,0,0.05) !important; /* 边框极淡，几乎看不见 */
-    border-left: 3px solid var(--md-primary-fg-color) !important; /* 左边粉线 */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02) !important; /* 加一点点微弱的阴影，更有立体感 */
-    border-radius: 8px !important;              /* 圆角更大一点，更可爱 */
-    margin-bottom: 1.5em !important;            /* 卡片间距拉大 */
+.md-typeset .admonition.quote {
+    /* 【关键】背景改半透明白。0.85 就是 85% 不透明度。数值越小越透明。 */
+    background-color: rgba(255, 255, 255, 0.85) !important;
+    
+    /* 边框极淡 */
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    /* 左边粉线保持不变 */
+    border-left: 3px solid var(--md-primary-fg-color) !important;
+    /* 阴影更柔和一点 */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.03) !important;
+    border-radius: 12px !important;
+    
+    /* 【关键】让卡片变大 */
+    margin-bottom: 2.5em !important; /* 外部间距拉大 (呼吸感) */
+    padding: 10px 20px !important;   /* 内部间距拉大 (不拥挤) */
+    
+    /* 增加一个磨砂玻璃效果的滤镜 (部分现代浏览器支持) */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
-/* 2. 强制把标题栏变成白色 */
+/* 2. 标题栏样式 */
 .md-typeset summary,
 .md-typeset .admonition-title {
-    background-color: #ffffff !important;       /* 标题栏也是纯白 */
-    border-bottom: 1px solid rgba(0,0,0,0.03) !important; /* 加一条若隐若现的分隔线 */
+    /* 标题栏背景变透明，让整体的半透明白透出来，更和谐 */
+    background-color: transparent !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05) !important;
     color: #666 !important;
-    font-weight: bold !important;
-    padding-left: 1em !important;
+    font-weight: 600 !important;
+    /* 增加标题栏内部间距 */
+    padding: 12px 0px !important;
 }
 
-/* 3. 鼠标悬停时的可爱效果 */
+/* 3. 鼠标悬停效果 */
 .md-typeset summary:hover {
-    background-color: #fff5f7 !important;       /* 鼠标放上去微微发粉 */
+    /* 鼠标放上去时，让它稍微没那么透明一点点，增加交互感 */
+    background-color: rgba(255, 255, 255, 0.4) !important;
     cursor: pointer;
-}
-
-/* 4. 去掉默认的丑图标 (可选，如果你想要极致简洁就留着这行) */
-/* .md-typeset .admonition-title:before, .md-typeset summary:before { display: none !important; } */
-
-/* 5. 优化正文代码块颜色，配合米色背景 */
-[data-md-color-scheme="default"] .md-typeset pre > code {
-    background-color: #fffdf5;
-    border: 1px solid #eee;
+    border-radius: 8px; /* 鼠标放上去的小圆角 */
 }
