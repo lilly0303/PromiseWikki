@@ -207,67 +207,61 @@
 .md-content { margin: 0 auto !important; }
 
 /* ==========================================================================
-   📱 7. 手机端/平板端 终极适配 (只修白卡片，不动侧边栏颜色)
+   📱 7. 手机端/平板端 终极适配 (修复文字隐形 + 白卡片)
    ========================================================================== */
 @media screen and (max-width: 76.1875em) {
 
-    /* 1. ⭐️ 核心修复：把手机端的白纸背景找回来 */
+    /* 1. 中间内容区域：白色卡片 */
     [data-md-color-scheme="default"] .md-content__inner {
-        background-color: #ffffff !important; /* 强制变白 */
-        color: #444444 !important;            /* 强制正文内容变深色 */
-        
-        /* 稍微留点缝隙，做成卡片悬浮感 */
+        background-color: #ffffff !important; 
+        color: #444444 !important;            
         margin: 15px 12px !important;         
         padding: 20px 15px !important;        
         border-radius: 12px !important;       
         box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-        
-        /* 手机上隐藏顶部的粉色胶带 */
         border-top: none !important;
     }
-    
-    /* 隐藏胶带装饰 (防止挡字) */
-    [data-md-color-scheme="default"] .md-content__inner::before {
-        display: none !important;
-    }
+    /* 隐藏胶带 */
+    [data-md-color-scheme="default"] .md-content__inner::before { display: none !important; }
 
     /* 2. 外部容器防挤压 */
-    .md-content {
-        padding: 0 !important; 
-        margin: 0 !important;
-        width: 100% !important;
-    }
-    
-    /* 3. 布局重置 (确保是单列) */
-    .md-main__inner {
-        grid-template-columns: 1fr !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    
-    /* 4. 侧边栏容器处理 (只去背景框，不动文字颜色) */
+    .md-content { padding: 0 !important; margin: 0 !important; width: 100% !important; }
+    .md-main__inner { grid-template-columns: 1fr !important; margin: 0 !important; }
+
+    /* 3. 侧边栏容器：去背景 */
     .md-sidebar--primary .md-sidebar__scrollwrap {
         background-color: transparent !important; 
         border: none !important;
         box-shadow: none !important;
         padding: 0 !important;
         margin: 0 !important;
-        height: auto !important;
     }
 
-    /* 5. 汉堡菜单 (Drawer) 背景 */
-    .md-drawer {
-        background-color: #f5f0e1 !important; /* 保持护眼米色背景 */
-        border-right: none !important;
+    /* 4. 🚨 紧急修复：汉堡菜单里的文字颜色 */
+    /* 必须加这个！因为电脑端是白字，手机菜单是米色底，不加这个字就看不见！ */
+    .md-drawer .md-nav__link {
+        color: #5c5252 !important; /* 👈 强制变成深灰色，这样才能在米色底上看见 */
+        font-size: 0.9rem !important;
+        line-height: 2.8 !important;
     }
     
-    /* 菜单标题栏填补缺角 (如果你需要的话保留这个，不需要可以删掉) */
+    /* 选中状态变成粉色 */
+    .md-drawer .md-nav__link--active,
+    .md-drawer .md-nav__link:hover {
+        color: var(--md-primary-fg-color) !important; /* 👈 选中变粉 */
+        background: transparent !important;
+    }
+
+    /* 5. 汉堡菜单背景：护眼米色 */
+    .md-drawer {
+        background-color: #f5f0e1 !important; 
+        border-right: none !important;
+    }
+    /* 顶部标题栏 */
     .md-drawer .md-nav--primary .md-nav__title {
         background-color: var(--md-primary-fg-color) !important;
         color: white !important;
         border-radius: 0 !important;
         margin: 0 !important;
     }
-    
-    /* ⚠️ 我删除了所有修改 .md-nav__link 颜色的代码，保持你原来的粉色设置 */
 }
