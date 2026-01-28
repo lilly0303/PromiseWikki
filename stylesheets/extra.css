@@ -15,7 +15,6 @@
 
 /* ==========================================================================
    ☀️ 白天模式专属 (Day Mode ONLY)
-   这里写所有只在白天生效的样式：茶色边栏、白色信纸、米色背景
    ========================================================================== */
 [data-md-color-scheme="default"] {
   --md-primary-fg-color:        var(--day-pink);
@@ -46,7 +45,6 @@
 
 /* ==========================================================================
    🌙 夜间模式专属 (Night Mode ONLY)
-   这里写所有只在黑夜生效的样式：深色卡片、透明背景
    ========================================================================== */
 [data-md-color-scheme="slate"] {
   --md-primary-fg-color:        var(--night-pink);
@@ -56,37 +54,28 @@
   --md-typeset-a-color:         var(--night-pink);
 }
 
-/* 🌙 夜间：左侧边栏 (透明！不要茶色！) */
+/* 🌙 夜间：侧边栏 (透明) */
 [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
-    background-color: transparent !important; /* 关键：夜间背景透明 */
+    background-color: transparent !important;
     border: none !important;
     box-shadow: none !important;
 }
 
-/* 🌙 夜间：中间内容区域 (透明！不要白纸！) */
+/* 🌙 夜间：中间内容 (透明) */
 [data-md-color-scheme="slate"] .md-content__inner {
-    background-color: transparent !important; /* 关键：去掉白纸背景 */
-    padding: 0 !important; /* 去掉多余边距 */
+    background-color: transparent !important;
+    padding: 0 !important;
     box-shadow: none !important;
     border-top: none !important;
 }
 
-/* 🌙 夜间：侧边栏文字颜色 */
-[data-md-color-scheme="slate"] .md-nav__link {
-    color: #cfcfcf !important; /* 浅灰白 */
-}
-[data-md-color-scheme="slate"] .md-nav__link:hover {
-    color: var(--md-primary-fg-color) !important; /* 悬停变粉 */
-}
-
-/* 🌙 夜间：卡片变浅灰 (护眼) */
+/* 🌙 夜间：卡片变浅灰 */
 [data-md-color-scheme="slate"] .md-typeset details,
 [data-md-color-scheme="slate"] .md-typeset .admonition {
-    background-color: #3e404a !important; /* 深灰卡片 */
+    background-color: #3e404a !important; 
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    color: #e0e0e0 !important; /* 文字变白 */
+    color: #e0e0e0 !important; 
 }
-/* 夜间标题和内容文字颜色修正 */
 [data-md-color-scheme="slate"] .md-typeset summary,
 [data-md-color-scheme="slate"] .md-typeset .admonition-title {
     color: #ffffff !important;
@@ -99,37 +88,54 @@
    📏 布局与细节 (所有模式通用)
    ========================================================================== */
 
-/* 1. 【核心修复】侧边栏高度自适应 (内容多少，框就多高) */
+/* 1. 左侧边栏：高度自适应 & 链接样式优化 */
 .md-sidebar--primary .md-sidebar__scrollwrap {
-    height: fit-content !important; /* 关键：适应内容高度 */
-    min-height: auto !important;    /* 取消默认的最小高度 */
-    max-height: 85vh !important;    /* 防止太长超出屏幕 */
-    
+    height: fit-content !important; 
+    min-height: auto !important;
+    max-height: 85vh !important;
     border-radius: 12px;
-    padding: 15px;
+    padding: 15px 10px !important;
     margin: 10px 0 10px 10px;
 }
 
-/* 2. 隐藏右侧目录栏 */
-.md-sidebar--secondary {
-    display: none !important;
+/* 2. 【核心修复】侧边栏链接样式 (去油腻，更清爽) */
+.md-nav__link {
+    color: #6d5c55 !important; /* 默认文字：深咖色 */
+    transition: all 0.2s ease;
+    margin-top: 2px !important;
 }
 
-/* 3. 中间内容居中 & 加宽 */
-.md-grid {
-    max-width: 1400px !important;
-}
-.md-content {
-    margin: 0 auto !important;
+/* 选中状态/鼠标悬停：只变文字，不要背景色！ */
+.md-nav__link--active,
+.md-nav__link:hover {
+    background: transparent !important; /* 【关键】去掉突兀的背景色 */
+    box-shadow: none !important;        /* 去掉阴影 */
+    color: var(--md-primary-fg-color) !important; /* 文字变粉 */
+    font-weight: 700 !important; /* 加粗 */
 }
 
-/* 4. 卡片样式 (通用结构，颜色在上面分开了) */
+/* 修正夜间模式下的侧边栏文字颜色 */
+[data-md-color-scheme="slate"] .md-nav__link {
+    color: #cfcfcf !important;
+}
+[data-md-color-scheme="slate"] .md-nav__link--active,
+[data-md-color-scheme="slate"] .md-nav__link:hover {
+    color: var(--md-primary-fg-color) !important;
+}
+
+/* 3. 隐藏右侧目录栏 */
+.md-sidebar--secondary { display: none !important; }
+
+/* 4. 中间内容居中 & 加宽 */
+.md-grid { max-width: 1400px !important; }
+.md-content { margin: 0 auto !important; }
+
+/* 5. 卡片样式 (白底粉边) */
 .md-typeset details,
 .md-typeset .admonition {
-    /* 白天默认背景 */
     background-color: #fffafa; 
     border: 1px solid rgba(0,0,0,0.05);
-    border-left: 6px solid var(--md-primary-fg-color) !important; /* 粉边 */
+    border-left: 6px solid var(--md-primary-fg-color) !important; 
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     border-radius: 10px !important;
     margin-bottom: 24px !important;
@@ -143,29 +149,27 @@
     transform: translateY(-2px);
 }
 
-/* 5. 隐藏默认图标 */
+/* 6. 隐藏默认图标 */
 .md-typeset details > summary::before,
 .md-typeset .admonition > .admonition-title::before {
     display: none !important;
 }
 
-/* 6. 字体大小 */
+/* 7. 字体大小 */
 .md-typeset summary, .md-typeset .admonition-title {
     padding: 12px 15px !important; 
     font-weight: 700 !important;
-    font-size: 0.8rem !important;
-    /* 白天默认颜色 */
+    font-size: 1.1rem !important;
     color: #6d4c50; 
 }
 .md-typeset .admonition-content {
     padding: 20px !important;
-    font-size: 0.8rem !important;
+    font-size: 1.0rem !important;
     line-height: 1.8 !important;
-    /* 白天默认颜色 */
     color: #5c5252;
 }
 
-/* 7. 手机端适配 (取消信纸和侧边栏样式) */
+/* 8. 手机端适配 */
 @media screen and (max-width: 76.1875em) {
     .md-content__inner {
         padding: 20px !important;
