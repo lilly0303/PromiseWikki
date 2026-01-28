@@ -61,7 +61,7 @@
     font-weight: 700 !important;
     
     /* 🚀 修改这里：从 1rem 改到了 1.2rem (标题变大) */
-    font-size: 1.5rem !important; 
+    font-size: 2.5rem !important; 
 }
 
 /* 4. 鼠标悬停 */
@@ -77,7 +77,7 @@
     color: #444 !important;
     
     /* 🚀 修改这里：内容文字变大 */
-    font-size: 1.3rem !important;  /* 以前比较小，现在加大 */
+    font-size: 2rem !important;  /* 以前比较小，现在加大 */
     
     /* 🚀 修改这里：行间距拉开，不挤 */
     line-height: 1.8 !important;   
