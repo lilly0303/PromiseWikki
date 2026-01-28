@@ -275,74 +275,68 @@
         margin: 0 !important;
     }
 }
-/* ====== 放在 docs/stylesheets/extra.css 最末尾：移动端侧栏/抽屉 修复 ====== */
-@media (max-width: 900px) {
-  /* 强制侧栏为固定离屏面板、并限定合理宽度 */
-  .md-sidebar,
-  .md-drawer,
-  .md-nav__drawer,
-  .md-sidebar--primary {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    height: 100vh !important;
-    width: 280px !important;
-    max-width: 80vw !important;
-    transform: translateX(-100%) !important; /* 默认隐藏（离屏） */
-    transition: transform 0.28s ease !important;
-    z-index: 10000 !important;
-    background: var(--md-bg-color--secondary, #fff) !important;
-    overflow-y: auto !important;
-  }
+/* ==========================================================================
+   📱 7. 手机端/平板端 终极适配 (只修白卡片，不动侧边栏颜色)
+   ========================================================================== */
+@media screen and (max-width: 76.1875em) {
 
-  /* 这些是可能用于“打开”状态的类或属性，确保都能把侧栏滑进来 */
-  .md-sidebar--open,
-  .md-drawer--open,
-  .md-nav__drawer--open,
-  .md-sidebar[aria-hidden="false"],
-  .md-drawer[aria-hidden="false"],
-  .md-sidebar.md-sidebar--open,
-  .md-drawer.md-drawer--open {
-    transform: translateX(0) !important;
-  }
+    /* 1. ⭐️ 核心修复：把手机端的白纸背景找回来 */
+    [data-md-color-scheme="default"] .md-content__inner {
+        background-color: #ffffff !important; /* 强制变白 */
+        color: #444444 !important;            /* 强制正文内容变深色 */
+        
+        /* 稍微留点缝隙，做成卡片悬浮感 */
+        margin: 15px 12px !important;         
+        padding: 20px 15px !important;        
+        border-radius: 12px !important;       
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+        
+        /* 手机上隐藏顶部的粉色胶带 */
+        border-top: none !important;
+    }
+    
+    /* 隐藏胶带装饰 (防止挡字) */
+    [data-md-color-scheme="default"] .md-content__inner::before {
+        display: none !important;
+    }
 
-  /* 覆盖掉可能把侧栏设为宽 100% 的规则 */
-  .md-sidebar,
-  .md-drawer {
-    width: 280px !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-  }
+    /* 2. 外部容器防挤压 */
+    .md-content {
+        padding: 0 !important; 
+        margin: 0 !important;
+        width: 100% !important;
+    }
+    
+    /* 3. 布局重置 (确保是单列) */
+    .md-main__inner {
+        grid-template-columns: 1fr !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* 4. 侧边栏容器处理 (只去背景框，不动文字颜色) */
+    .md-sidebar--primary .md-sidebar__scrollwrap {
+        background-color: transparent !important; 
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        height: auto !important;
+    }
 
-  /* 遮罩层（暗背景） */
-  .md-overlay,
-  .md-backdrop,
-  .md-app__overlay {
-    position: fixed !important;
-    inset: 0 !important;
-    background: rgba(0,0,0,0.35) !important;
-    z-index: 9999 !important; /* 低于侧栏、高于页面 */
-    display: none !important;
-  }
-
-  .md-overlay[aria-hidden="false"],
-  .md-overlay.md-overlay--visible,
-  .md-backdrop.md-backdrop--visible {
-    display: block !important;
-  }
-
-  /* 确保顶部的汉堡按钮可见且可点击 */
-  .md-header .md-nav__button,
-  .md-header .md-nav__toggle,
-  .md-header .md-icon,
-  .md-header .md-button {
-    z-index: 10001 !important;
-    pointer-events: auto !important;
-    color: var(--md-primary-fg-color) !important;
-  }
-
-  /* 防止 header 的边框或其它元素覆盖点击区域 */
-  .md-header {
-    -webkit-tap-highlight-color: transparent;
-  }
+    /* 5. 汉堡菜单 (Drawer) 背景 */
+    .md-drawer {
+        background-color: #f5f0e1 !important; /* 保持护眼米色背景 */
+        border-right: none !important;
+    }
+    
+    /* 菜单标题栏填补缺角 (如果你需要的话保留这个，不需要可以删掉) */
+    .md-drawer .md-nav--primary .md-nav__title {
+        background-color: var(--md-primary-fg-color) !important;
+        color: white !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+    }
+    
+    /* ⚠️ 我删除了所有修改 .md-nav__link 颜色的代码，保持你原来的粉色设置 */
 }
