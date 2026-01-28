@@ -1,5 +1,5 @@
 /* ==========================================================================
-   🌸 全局配色：干枯玫瑰 + 护眼米色 (这部分没动)
+   🌸 全局配色：干枯玫瑰 + 护眼米色
    ========================================================================== */
 :root {
   --day-pink: #d68a94;   /* 干枯玫瑰 */
@@ -28,49 +28,61 @@
 }
 
 /* ==========================================================================
-   ✨ 核心修改：磨砂感半透明大卡片
+   ✨ 核心修改：修复重叠 & 增强可读性
    ========================================================================== */
 
-/* 1. 卡片主体样式 */
+/* 1. 卡片主体：磨砂白底 */
 .md-typeset details,
 .md-typeset .admonition,
 .md-typeset .admonition.quote {
-    /* 【关键】背景改半透明白。0.85 就是 85% 不透明度。数值越小越透明。 */
-    background-color: rgba(255, 255, 255, 0.85) !important;
+    /* 背景色：90%不透明的白色，保证文字清晰，同时保留一点通透感 */
+    background-color: rgba(255, 255, 255, 0.9) !important;
     
-    /* 边框极淡 */
-    border: 1px solid rgba(255, 255, 255, 0.4) !important;
-    /* 左边粉线保持不变 */
-    border-left: 3px solid var(--md-primary-fg-color) !important;
-    /* 阴影更柔和一点 */
-    box-shadow: 0 8px 16px rgba(0,0,0,0.03) !important;
+    /* 边框：半透明白色，很高级 */
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    
+    /* 左边框：粉色加粗 */
+    border-left: 4px solid var(--md-primary-fg-color) !important;
+    
+    /* 阴影：柔和的悬浮感 */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
     border-radius: 12px !important;
     
-    /* 【关键】让卡片变大 */
-    margin-bottom: 2.5em !important; /* 外部间距拉大 (呼吸感) */
-    padding: 10px 20px !important;   /* 内部间距拉大 (不拥挤) */
-    
-    /* 增加一个磨砂玻璃效果的滤镜 (部分现代浏览器支持) */
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    /* 间距：大一点，不拥挤 */
+    margin-bottom: 20px !important;
 }
 
-/* 2. 标题栏样式 */
+/* 2. 标题栏：修复重叠问题的关键 */
 .md-typeset summary,
 .md-typeset .admonition-title {
-    /* 标题栏背景变透明，让整体的半透明白透出来，更和谐 */
     background-color: transparent !important;
     border-bottom: 1px solid rgba(0,0,0,0.05) !important;
-    color: #666 !important;
-    font-weight: 600 !important;
-    /* 增加标题栏内部间距 */
-    padding: 12px 0px !important;
+    
+    /* 【重点】强制文字颜色为深灰，防止看不清 */
+    color: #404040 !important;
+    font-weight: 700 !important;
+    
+    /* 增加内边距，让文字舒服一点 */
+    padding: 12px 15px !important;
 }
 
-/* 3. 鼠标悬停效果 */
+/* 3. 【绝对关键】干掉默认图标！ */
+/* 这行代码会隐藏系统自带的那个图标，只显示你写的Emoji，
+   这样它们就不会重叠在一起了 */
+.md-typeset .admonition-title:before,
+.md-typeset summary:before {
+    display: none !important;
+}
+
+/* 4. 内容区域微调 */
+.md-typeset .admonition-content,
+.md-typeset details .md-typeset-details__content {
+    padding: 15px 20px !important;
+    background: transparent !important;
+}
+
+/* 5. 鼠标悬停 */
 .md-typeset summary:hover {
-    /* 鼠标放上去时，让它稍微没那么透明一点点，增加交互感 */
-    background-color: rgba(255, 255, 255, 0.4) !important;
+    background-color: rgba(255, 255, 255, 0.5) !important;
     cursor: pointer;
-    border-radius: 8px; /* 鼠标放上去的小圆角 */
 }
