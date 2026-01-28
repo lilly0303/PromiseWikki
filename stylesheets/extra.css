@@ -275,3 +275,74 @@
         margin: 0 !important;
     }
 }
+/* ====== 放在 docs/stylesheets/extra.css 最末尾：移动端侧栏/抽屉 修复 ====== */
+@media (max-width: 900px) {
+  /* 强制侧栏为固定离屏面板、并限定合理宽度 */
+  .md-sidebar,
+  .md-drawer,
+  .md-nav__drawer,
+  .md-sidebar--primary {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 100vh !important;
+    width: 280px !important;
+    max-width: 80vw !important;
+    transform: translateX(-100%) !important; /* 默认隐藏（离屏） */
+    transition: transform 0.28s ease !important;
+    z-index: 10000 !important;
+    background: var(--md-bg-color--secondary, #fff) !important;
+    overflow-y: auto !important;
+  }
+
+  /* 这些是可能用于“打开”状态的类或属性，确保都能把侧栏滑进来 */
+  .md-sidebar--open,
+  .md-drawer--open,
+  .md-nav__drawer--open,
+  .md-sidebar[aria-hidden="false"],
+  .md-drawer[aria-hidden="false"],
+  .md-sidebar.md-sidebar--open,
+  .md-drawer.md-drawer--open {
+    transform: translateX(0) !important;
+  }
+
+  /* 覆盖掉可能把侧栏设为宽 100% 的规则 */
+  .md-sidebar,
+  .md-drawer {
+    width: 280px !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 遮罩层（暗背景） */
+  .md-overlay,
+  .md-backdrop,
+  .md-app__overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(0,0,0,0.35) !important;
+    z-index: 9999 !important; /* 低于侧栏、高于页面 */
+    display: none !important;
+  }
+
+  .md-overlay[aria-hidden="false"],
+  .md-overlay.md-overlay--visible,
+  .md-backdrop.md-backdrop--visible {
+    display: block !important;
+  }
+
+  /* 确保顶部的汉堡按钮可见且可点击 */
+  .md-header .md-nav__button,
+  .md-header .md-nav__toggle,
+  .md-header .md-icon,
+  .md-header .md-button {
+    z-index: 10001 !important;
+    pointer-events: auto !important;
+    color: var(--md-primary-fg-color) !important;
+  }
+
+  /* 防止 header 的边框或其它元素覆盖点击区域 */
+  .md-header {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
