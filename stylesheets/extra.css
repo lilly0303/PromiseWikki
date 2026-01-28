@@ -1,104 +1,71 @@
 /* ==========================================================================
-   🌸 全局变量：定义两套粉色
+   🌸 全局配色：干枯玫瑰 + 护眼米色
    ========================================================================== */
 :root {
-  /* ☀️ 白天的粉色：干枯玫瑰 (Dusty Rose)
-     比之前的暗一点，带一点灰调，高级且不刺眼，
-     而且能保证导航栏上的白色文字看得很清楚。
-  */
-  --day-pink: #d68a94; 
-
-  /* 🌙夜晚的粉色：樱花汽水 (Sakura Soda)
-     比白天浅，带一点荧光感，在黑色背景上会发光。
-  */
-  --night-pink: #ffb7c5;
-  
-  /* 📜 护眼米色：加重了黄色调，像热牛奶一样的颜色 */
-  --warm-beige: #f5f0e1; 
+  --day-pink: #d68a94;   /* 干枯玫瑰 */
+  --night-pink: #ffb7c5; /* 樱花汽水 */
+  --warm-beige: #f5f0e1; /* 热牛奶米色 */
 }
 
-/* ==========================================================================
-   ☀️ 白天模式 (Day Mode)
-   ========================================================================== */
+/* ☀️ 白天模式 */
 [data-md-color-scheme="default"] {
-  /* 应用我们定义的“干枯玫瑰粉” */
   --md-primary-fg-color:        var(--day-pink);
   --md-primary-fg-color--light: var(--day-pink);
-  --md-primary-fg-color--dark:  #c27882; /* 鼠标悬停时再深一点 */
+  --md-primary-fg-color--dark:  #c27882;
   --md-accent-fg-color:         var(--day-pink);
-
-  /* 应用“热牛奶”米色背景 */
-  --md-default-bg-color: var(--warm-beige); 
-  
-  /* 侧边栏稍微深一点点，增加层次 */
-  --md-bg-color--secondary: #ebe6d6;
-
-  /* 文字颜色：用深暖咖色，比纯黑更温柔 */
-  --md-text-color: #5c5252; 
+  --md-default-bg-color:        var(--warm-beige); /* 背景变米色 */
+  --md-bg-color--secondary:     #ebe6d6;
+  --md-text-color:              #5c5252; /* 深暖咖色文字 */
 }
 
-/* ==========================================================================
-   🌙 黑夜模式 (Night Mode)
-   ========================================================================== */
+/* 🌙 黑夜模式 */
 [data-md-color-scheme="slate"] {
-  /* 应用我们定义的“樱花汽水粉” */
   --md-primary-fg-color:        var(--night-pink);
   --md-primary-fg-color--light: var(--night-pink);
-  --md-primary-fg-color--dark:  #ffcfd6; 
+  --md-primary-fg-color--dark:  #ffcfd6;
   --md-accent-fg-color:         var(--night-pink);
-  
-  /* 背景保持深色，但文字变成浅粉色，像霓虹灯 */
-  --md-typeset-a-color: var(--night-pink);
+  --md-typeset-a-color:         var(--night-pink);
 }
 
 /* ==========================================================================
-   ✨ 细节微调 (让它更精致)
+   ✨ 核心修改：让折叠块变成“白底粉边卡片”
    ========================================================================== */
 
-/* 1. 顶部导航栏：去掉阴影，加一条细细的白线，更有“手账感” */
-.md-header {
-  box-shadow: none !important;
-  border-bottom: 2px solid rgba(255,255,255,0.4);
+/* 1. 强制选中所有类型的折叠块 (Quote, Note, Abstract 等) */
+.md-typeset details,
+.md-typeset .admonition,
+.md-typeset .admonition.quote,
+.md-typeset .admonition.note,
+.md-typeset .admonition.abstract {
+    background-color: #ffffff !important;       /* 【关键】背景改纯白，才有卡片感 */
+    border: 1px solid rgba(0,0,0,0.05) !important; /* 边框极淡，几乎看不见 */
+    border-left: 3px solid var(--md-primary-fg-color) !important; /* 左边粉线 */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02) !important; /* 加一点点微弱的阴影，更有立体感 */
+    border-radius: 8px !important;              /* 圆角更大一点，更可爱 */
+    margin-bottom: 1.5em !important;            /* 卡片间距拉大 */
 }
 
-/* 2. 调整正文字体：尝试使用电脑里自带的圆体 */
-body {
-  font-family: "Microsoft YaHei", "Hiragino Sans GB", "Yuanti SC", sans-serif;
-}
-
-/* 3. 让代码块的背景也稍微暖一点，不要死黑 */
-[data-md-color-scheme="default"] .md-typeset pre > code {
-  background-color: #fff9f0; /* 极淡的米色代码块 */
-  border: 1px solid #eaddcf; /* 加个边框 */
-}
-/* docs/stylesheets/extra.css */
-
-/* 1. 让所有折叠块变“极简卡片” */
-.md-typeset details {
-    background-color: transparent !important;   /* 去掉灰色背景 */
-    border: 1px solid #eee !important;          /* 边框变成极淡的灰色 */
-    border-left: 3px solid var(--md-primary-fg-color) !important;  /* 【重点】左侧改成你的主题粉色 (浅粉) */
-    /* 如果你想要更深一点的粉，把 #ffb6c1 改成 #e91e63 */
-    box-shadow: none !important;                /* 去掉阴影，扁平化 */
-    border-radius: 4px;                         /*稍微圆角一点点*/
-    margin-bottom: 1em !important;              /* 块与块之间留出呼吸感 */
-}
-
-/* 2. 让标题栏变干净 */
-.md-typeset summary {
-    background-color: #fffafa !important;       /* 标题栏也是白色(或极淡粉雪色) */
-    color: #444 !important;                     /* 标题文字用深灰，不要纯黑 */
-    font-weight: 500 !important;
+/* 2. 强制把标题栏变成白色 */
+.md-typeset summary,
+.md-typeset .admonition-title {
+    background-color: #ffffff !important;       /* 标题栏也是纯白 */
+    border-bottom: 1px solid rgba(0,0,0,0.03) !important; /* 加一条若隐若现的分隔线 */
+    color: #666 !important;
+    font-weight: bold !important;
     padding-left: 1em !important;
 }
 
-/* 3. 鼠标悬停时的效果 */
+/* 3. 鼠标悬停时的可爱效果 */
 .md-typeset summary:hover {
-    background-color: #fff0f5 !important;       /* 鼠标放上去微微变粉 */
+    background-color: #fff5f7 !important;       /* 鼠标放上去微微发粉 */
     cursor: pointer;
 }
 
-/* 4. 去掉原本自带的那些图标 (如果你想要极致简洁) */
-/* .md-typeset .admonition-title:before, .md-typeset summary:before {
-    display: none !important;
-} */
+/* 4. 去掉默认的丑图标 (可选，如果你想要极致简洁就留着这行) */
+/* .md-typeset .admonition-title:before, .md-typeset summary:before { display: none !important; } */
+
+/* 5. 优化正文代码块颜色，配合米色背景 */
+[data-md-color-scheme="default"] .md-typeset pre > code {
+    background-color: #fffdf5;
+    border: 1px solid #eee;
+}
