@@ -2,19 +2,19 @@
    🌸 1. 全局配色 & 基础设置
    ========================================================================== */
 :root {
-  --day-pink: #e094a0;   /* 干枯玫瑰粉 */
-  --night-pink: #ffb7c5; /* 樱花粉 */
-  --warm-beige: #f5f0e1; /* 护眼米色 */
+  --day-pink: #e094a0;   
+  --night-pink: #ffb7c5; 
+  --warm-beige: #f5f0e1; 
 }
 
-/* 💖 选中文字变粉 */
+/* 选中文字变粉 */
 ::selection {
   background: rgba(214, 138, 148, 0.3);
   color: #a85a66;
 }
 
 /* ==========================================================================
-   ☀️ 2. 白天模式专属 (Day Mode)
+   ☀️ 2. 白天模式 (电脑端：信纸风格)
    ========================================================================== */
 [data-md-color-scheme="default"] {
   --md-primary-fg-color:        var(--day-pink);
@@ -26,17 +26,18 @@
   --md-text-color:              #5c5252;
 }
 
-/* ☀️ 白天：左侧边栏 (茶色奶茶风) */
+/* ☀️ 白天：左侧边栏 (茶色) */
 [data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap {
     background-color: #e6dace !important;
     border: 1px solid #d8c8b8 !important;
     box-shadow: 0 4px 15px rgba(92, 82, 82, 0.05);
 }
 
-/* ☀️ 白天：中间内容区域 (白色信纸) */
+/* ☀️ 白天：中间内容区域 (白色信纸 - 仅限电脑！) */
+/* 注意：这里我们限制了 padding 只在电脑上生效，手机端在后面重置 */
 [data-md-color-scheme="default"] .md-content__inner {
     background-color: #ffffff; 
-    padding: 40px 50px !important; 
+    padding: 40px 50px; /* 去掉 !important 以便手机端能覆盖 */
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.03);
     margin-top: 1rem;
@@ -44,7 +45,7 @@
 }
 
 /* ==========================================================================
-   🌙 3. 夜间模式专属 (Night Mode)
+   🌙 3. 夜间模式 (Night Mode)
    ========================================================================== */
 [data-md-color-scheme="slate"] {
   --md-primary-fg-color:        var(--night-pink);
@@ -88,139 +89,114 @@
 }
 
 /* ==========================================================================
-   ✨ 4. 卡片样式核心修复 (这就是你刚才丢掉的部分！)
+   ✨ 4. 卡片样式 (白底粉边)
    ========================================================================== */
-
-/* 1. 卡片主体 (白底粉边) */
 .md-typeset details,
 .md-typeset .admonition {
-    /* 白天背景：95%不透明的白，很高级 */
     background-color: rgba(255, 255, 255, 0.95) !important;
-    
-    /* 边框 */
     border: 1px solid rgba(255, 255, 255, 0.8) !important;
-    
-    /* 💖 重点：粉色左边框回归！ */
     border-left: 6px solid var(--md-primary-fg-color) !important;
-    
-    /* 阴影 */
     box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
     border-radius: 12px !important;
     margin-bottom: 24px !important;
-    transition: all 0.3s ease;
 }
 
-/* 2. 鼠标悬停发光 */
-.md-typeset details:hover,
-.md-typeset .admonition:hover {
-    box-shadow: 0 8px 25px rgba(214, 138, 148, 0.25) !important;
-    transform: translateY(-2px);
-}
-
-/* 3. 【核弹级修复】彻底隐藏默认图标，防止重叠！ */
-/* 这段代码没了，所以你的文字才会撞车 */
+/* 隐藏默认图标 */
 .md-typeset details > summary::before,
-.md-typeset .admonition > .admonition-title::before,
-.md-typeset .admonition.quote > .admonition-title::before {
-    content: none !important;
+.md-typeset .admonition > .admonition-title::before {
     display: none !important;
 }
 
 /* ==========================================================================
-   🅰️ 5. 字体大小控制 (这就是你找不到的部分！)
+   🅰️ 5. 字体大小控制
    ========================================================================== */
-
-/* 1. 卡片标题栏：大号字体 */
-.md-typeset summary,
-.md-typeset .admonition-title {
-    background-color: transparent !important;
-    border-bottom: 1px solid rgba(0,0,0,0.05) !important;
-    
+/* 标题 */
+.md-typeset summary, .md-typeset .admonition-title {
     padding: 12px 15px !important; 
     color: #333333 !important;
     font-weight: 700 !important;
-    
-    /* 📝 改这里：标题字号 */
-    font-size: 0.9rem !important; 
+    font-size: 1.15rem !important; 
 }
-
-/* 2. 卡片内容：大号字体 */
+/* 内容 */
 .md-typeset .admonition-content,
 .md-typeset details .md-typeset-details__content {
     padding: 20px !important;
     color: #444 !important;
-    
-    /* 📝 改这里：内容字号 */
-    font-size: 0.9rem !important; 
+    font-size: 1.05rem !important; 
     line-height: 1.8 !important;
 }
-
-/* 3. 全局普通文字放大 */
-.md-typeset p, 
-.md-typeset ul li, 
-.md-typeset ol li {
-    font-size: 0.9rem !important;
+/* 全局文字 */
+.md-typeset p, .md-typeset ul li, .md-typeset ol li {
+    font-size: 1.05rem !important;
     line-height: 1.9 !important;
-    margin-bottom: 0.6em !important;
 }
 
 /* ==========================================================================
-   🍵 6. 侧边栏完美修复 (终极去背景版)
+   🍵 6. 侧边栏完美修复 (茶色去背景)
    ========================================================================== */
-
-/* 1. 侧边栏容器：茶色背景 */
 .md-sidebar--primary .md-sidebar__scrollwrap {
     background-color: #e6dace !important; 
     border: 1px solid #d8c8b8 !important;
     height: fit-content !important; 
-    min-height: auto !important;
-    max-height: 85vh !important;
     border-radius: 12px;
     padding: 15px 10px !important;
     margin: 10px 0 10px 10px;
 }
-
-/* 2. 去掉所有链接的背景 (解决白色方块问题) */
+/* 去掉链接背景 */
 .md-sidebar--primary .md-nav__item,
-.md-sidebar--primary .md-nav__link,
-.md-sidebar--primary .md-nav__link--active {
+.md-sidebar--primary .md-nav__link {
     background: transparent !important;
     box-shadow: none !important;
     border: none !important;
 }
-
-/* 3. 文字样式 */
+/* 文字样式 */
 .md-sidebar--primary .md-nav__link {
     color: #6d5c55 !important; 
-    margin-top: 2px !important;
 }
-
-/* 4. 选中状态：只变粉色粗体 */
+/* 选中变粉 */
 .md-sidebar--primary .md-nav__link--active,
 .md-sidebar--primary .md-nav__link:hover {
     color: var(--md-primary-fg-color) !important; 
     font-weight: 700 !important; 
     background: transparent !important; 
 }
-
-/* ==========================================================================
-   📐 7. 布局调整
-   ========================================================================== */
+/* 隐藏右侧目录 */
+.md-sidebar--secondary { display: none !important; }
 .md-grid { max-width: 1400px !important; }
 .md-content { margin: 0 auto !important; }
-.md-sidebar--secondary { display: none !important; }
 
-/* 手机端适配 */
+/* ==========================================================================
+   📱 7. 手机端/平板端 终极适配 (修复挤扁问题)
+   ========================================================================== */
 @media screen and (max-width: 76.1875em) {
-    .md-content__inner {
-        padding: 20px !important;
-        background-color: transparent !important;
+    /* 1. 强制重置中间内容区域：去掉信纸，铺满屏幕 */
+    [data-md-color-scheme="default"] .md-content__inner {
+        padding: 0px !important; /* 关键！去掉大边距 */
+        margin-top: 0 !important;
+        background-color: transparent !important; /* 去掉白底 */
         box-shadow: none !important;
         border-top: none !important;
     }
-    .md-sidebar--primary .md-sidebar__scrollwrap {
-        background: transparent !important;
-        border: none !important;
-        padding: 0 !important;
+    
+    /* 2. 稍微给正文留一点呼吸空间，不要贴着屏幕边 */
+    .md-content {
+        padding: 15px !important; 
+    }
+
+    /* 3. 修复左上角弹出菜单 (汉堡菜单) */
+    .md-drawer {
+        background-color: #f5f0e1 !important; /* 菜单背景改成护眼米色 */
+    }
+    .md-drawer .md-nav--primary .md-nav__title {
+        background-color: var(--md-primary-fg-color) !important; /* 顶部标题栏变粉 */
+        color: white !important;
+    }
+    .md-drawer .md-nav__link {
+        color: #5c5252 !important; /* 菜单文字颜色 */
+        font-size: 1.1rem !important; /* 菜单文字加大 */
+        padding: 12px 0 !important; /* 更好点 */
+    }
+    .md-drawer .md-nav__link--active {
+        color: var(--md-primary-fg-color) !important; /* 选中变粉 */
     }
 }
