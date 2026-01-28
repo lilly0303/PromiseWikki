@@ -105,14 +105,14 @@
     /* 💖 修改：标题文字颜色改成深粉灰色，不再是死黑 */
     color: #6d4c50 !important; 
     font-weight: 700 !important;
-    font-size: 1.1rem !important;
+    font-size: 0.8rem !important;
 }
 
 /* 6. 卡片内容区域 */
 .md-typeset .admonition-content,
 .md-typeset details .md-typeset-details__content {
     padding: 20px !important;
-    font-size: 1.0rem !important;
+    font-size: 0.8rem !important;
     line-height: 1.8 !important;
     color: #5c5252 !important;
 }
@@ -147,7 +147,7 @@
 .md-typeset p, 
 .md-typeset ul li, 
 .md-typeset ol li {
-    font-size: 1.0rem !important;
+    font-size: 0.8rem !important;
     line-height: 1.9 !important;
     margin-bottom: 0.6em !important;
 }
