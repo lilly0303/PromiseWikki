@@ -1,5 +1,5 @@
 /* ==========================================================================
-   🌸 全局配色 (保持不变)
+   🌸 1. 全局配色 (保持不变)
    ========================================================================== */
 :root {
   --day-pink: #d68a94;
@@ -26,10 +26,8 @@
 }
 
 /* ==========================================================================
-   ✨ 核心修复：字号加大版
+   ✨ 2. 卡片样式 (白底粉边大卡片)
    ========================================================================== */
-
-/* 1. 卡片主体 */
 .md-typeset details,
 .md-typeset .admonition {
     background-color: rgba(255, 255, 255, 0.95) !important;
@@ -40,7 +38,7 @@
     margin-bottom: 24px !important;
 }
 
-/* 2. 隐藏默认图标 */
+/* 3. 隐藏默认图标 */
 .md-typeset details > summary::before,
 .md-typeset .admonition > .admonition-title::before,
 .md-typeset .admonition.quote > .admonition-title::before {
@@ -48,43 +46,46 @@
     display: none !important;
 }
 
-/* 3. 标题栏：字号加大！ */
+/* 4. 卡片标题栏：大号字体 */
 .md-typeset summary,
 .md-typeset .admonition-title {
     background-color: transparent !important;
     border-bottom: 1px solid rgba(0,0,0,0.05) !important;
-    padding-left: 15px !important; 
-    padding-top: 12px !important;
-    padding-bottom: 12px !important;
-
+    padding: 12px 15px !important; 
     color: #333333 !important;
     font-weight: 700 !important;
-    
-    /* 🚀 修改这里：从 1rem 改到了 1.2rem (标题变大) */
-    font-size: 1.2rem !important; 
+    font-size: 1.25rem !important; /* 标题字号 */
 }
 
-/* 4. 鼠标悬停 */
+/* 5. 鼠标悬停 */
 .md-typeset summary:hover {
     background-color: rgba(255, 255, 255, 0.5) !important;
     cursor: pointer;
 }
 
-/* 5. 内容区域：字号加大！ */
+/* 6. 卡片内容区域：大号字体 */
 .md-typeset .admonition-content,
 .md-typeset details .md-typeset-details__content {
     padding: 20px !important;
-    color: #444 !important;
-    
-    /* 🚀 修改这里：内容文字变大 */
-    font-size: 1.2rem !important;  /* 以前比较小，现在加大 */
-    
-    /* 🚀 修改这里：行间距拉开，不挤 */
-    line-height: 1.8 !important;   
+    font-size: 1.15rem !important; /* 卡片内文字号 */
+    line-height: 1.8 !important;
 }
 
-/* 6. 特别针对列表（像你的“工具仓库”那种列表） */
-.md-typeset .admonition-content ul li,
-.md-typeset .admonition-content ol li {
-    margin-bottom: 0.5em !important; /* 让列表项之间别挨太紧 */
+/* ==========================================================================
+   🌍 7. 全局文字放大 (这是新加的！专门修你首页那个列表)
+   ========================================================================== */
+
+/* 让全站所有的“段落”和“列表项”都变大，不只在卡片里生效 */
+.md-typeset p, 
+.md-typeset ul li, 
+.md-typeset ol li {
+    font-size: 1.15rem !important; /* 统一加大到 1.15倍 */
+    line-height: 1.9 !important;   /* 行间距拉大，看起来更舒服 */
+    color: #444 !important;        /* 统一深灰，清晰护眼 */
+}
+
+/* 既然字变大了，列表的圆点可能会觉得挤，调整一下间距 */
+.md-typeset ul li, 
+.md-typeset ol li {
+    margin-bottom: 0.6em !important; /* 列表项之间松快一点 */
 }
