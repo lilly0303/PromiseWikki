@@ -232,13 +232,28 @@
     color: #cfcfcf !important; /* 正文变浅灰 */
 }
 
-/* ⭐️ 核心修改 3：夜间模式的“信纸”也变透明磨砂 */
+/* ⭐️ 核心修改 3：夜间模式的“信纸”改为实体深色卡片 (与白天结构一致) */
 [data-md-color-scheme="slate"] .md-content__inner {
-    background-color: rgba(255, 255, 255, 0.03) !important; 
-    backdrop-filter: blur(15px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    /* 1. 背景改回实心深灰色 (不再透明) */
+    background-color: #25262b !important; 
+    
+    /* 2. 移除磨砂滤镜 */
+    backdrop-filter: none !important;
+    border: none !important;
+    
+    /* 3. 保持顶部的粉色边框 */
     border-top: 4px solid var(--night-pink) !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+    
+    /* 4. 关键：强制设置与白天一样的内边距和圆角 */
+    padding: 40px 50px !important; /* 撑开方框，让它变大 */
+    border-radius: 12px !important;
+    margin-top: 1rem !important;
+    
+    /* 5. 添加深色投影，增加立体感 */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4) !important;
+    
+    /* 6. 确保顶部的粉色胶带可以定位 */
+    position: relative; 
 }
 
 /* ⭐️ 核心修改 4：夜间模式侧边栏美化 (真正的磨砂玻璃) */
