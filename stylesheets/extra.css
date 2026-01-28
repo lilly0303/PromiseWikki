@@ -207,78 +207,79 @@
 .md-content { margin: 0 auto !important; }
 
 /* ==========================================================================
-   📱 7. 手机端/平板端 终极适配 (修复挤扁问题 + 修复菜单不显示)
+   📱 7. 手机端/平板端 终极适配 (适配摩卡色背景版)
    ========================================================================== */
 @media screen and (max-width: 76.1875em) {
 
-    /* 1. 强制重置中间内容区域：去掉信纸大边距，防止内容被挤扁 */
+    /* 1. 恢复中间内容的“白纸”效果，但在手机上做成卡片 */
     [data-md-color-scheme="default"] .md-content__inner {
-        display: none !important;
-        padding: 0 !important; /* 关键！去掉电脑端的 40px 50px 大边距 */
-        margin-top: 0 !important;
-        background-color: transparent !important;
-        box-shadow: none !important;
+        background-color: #ffffff !important; /* ⭐️ 关键：把白底加回来！ */
+        color: #444444 !important;            /* 确保字是深灰色的 */
+        
+        /* 调整一下边距，让白纸在手机上看起来像个卡片 */
+        margin: 10px 10px !important;         /* 上下左右留点缝隙，露出摩卡波点背景 */
+        padding: 20px 15px !important;        /* 内容内边距 */
+        border-radius: 10px !important;       /* 圆角 */
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important; /* 加上阴影，更有立体感 */
+        
+        /* 仍然隐藏胶带，手机上不需要 */
         border-top: none !important;
     }
     
-    /* 2. 调整正文左右间距，让阅读更舒服 */
-    .md-content {
-        padding: 0 16px !important; 
-        margin: 0 !important;
-        width: 100% !important; /* 强制占满宽度 */
+    /* 隐藏胶带 (手机屏幕小，胶带挡视线) */
+    [data-md-color-scheme="default"] .md-content__inner::before {
+        display: none !important;
     }
-
-    /* 3. ⭐️ 关键修复：重置侧边栏样式，而不是隐藏它 */
-    /* 我们要把你在电脑端设置的茶色框框去掉，不然它会在手机菜单里显示成一个奇怪的盒子 */
+    
+    /* 2. 调整外部容器，防止挤压 */
+    .md-content {
+        padding: 0 !important; 
+        margin: 0 !important;
+        width: 100% !important;
+    }
+    
+    /* 3. 侧边栏处理：把电脑端的框框去掉，融入菜单 */
     .md-sidebar--primary .md-sidebar__scrollwrap {
-        background-color: transparent !important; /* 变透明，融入菜单背景 */
+        background-color: transparent !important; 
         border: none !important;
         box-shadow: none !important;
         padding: 0 !important;
         margin: 0 !important;
-        height: auto !important;
     }
     
-    /* 4. 修复菜单内文字链接样式 */
+    /* 4. 菜单内文字颜色适配 */
+    /* 因为汉堡菜单背景是浅米色，所以文字要是深色 */
     .md-sidebar--primary .md-nav__link {
-        color: #5c5252 !important; /* 确保文字颜色可见 */
-        font-size: 0.85rem !important;
-        line-height: 2.5 !important; /* 拉开一点行高，方便手指点击 */
+        color: #5c5252 !important; 
+        font-size: 0.9rem !important;
+        line-height: 2.8 !important;
+    }
+    /* 选中状态 */
+    .md-sidebar--primary .md-nav__link--active {
+        color: var(--md-primary-fg-color) !important;
+        background: transparent !important;
     }
 
-    /* 5. 确保主布局是单列的，防止给侧边栏预留空白位置 */
+    /* 5. 布局重置 */
     .md-main__inner {
         grid-template-columns: 1fr !important;
         margin: 0 !important;
+        padding: 0 !important;
     }
 
-/* ...前面的代码保持不变... */
-
-    /* 6. 汉堡菜单 (Drawer) 整体背景设置 */
+    /* 6. 汉堡菜单 (Drawer) 样式 */
     .md-drawer {
-        background-color: #f5f0e1 !important; 
+        background-color: #f5f0e1 !important; /* 菜单背景保持护眼米色 */
+        border-right: none !important;
     }
     
-    /* ⭐️ 修复：菜单顶部标题栏 (填补缺角) */
+    /* 菜单标题栏修复 (填补缺角) */
     .md-drawer .md-nav--primary .md-nav__title {
         background-color: var(--md-primary-fg-color) !important;
         color: white !important;
         box-shadow: none !important;
-        
-        /* 👇 新增这两行来填补缺角 */
-        border-radius: 0 !important; /* 强制变成直角，填满角落 */
-        margin: 0 !important;        /* 确保紧贴边缘，没有缝隙 */
-        
-        /* 稍微增加一点左边距，让文字好看点 */
-        padding-left: 20px !important; 
-    }
-    
-    /* ...后面的代码保持不变... */
-    
-    /* 菜单顶部标题栏 */
-    .md-drawer .md-nav--primary .md-nav__title {
-        background-color: var(--md-primary-fg-color) !important;
-        color: white !important;
-        box-shadow: none !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        padding-left: 20px !important;
     }
 }
