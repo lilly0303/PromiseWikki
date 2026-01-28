@@ -20,6 +20,10 @@
    🍪 只改背景：摩卡色底 + 浅色交错波点
    ========================================================================== */
 [data-md-color-scheme="default"] {
+    --md-primary-fg-color:        var(--day-pink);
+    --md-primary-fg-color--light: var(--day-pink);
+    --md-primary-fg-color--dark:  #c27882;
+    --md-accent-fg-color:         var(--day-pink);
     /* 1. 设置摩卡底色 (深咖啡色) */
     background-color: #5e504a !important; 
 
