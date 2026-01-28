@@ -160,31 +160,12 @@
    📱 5. 手机端/平板端 终极适配 (max-width: 76.1875em)
    ========================================================================== */
 @media screen and (max-width: 76.1875em) {
-    /* ==========================================================================
-   📱 5. 手机端/平板端 终极适配 (max-width: 76.1875em)
-   ========================================================================== */
-@media screen and (max-width: 76.1875em) {
 
-    /* 👇👇👇 在这里插入这段背景修改代码 👇👇👇 */
-    
-    /* --- ☀️ 白天模式手机背景 (修正发绿问题) --- */
+    /* --- ☀️ 白天模式手机背景 (红豆奶茶色/修正发绿问题) --- */
     [data-md-color-scheme="default"] {
-        /* 
-           这里的颜色 #8a7373 是“红豆奶茶色”，比原来的 #5e504a 更暖，
-           红色调更多，绝对不会发绿！
-        */
         background-color: var(--warm-beige) !important; 
-        
-        /* 如果你想让波点也跟着变色，或者直接去掉波点变纯色，可以用下面这句： */
-        /* background-image: none !important; */ 
     }
 
-    /* 👆👆👆 插入结束 👆👆👆 */
-
-
-    /* --- 菜单 (Drawer) --- */
-    [data-md-color-scheme="default"] .md-drawer {
-        /* ... 原来的代码 ... */
     /* --- 菜单 (Drawer) --- */
     [data-md-color-scheme="default"] .md-drawer {
         background-color: #f5f0e1 !important;
@@ -204,7 +185,7 @@
         color: var(--md-primary-fg-color) !important;
     }
 
-    /* --- 中间内容区 (白色卡片) --- */
+    /* --- 中间内容区 (白天 - 手机端 - 白色卡片) --- */
     [data-md-color-scheme="default"] .md-content__inner {
         background-color: #ffffff !important;
         color: #444444 !important;
@@ -214,34 +195,31 @@
         box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
         border-top: none !important;
     }
-    /* ...这里上面是你原本的白天手机端代码... */
-
-    /* 👇👇👇 请把这段代码加在 "@media ... { }" 的大括号里面 👇👇👇 */
+    /* 隐藏手机端顶部的纸胶带装饰 */
+    [data-md-color-scheme="default"] .md-content__inner::before {
+        display: none !important;
+    }
 
     /* --- 🌙 夜间模式手机端适配 (形状大小和白天完全一致，但保持透明) --- */
     [data-md-color-scheme="slate"] .md-content__inner {
-        /* 1. 形状与位置 (复制白天的参数) */
-        margin: 1rem 0.8rem !important;       /* 这里的间距和白天手机端一致 */
-        padding: 1.5rem 1rem !important;      /* 这里的内边距和白天手机端一致 (变小了) */
+        /* 1. 形状与位置 (复制白天的手机端参数) */
+        margin: 1rem 0.8rem !important;
+        padding: 1.5rem 1rem !important;
         border-radius: 12px !important;
         
         /* 2. 颜色与质感 (保持夜间的透明磨砂) */
         background-color: rgba(255, 255, 255, 0.03) !important; 
         backdrop-filter: blur(15px) !important;
         
-        /* 3. 边框处理 (和白天手机端一样，去掉顶部的大粗边框，改为四周细边) */
+        /* 3. 边框处理 */
         border: 1px solid rgba(255, 255, 255, 0.08) !important;
         border-top: none !important; 
         
         /* 4. 阴影 */
         box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
     }
-    [data-md-color-scheme="default"] .md-content__inner::before {
-        display: none !important;
-    }
 
-}
-
+} /* <--- 必须在这里结束第5部分，千万不要漏掉这个括号 */
 
 
 /* ==========================================================================
@@ -251,55 +229,53 @@
   --md-primary-fg-color:        var(--night-pink);
   --md-primary-fg-color--light: var(--night-pink);
   
-  /* ⭐️ 核心修改 1：夜间模式也要有波点！(深夜可可质感) */
-  background-color: #1a1b1e !important; /* 极深灰底色 */
+  /* ⭐️ 核心修改 1：夜间模式也要有波点！ */
+  background-color: #1a1b1e !important; 
   background-image: 
       radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 2px),
       radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 2px) !important;
   background-size: 30px 30px !important;
   background-position: 0 0, 15px 15px !important;
   
-  /* 覆盖原本的深色变量 */
   --md-default-bg-color: #1a1b1e;
 }
 
 /* ⭐️ 核心修改 2：把白天那个“白色卡片”在夜间变成“深夜卡片” */
 [data-md-color-scheme="slate"] .md-typeset details,
 [data-md-color-scheme="slate"] .md-typeset .admonition {
-    background-color: rgba(30, 31, 35, 0.8) !important; /* 深灰色透明底 */
+    background-color: rgba(30, 31, 35, 0.8) !important; 
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-left: 4px solid var(--night-pink) !important; /* 亮粉色侧边 */
+    border-left: 4px solid var(--night-pink) !important; 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
 }
 [data-md-color-scheme="slate"] .md-typeset summary, 
 [data-md-color-scheme="slate"] .md-typeset .admonition-title {
-    color: #ffffff !important; /* 标题变白 */
+    color: #ffffff !important; 
 }
 [data-md-color-scheme="slate"] .md-typeset .admonition-content,
 [data-md-color-scheme="slate"] .md-typeset details .md-typeset-details__content {
-    color: #cfcfcf !important; /* 正文变浅灰 */
+    color: #cfcfcf !important; 
 }
 
-
-/* ⭐️ 核心修改 3：夜间模式 - 保持透明磨砂，但把肚子“撑大” */
+/* ⭐️ 核心修改 3：夜间模式 - 保持透明磨砂，但把肚子“撑大” (PC端) */
 [data-md-color-scheme="slate"] .md-content__inner {
-    /* --- 1. 保持你喜欢的透明磨砂质感 --- */
+    /* --- 1. 保持透明磨砂质感 --- */
     background-color: rgba(255, 255, 255, 0.03) !important; 
     backdrop-filter: blur(15px) !important;
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
     
-    /* --- 2. 关键修改：把形状和大小撑开，和白天一模一样 --- */
-    padding: 40px 50px !important;  /* <--- 这句最重要！撑开内部空间 */
-    border-radius: 12px !important; /* 圆角保持一致 */
-    margin-top: 1rem !important;    /* 顶部间距保持一致 */
+    /* --- 2. 关键修改：PC端撑开内部空间 --- */
+    padding: 40px 50px !important;  
+    border-radius: 12px !important; 
+    margin-top: 1rem !important;    
     
     /* --- 3. 装饰细节 --- */
     border-top: 4px solid var(--night-pink) !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
-    position: relative; /* 为了让上面的纸胶带能显示出来 */
+    position: relative; 
 }
 
-/* ⭐️ 核心修改 4：夜间模式侧边栏美化 (真正的磨砂玻璃) */
+/* ⭐️ 核心修改 4：夜间模式侧边栏美化 (PC端) */
 @media screen and (min-width: 76.25em) {
     [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
         background-color: rgba(255, 255, 255, 0.05) !important;
