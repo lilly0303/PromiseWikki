@@ -207,80 +207,64 @@
 .md-content { margin: 0 auto !important; }
 
 /* ==========================================================================
-   📱 7. 手机端/平板端 终极适配 (权重加强版：彻底修复菜单和卡片)
+   📱 7. 手机端/平板端 终极适配 (最高指令修复版)
    ========================================================================== */
 @media screen and (max-width: 76.1875em) {
 
-    /* ------------------------------------------------------------
-       1. 🚨 汉堡菜单文字修复 (加了 html body 前缀，权重拉满！)
-       ------------------------------------------------------------ */
-    html body .md-drawer .md-nav__link, 
-    html body .md-drawer .md-nav__item .md-nav__link {
-        color: #5c5252 !important;      /* 强制深灰色，防止隐形 */
-        font-weight: 500 !important;
-        font-size: 0.95rem !important;
-        background: transparent !important;
-        line-height: 2.5 !important;
+    /* 1. 🛑 强制给汉堡菜单刷上米色背景 (覆盖摩卡色) */
+    html body [data-md-color-scheme="default"] .md-drawer {
+        background-color: #f5f0e1 !important; /* 护眼米色 */
+        border-right: none !important;
     }
 
-    /* 选中状态/悬停状态变粉 */
-    html body .md-drawer .md-nav__link--active,
-    html body .md-drawer .md-nav__link:hover {
-        color: var(--md-primary-fg-color) !important; 
-    }
-
-    /* ------------------------------------------------------------
-       2. 🚨 彻底清除“茶色框”样式 (关键修复！)
-       这里加了 [data-md...] 前缀，确保能覆盖掉电脑端的设置
-       ------------------------------------------------------------ */
-    [data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap,
-    [data-md-color-scheme="default"] .md-drawer .md-nav {
-        background-color: transparent !important; 
+    /* 2. 🛑 强制让菜单内部容器透明 (防止里层还有个深色框) */
+    html body [data-md-color-scheme="default"] .md-drawer .md-sidebar__scrollwrap,
+    html body [data-md-color-scheme="default"] .md-drawer .md-nav {
+        background-color: transparent !important;
         border: none !important;
         box-shadow: none !important;
-        padding: 0 !important;
+    }
+
+    /* 3. 🛑 强制设置文字颜色 (深灰)，防止看不见 */
+    html body [data-md-color-scheme="default"] .md-drawer .md-nav__link,
+    html body [data-md-color-scheme="default"] .md-drawer .md-nav__item .md-nav__link {
+        color: #5c5252 !important; /* 深灰色文字 */
+        font-weight: 500 !important;
+        font-size: 0.95rem !important;
+        line-height: 2.5 !important;
+        background: transparent !important;
+    }
+
+    /* 4. 选中/悬停状态变粉 */
+    html body [data-md-color-scheme="default"] .md-drawer .md-nav__link--active,
+    html body [data-md-color-scheme="default"] .md-drawer .md-nav__link:hover {
+        color: var(--md-primary-fg-color) !important; 
+        background-color: transparent !important;
+    }
+    
+    /* 5. 菜单顶部标题栏 (填补缺角 + 白色字) */
+    html body [data-md-color-scheme="default"] .md-drawer .md-nav--primary .md-nav__title {
+        background-color: var(--md-primary-fg-color) !important;
+        color: white !important;
+        border-radius: 0 !important;
         margin: 0 !important;
+        box-shadow: none !important;
     }
 
     /* ------------------------------------------------------------
-       3. 中间白卡片修复 (解决黑屏问题)
+       以下是中间内容区域的修复 (白卡片)，保持不变
        ------------------------------------------------------------ */
     [data-md-color-scheme="default"] .md-content__inner {
-        background-color: #ffffff !important; /* 强制白底 */
-        color: #444444 !important;            /* 强制深灰字 */
+        background-color: #ffffff !important; 
+        color: #444444 !important;            
         margin: 15px 12px !important;         
         padding: 20px 15px !important;        
         border-radius: 12px !important;       
         box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
         border-top: none !important;
     }
+    [data-md-color-scheme="default"] .md-content__inner::before { display: none !important; }
     
-    /* 手机隐藏胶带装饰 */
-    [data-md-color-scheme="default"] .md-content__inner::before { 
-        display: none !important; 
-    }
-
-    /* ------------------------------------------------------------
-       4. 基础布局重置
-       ------------------------------------------------------------ */
     .md-content { padding: 0 !important; margin: 0 !important; width: 100% !important; }
     .md-main__inner { grid-template-columns: 1fr !important; margin: 0 !important; }
-
-    /* ------------------------------------------------------------
-       5. 汉堡菜单外观 (Drawer)
-       ------------------------------------------------------------ */
-    .md-drawer {
-        background-color: #f5f0e1 !important; /* 护眼米色底 */
-        border-right: none !important;
-    }
-    
-    /* 顶部标题栏 */
-    .md-drawer .md-nav--primary .md-nav__title {
-        background-color: var(--md-primary-fg-color) !important;
-        color: white !important;
-        box-shadow: none !important;
-        border-radius: 0 !important;
-        margin: 0 !important;
-        padding-left: 20px !important; /* 稍微留点空隙好看 */
-    }
 }
