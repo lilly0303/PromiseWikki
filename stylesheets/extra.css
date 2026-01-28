@@ -6,15 +6,13 @@
   --night-pink: #ffb7c5; 
   --warm-beige: #f5f0e1; 
 }
-
-/* 选中文字变粉 */
 ::selection {
   background: rgba(214, 138, 148, 0.3);
   color: #a85a66;
 }
 
 /* ==========================================================================
-   ☀️ 2. 白天模式 (电脑端：信纸风格)
+   ☀️ 2. 白天模式 (Day Mode)
    ========================================================================== */
 [data-md-color-scheme="default"] {
   --md-primary-fg-color:        var(--day-pink);
@@ -25,19 +23,10 @@
   --md-bg-color--secondary:     #ebe6d6;
   --md-text-color:              #5c5252;
 }
-
-/* ☀️ 白天：左侧边栏 (茶色) */
-[data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap {
-    background-color: #e6dace !important;
-    border: 1px solid #d8c8b8 !important;
-    box-shadow: 0 4px 15px rgba(92, 82, 82, 0.05);
-}
-
-/* ☀️ 白天：中间内容区域 (白色信纸 - 仅限电脑！) */
-/* 注意：这里我们限制了 padding 只在电脑上生效，手机端在后面重置 */
+/* 电脑端信纸 (手机端会自动忽略) */
 [data-md-color-scheme="default"] .md-content__inner {
     background-color: #ffffff; 
-    padding: 40px 50px; /* 去掉 !important 以便手机端能覆盖 */
+    padding: 40px 50px; 
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.03);
     margin-top: 1rem;
@@ -54,23 +43,12 @@
   --md-accent-fg-color:         var(--night-pink);
   --md-typeset-a-color:         var(--night-pink);
 }
-
-/* 🌙 夜间：侧边栏透明 */
-[data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
+[data-md-color-scheme="slate"] .md-content__inner {
     background-color: transparent !important;
     border: none !important;
     box-shadow: none !important;
-}
-
-/* 🌙 夜间：去掉白纸背景 */
-[data-md-color-scheme="slate"] .md-content__inner {
-    background-color: transparent !important;
     padding: 0 !important;
-    box-shadow: none !important;
-    border-top: none !important;
 }
-
-/* 🌙 夜间：卡片变深灰 */
 [data-md-color-scheme="slate"] .md-typeset details,
 [data-md-color-scheme="slate"] .md-typeset .admonition {
     background-color: #3e404a !important; 
@@ -78,15 +56,9 @@
     color: #e0e0e0 !important; 
 }
 [data-md-color-scheme="slate"] .md-typeset summary,
-[data-md-color-scheme="slate"] .md-typeset .admonition-title {
-    color: #ffffff !important;
-}
-[data-md-color-scheme="slate"] .md-typeset .admonition-content {
-    color: #d0d0d0 !important;
-}
-[data-md-color-scheme="slate"] .md-nav__link {
-    color: #cfcfcf !important;
-}
+[data-md-color-scheme="slate"] .md-typeset .admonition-title { color: #ffffff !important; }
+[data-md-color-scheme="slate"] .md-typeset .admonition-content { color: #d0d0d0 !important; }
+[data-md-color-scheme="slate"] .md-nav__link { color: #cfcfcf !important; }
 
 /* ==========================================================================
    ✨ 4. 卡片样式 (白底粉边)
@@ -100,8 +72,6 @@
     border-radius: 12px !important;
     margin-bottom: 24px !important;
 }
-
-/* 隐藏默认图标 */
 .md-typeset details > summary::before,
 .md-typeset .admonition > .admonition-title::before {
     display: none !important;
@@ -110,93 +80,112 @@
 /* ==========================================================================
    🅰️ 5. 字体大小控制
    ========================================================================== */
-/* 标题 */
 .md-typeset summary, .md-typeset .admonition-title {
     padding: 12px 15px !important; 
     color: #333333 !important;
     font-weight: 700 !important;
-    font-size: 1.0rem !important; 
+    font-size: 0.9rem !important; 
 }
-/* 内容 */
 .md-typeset .admonition-content,
 .md-typeset details .md-typeset-details__content {
     padding: 20px !important;
     color: #444 !important;
-    font-size: 0.9rem !important; 
+    font-size: 0.8rem !important; 
     line-height: 1.8 !important;
 }
-/* 全局文字 */
 .md-typeset p, .md-typeset ul li, .md-typeset ol li {
-    font-size: 0.9rem !important;
+    font-size: 0.8rem !important;
     line-height: 1.9 !important;
 }
 
 /* ==========================================================================
-   🍵 6. 侧边栏完美修复 (茶色去背景)
+   🍵 6. 电脑端侧边栏 (严格限制：只在电脑上生效！)
+   ❌ 这里的代码绝对不会影响手机！
    ========================================================================== */
-.md-sidebar--primary .md-sidebar__scrollwrap {
-    background-color: #e6dace !important; 
-    border: 1px solid #d8c8b8 !important;
-    height: fit-content !important; 
-    border-radius: 12px;
-    padding: 15px 10px !important;
-    margin: 10px 0 10px 10px;
+@media screen and (min-width: 76.25em) {
+    /* 1. 侧边栏容器 (茶色悬浮框) */
+    .md-sidebar--primary .md-sidebar__scrollwrap {
+        background-color: #e6dace !important; 
+        border: 1px solid #d8c8b8 !important;
+        /* 这些高度限制就是导致手机端挤压的元凶，现在只给电脑用 */
+        height: fit-content !important; 
+        max-height: 85vh !important;
+        border-radius: 12px;
+        padding: 15px 10px !important;
+        margin: 10px 0 10px 10px;
+    }
+    
+    /* 2. 链接去背景 */
+    .md-sidebar--primary .md-nav__link {
+        background: transparent !important;
+        border: none !important;
+        color: #6d5c55 !important; 
+    }
+    .md-sidebar--primary .md-nav__link--active,
+    .md-sidebar--primary .md-nav__link:hover {
+        color: var(--md-primary-fg-color) !important; 
+        font-weight: 700 !important; 
+    }
+    
+    /* 3. 隐藏右侧目录 */
+    .md-sidebar--secondary { display: none !important; }
 }
-/* 去掉链接背景 */
-.md-sidebar--primary .md-nav__item,
-.md-sidebar--primary .md-nav__link {
-    background: transparent !important;
-    box-shadow: none !important;
-    border: none !important;
-}
-/* 文字样式 */
-.md-sidebar--primary .md-nav__link {
-    color: #6d5c55 !important; 
-}
-/* 选中变粉 */
-.md-sidebar--primary .md-nav__link--active,
-.md-sidebar--primary .md-nav__link:hover {
-    color: var(--md-primary-fg-color) !important; 
-    font-weight: 700 !important; 
-    background: transparent !important; 
-}
-/* 隐藏右侧目录 */
-.md-sidebar--secondary { display: none !important; }
+
+/* 布局调整 */
 .md-grid { max-width: 1400px !important; }
 .md-content { margin: 0 auto !important; }
 
+
 /* ==========================================================================
-   📱 7. 手机端/平板端 终极适配 (修复挤扁问题)
+   📱 7. 手机端/平板端专属修复 (Drawer Fix)
+   ✅ 这里的代码专门修手机！
    ========================================================================== */
 @media screen and (max-width: 76.1875em) {
-    /* 1. 强制重置中间内容区域：去掉信纸，铺满屏幕 */
+    
+    /* 1. 强制重置中间内容区域 */
     [data-md-color-scheme="default"] .md-content__inner {
-        padding: 0px !important; /* 关键！去掉大边距 */
+        padding: 0px !important; 
         margin-top: 0 !important;
-        background-color: transparent !important; /* 去掉白底 */
+        background-color: transparent !important; 
         box-shadow: none !important;
         border-top: none !important;
     }
+    .md-content { padding: 15px !important; }
+
+    /* 2. 【核心修复】侧边栏抽屉菜单 */
+    /* 给抽屉背景上色 */
+    .md-drawer {
+        background-color: #e6dace !important; /* 奶茶色背景 */
+    }
     
-    /* 2. 稍微给正文留一点呼吸空间，不要贴着屏幕边 */
-    .md-content {
-        padding: 15px !important; 
+    /* 3. 强制让菜单内容铺开，不要挤在一起！ */
+    .md-drawer .md-nav__list {
+        display: block !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+    
+    /* 4. 强制让文字显形！ */
+    .md-drawer .md-nav__link {
+        display: block !important;
+        color: #5c5252 !important; /* 深咖色，看得清 */
+        font-size: 1.1rem !important; 
+        line-height: 2.5 !important; /* 拉开行距，防止重叠 */
+        padding: 5px 15px !important;
+        border: none !important;
+        height: auto !important; /* 防止高度为0 */
+        opacity: 1 !important;   /* 防止透明 */
     }
 
-    /* 3. 修复左上角弹出菜单 (汉堡菜单) */
-    .md-drawer {
-        background-color: #f5f0e1 !important; /* 菜单背景改成护眼米色 */
-    }
-    .md-drawer .md-nav--primary .md-nav__title {
-        background-color: var(--md-primary-fg-color) !important; /* 顶部标题栏变粉 */
-        color: white !important;
-    }
-    .md-drawer .md-nav__link {
-        color: #5c5252 !important; /* 菜单文字颜色 */
-        font-size: 1.1rem !important; /* 菜单文字加大 */
-        padding: 12px 0 !important; /* 更好点 */
-    }
+    /* 5. 选中变粉 */
     .md-drawer .md-nav__link--active {
-        color: var(--md-primary-fg-color) !important; /* 选中变粉 */
+        color: var(--md-primary-fg-color) !important; 
+        font-weight: 900 !important;
+    }
+    
+    /* 6. 顶部标题栏 */
+    .md-drawer .md-nav--primary > .md-nav__title {
+        background-color: var(--md-primary-fg-color) !important;
+        color: white !important;
     }
 }
