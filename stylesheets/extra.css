@@ -79,7 +79,7 @@
 .md-typeset p, 
 .md-typeset ul li, 
 .md-typeset ol li {
-    font-size: 0.7rem !important; /* 统一加大到 1.15倍 */
+    font-size: 0.8rem !important; /* 统一加大到 1.15倍 */
     line-height: 1.9 !important;   /* 行间距拉大，看起来更舒服 */
     color: #444 !important;        /* 统一深灰，清晰护眼 */
 }
