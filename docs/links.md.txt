@@ -1,0 +1,13 @@
+# 常用资源链接
+
+这里是我收集的各种GoodStuff。
+
+## 视觉小说素材
+* [Itch.io](https://itch.io) - 独立游戏素材
+* [Ren'Py 官网](https://www.renpy.org) - 引擎文档
+
+## Python 工具
+!!! note "提示"
+    点击链接可以直接下载我的脚本。
+
+* [Excel 清洗脚本](./scripts/clean_excel.py)

@@ -1,0 +1,60 @@
+site_name: PromiseWikki
+site_url: https://example.com/
+site_author: Me
+
+# 核心主题配置
+theme:
+  name: material
+  language: zh
+  # 网站图标 (帮你换成了复古像素风的感觉)
+  icon:
+    logo: material/heart-box-outline # 左上角的爱心图标
+    favicon: material/heart          # 浏览器标签页的小爱心
+    
+  palette:
+    # --- ☀️ 白天模式 (米色 + 粉色) ---
+    - scheme: default 
+      primary: pink  # 顶部标题栏：粉色
+      accent: pink   # 按钮和链接：粉色
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到 ✨午夜派对✨ # 鼠标放上去显示的文字，很可爱
+
+    # --- 🌙 黑夜模式 (黑色 + 粉色) ---
+    - scheme: slate
+      primary: pink  # 顶部标题栏：保持粉色 (黑粉撞色)
+      accent: pink   # 按钮和链接：粉色荧光
+      toggle:
+        icon: material/weather-night
+        name: 切换到 🍰奶油午后🍰
+
+  features:
+    - navigation.tabs # 顶部导航栏
+    - navigation.top  # 返回顶部按钮
+    - search.suggest  # 搜索智能提示
+    - content.code.copy # 复制代码
+
+# 引入自定义 CSS (为了实现你要的“米色”背景)
+extra_css:
+  - stylesheets/extra.css
+
+# 插件
+plugins:
+  - search
+
+# 扩展语法
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji # 开启 Emoji 代码支持
+
+# --- 🧭 导航菜单 (已添加可爱 Emoji) ---
+nav:
+  - 🏠 首页: index.md
+  - 🎀 学习笔记:
+      - 🐍 Python 技巧: python_tips.md
+  - 👜 资源仓库:
+      - 🔗 常用链接: links.md
