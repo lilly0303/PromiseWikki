@@ -27,7 +27,7 @@
 }
 
 /* ☀️ 白天：左侧边栏 (茶色) */
-[data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap {
+[data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap {   position: relative;
     background-color: #e6dace !important;
     border: 1px solid #d8c8b8 !important;
     box-shadow: 0 4px 15px rgba(92, 82, 82, 0.05);
@@ -42,6 +42,37 @@
     box-shadow: 0 5px 20px rgba(0,0,0,0.03);
     margin-top: 1rem;
     border-top: 4px solid var(--md-primary-fg-color);
+    position: relative;
+}
+/* 2. 新增：顶部的粉色和纸胶带效果 */
+[data-md-color-scheme="default"] .md-content__inner::before {
+    content: "";           /* 这是一个空内容，必须有 */
+    position: absolute;    /* 绝对定位 */
+    top: -15px;            /* 往上提，让它骑在纸的边缘 */
+    left: 50%;             /* 居中 */
+    transform: translateX(-50%) rotate(-1deg); /* 居中并稍微歪一点点 */
+    
+    width: 140px;          /* 胶带宽度 */
+    height: 35px;          /* 胶带高度 */
+    
+    /* 胶带颜色：半透明粉色 */
+    background-color: rgba(224, 148, 160, 0.6); 
+    
+    /* 增加一点阴影和模糊，更有质感 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    backdrop-filter: blur(2px); 
+    
+    z-index: 10;           /* 确保胶带浮在最上面 */
+    pointer-events: none;  /* 让鼠标可以穿透胶带点击后面的文字 */
+}
+
+/* 给白天模式的背景增加可爱的波点纹理 */
+[data-md-color-scheme="default"] {
+    /* 这里的 #d8c8b8 是波点的颜色，transparent 是背景透明 */
+    background-image: radial-gradient(#d8c8b8 1.5px, transparent 1.5px);
+    /* 这里的 24px 是波点的间距，越大越稀疏 */
+    background-size: 24px 24px;
+    background-color: var(--warm-beige); /* 保持原来的底色 */
 }
 
 /* ==========================================================================
@@ -172,6 +203,7 @@
 
     /* 1. 强制重置中间内容区域：去掉信纸大边距，防止内容被挤扁 */
     [data-md-color-scheme="default"] .md-content__inner {
+        display: none !important;
         padding: 0 !important; /* 关键！去掉电脑端的 40px 50px 大边距 */
         margin-top: 0 !important;
         background-color: transparent !important;
