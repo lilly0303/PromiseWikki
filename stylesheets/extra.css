@@ -151,3 +151,59 @@
     line-height: 1.9 !important;
     margin-bottom: 0.6em !important;
 }
+/* ==========================================================================
+   🧁 9. 侧边栏美化：给目录穿上“磨砂马甲”
+   ========================================================================== */
+
+/* 1. 针对左侧导航栏 (Primary Sidebar) */
+.md-sidebar--primary .md-sidebar__scrollwrap {
+    /* 背景：半透明白，透出一点点米色底 */
+    background-color: rgba(255, 255, 255, 0.75) !important;
+    
+    /* 边框：极细的白线 */
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    
+    /* 圆角 & 阴影 */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    
+    /* 间距调整 */
+    padding: 10px;
+    margin: 10px 0 10px 10px; /* 给左边和下边留点空隙 */
+    
+    /* 磨砂效果 */
+    backdrop-filter: blur(5px);
+}
+
+/* 2. 针对右侧目录栏 (Secondary Sidebar - 文章内的目录) */
+/* 为了对称，我们把右边也加上，如果你不喜欢可以删掉这一段 */
+.md-sidebar--secondary .md-sidebar__scrollwrap {
+    background-color: rgba(255, 255, 255, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    padding: 10px;
+    margin: 10px 10px 10px 0;
+    backdrop-filter: blur(5px);
+}
+
+/* 3. 让侧边栏里的链接稍微大一点，好点 */
+.md-nav__link {
+    padding: 4px 0;
+    transition: color 0.2s;
+}
+
+/* 4. 鼠标指上去变粉色 */
+.md-nav__link:hover,
+.md-nav__link--active {
+    color: var(--md-primary-fg-color) !important;
+    font-weight: 600; /* 加粗 */
+}
+
+/* 5. 选中状态的小竖线也变成粉色 */
+.md-nav__item .md-nav__link--active {
+    border-left: 3px solid var(--md-primary-fg-color);
+    padding-left: 8px; /* 文字往右挪一点，不挨着线 */
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(214,138,148,0.1) 100%); /* 淡淡的粉色渐变背景 */
+    border-radius: 0 4px 4px 0;
+}
