@@ -210,11 +210,17 @@
    📱 7. 手机端/平板端 终极适配 (只修白卡片，不动侧边栏颜色)
    ========================================================================== */
 @media screen and (max-width: 76.1875em) {
+    /* 给汉堡菜单一个米色背景 */
+    [data-md-color-scheme="default"] .md-drawer,
+    [data-md-color-scheme="default"] .md-drawer .md-nav--primary {
+        background-color: #f5f0e1 !important;
+    }
 
-    /* 1. ⭐️ 核心修复：把手机端的白纸背景找回来 */
-    [data-md-color-scheme="default"] .md-content__inner {
-        background-color: #ffffff !important; /* 强制变白 */
-        color: #444444 !important;            /* 强制正文内容变深色 */
+    /* 文字用深色（因为背景是浅色） */
+    [data-md-color-scheme="default"] .md-drawer .md-nav__link {
+        color: #3d3d3d !important;
+    }
+
         
         /* 稍微留点缝隙，做成卡片悬浮感 */
         margin: 15px 12px !important;         
