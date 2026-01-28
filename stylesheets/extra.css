@@ -183,73 +183,67 @@
 .md-content { margin: 0 auto !important; }
 
 /* ==========================================================================
-   📱 7. 手机端/平板端 终极适配 (最终决战版：清除内边距)
+   📱 7. 手机端/平板端 终极适配 (最终决战版)
    ========================================================================== */
 @media screen and (max-width: 76.1875em) {
 
-    /* ------------------------------------------------------------
-       A. 强制给汉堡菜单刷上米色背景 (覆盖摩卡色)
-       ------------------------------------------------------------ */
+    /* --- 菜单 (Drawer) --- */
+    /* 1. 强制菜单背景为米色 */
     [data-md-color-scheme="default"] .md-drawer {
         background-color: #f5f0e1 !important;
     }
 
-    /* ------------------------------------------------------------
-       B. 🚨 强制重置所有内外边距 (核武器！)
-       把电脑端的茶色框和它的边距彻底清零，防止文字被挤走
-       ------------------------------------------------------------ */
-    [data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap,
-    [data-md-color-scheme="default"] .md-drawer .md-nav {
-        background: transparent !important;
+    /* 2. 强制清除内部容器的所有桌面端样式 (边距、背景、边框) */
+    [data-md-color-scheme="default"] .md-drawer .md-sidebar__scrollwrap,
+    [data-md-color-scheme="default"] .md-drawer .md-nav--primary {
+        background: none !important;
         border: none !important;
         box-shadow: none !important;
-        padding: 0 !important; /* 👈 就是你！去死吧！ */
+        margin: 0 !important;
+        padding: 0 !important;  /* <-- 彻底干掉那个害人的内边距 */
+    }
+    
+    /* 3. 强制菜单标题栏样式 */
+    [data-md-color-scheme="default"] .md-drawer .md-nav__title {
+        background-color: var(--md-primary-fg-color) !important;
+        color: white !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        padding-left: 1.5rem !important;
+    }
+
+    /* 4. 强制菜单链接文字样式 (防止隐形) */
+    [data-md-color-scheme="default"] .md-drawer .md-nav__link {
+        color: #5c5252 !important;
+        font-size: 0.9rem !important;
+        font-weight: 500 !important;
+        padding: 0.6rem 1.5rem !important; /* 重新设置安全干净的内边距 */
         margin: 0 !important;
     }
 
-    /* ------------------------------------------------------------
-       C. 强制菜单内的文字变成深色，并加上安全的内边距
-       ------------------------------------------------------------ */
-    [data-md-color-scheme="default"] .md-drawer .md-nav__link {
-        color: #5c5252 !important;
-        font-weight: 500 !important;
-        font-size: 0.95rem !important;
-        
-        /* 为了让链接好点，给它加上左右内边距 */
-        display: block;
-        padding: 0 24px !important;
-        line-height: 3 !important;
-    }
-    /* 选中/悬停变粉 */
+    /* 5. 菜单链接选中/悬停状态 */
     [data-md-color-scheme="default"] .md-drawer .md-nav__link--active,
     [data-md-color-scheme="default"] .md-drawer .md-nav__link:hover {
         color: var(--md-primary-fg-color) !important;
     }
 
-    /* ------------------------------------------------------------
-       D. 中间内容区的白色卡片样式 (保持不变)
-       ------------------------------------------------------------ */
+    /* --- 中间内容区 --- */
+    /* 6. 内容区白色卡片样式 */
     [data-md-color-scheme="default"] .md-content__inner {
         background-color: #ffffff !important;
         color: #444444 !important;
-        margin: 15px 12px !important;
-        padding: 20px 15px !important;
+        margin: 1rem 0.8rem !important;
+        padding: 1.5rem 1rem !important;
         border-radius: 12px !important;
         box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
         border-top: none !important;
     }
-    [data-md-color-scheme="default"] .md-content__inner::before { display: none !important; }
-
-    /* 其他基础布局 */
-    .md-content, .md-main__inner { margin: 0 !important; padding: 0 !important; }
-    .md-main__inner { grid-template-columns: 1fr !important; }
-
-    /* 菜单顶部标题栏 */
-    .md-drawer .md-nav--primary .md-nav__title {
-        background-color: var(--md-primary-fg-color) !important;
-        color: white !important;
-        box-shadow: none !important;
-        border-radius: 0 !important;
-        margin: 0 !important;
+    /* 7. 隐藏桌面端的纸胶带 */
+    [data-md-color-scheme="default"] .md-content__inner::before {
+        display: none !important;
     }
+
+    /* --- 基础布局 --- */
+    /* 8. 重置布局，防止内容挤压 */
+    .md-main__inner { margin: 0 !important; }
 }
