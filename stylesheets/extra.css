@@ -71,3 +71,34 @@ body {
   background-color: #fff9f0; /* 极淡的米色代码块 */
   border: 1px solid #eaddcf; /* 加个边框 */
 }
+/* docs/stylesheets/extra.css */
+
+/* 1. 让所有折叠块变“极简卡片” */
+.md-typeset details {
+    background-color: transparent !important;   /* 去掉灰色背景 */
+    border: 1px solid #eee !important;          /* 边框变成极淡的灰色 */
+    border-left: 3px solid var(--md-primary-fg-color) !important;  /* 【重点】左侧改成你的主题粉色 (浅粉) */
+    /* 如果你想要更深一点的粉，把 #ffb6c1 改成 #e91e63 */
+    box-shadow: none !important;                /* 去掉阴影，扁平化 */
+    border-radius: 4px;                         /*稍微圆角一点点*/
+    margin-bottom: 1em !important;              /* 块与块之间留出呼吸感 */
+}
+
+/* 2. 让标题栏变干净 */
+.md-typeset summary {
+    background-color: #fffafa !important;       /* 标题栏也是白色(或极淡粉雪色) */
+    color: #444 !important;                     /* 标题文字用深灰，不要纯黑 */
+    font-weight: 500 !important;
+    padding-left: 1em !important;
+}
+
+/* 3. 鼠标悬停时的效果 */
+.md-typeset summary:hover {
+    background-color: #fff0f5 !important;       /* 鼠标放上去微微变粉 */
+    cursor: pointer;
+}
+
+/* 4. 去掉原本自带的那些图标 (如果你想要极致简洁) */
+/* .md-typeset .admonition-title:before, .md-typeset summary:before {
+    display: none !important;
+} */
