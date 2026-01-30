@@ -298,36 +298,81 @@
     color: var(--night-pink) !important;
 }
 /* ==========================================================================
-   🖼️ 7. Logo 尺寸调整 (放大你的专属图标)
+/* ==========================================================================
+   🖼️ 7. Logo 尺寸和位置调整 (电脑端左侧，手机端右侧)
    ========================================================================== */
 
-/* 1. 放大电脑端顶部导航栏的 Logo */
+/* --- 1. 电脑端顶部导航栏的 Logo (保持在标题左边) --- */
 .md-header__button.md-logo img {
-    height: 3rem !important;    /* 原本只有 1.2rem 左右，3rem 会明显变大 */
+    height: 2.5rem !important; /* 电脑端 Logo 高度 */
     width: auto !important;
-    margin-top: -0.2rem;        /* 如果觉得 Logo 偏下，可以用负数把它往上提 */
-    transition: transform 0.3s; /* 顺便加个悬停小动画 */
+    margin-top: -0.1rem;
+    background: transparent !important;
+    object-fit: contain;
+    transition: transform 0.3s;
 }
 
-/* 鼠标放上去时 Logo 微微放大，更有灵动感 */
 .md-header__button.md-logo:hover img {
     transform: scale(1.1);
 }
 
-/* 2. 放大手机端侧边栏（抽屉菜单）顶部的 Logo */
-.md-nav__button.md-logo img {
-    height: 3rem !important;  /* 侧边栏空间大，可以放更大 */
-    width: auto !important;
-    margin-bottom: 0.5rem;
-}
-
-/* 3. 修正 Logo 容器的间距，防止大图标挤压标题 */
+/* 确保标题文字和 Logo 之间有适当间距，并且 Logo 在左侧 */
 .md-header__title {
-    margin-left: 1rem !important; 
+    margin-left: 0.8rem !important; /* 标题与 Logo 的间距 */
+    /* 其他默认样式保持不变 */
 }
 
-/* 4. 强制背景透明，消除可能的残余底色 */
+
+/* --- 2. 手机端侧边栏（抽屉菜单）的 Logo 和标题位置 (Logo 放在标题右侧) --- */
+@media screen and (max-width: 76.1875em) {
+    /* 让侧边栏顶部的容器变成 Logo 在右、标题在左的排列 */
+    .md-nav__title {
+        display: flex !important;
+        flex-direction: row-reverse !important; /* 核心：让 Logo 在标题右侧 */
+        align-items: center !important; /* 垂直居中对齐 */
+        justify-content: space-between !important; /* Logo 和标题分开到两端 */
+        
+        /* ✨✨✨ 修改这里 ✨✨✨ */
+        padding: 1rem 1.5rem 1rem 1.5rem !important; /* 上 右 下 左 的内边距 */
+        /* 你可以把第二个值 (右内边距) 和第四个值 (左内边距) 改成你喜欢的数值，比如 1.2rem */
+        /* 比如 padding: 1rem 1.2rem !important; (如果只写两个值，表示上下 1rem，左右 1.2rem) */
+        
+        height: auto !important; /* 允许高度自适应 */
+    }
+
+    /* 调整手机端 Logo 的样式和位置 */
+    .md-nav__button.md-logo {
+        order: 2; /* Logo 排在标题后面 */
+        margin-left: 1rem !important; /* Logo 与标题的距离 */
+        margin-right: 0 !important; /* 继续清除 Logo 自身可能带的右外边距 */
+        padding: 0 !important; /* 移除默认内边距 */
+    }
+    
+    /* 其他代码保持不变... */
+}
+    .md-nav__button.md-logo img {
+        height: 3.5rem !important; /* 手机端 Logo 高度 */
+        width: auto !important;
+        background: transparent !important;
+        object-fit: contain;
+    }
+
+    /* 调整手机端标题的样式和位置 */
+    .md-nav__title .md-nav__button {
+        order: 1; /* 标题排在 Logo 前面 */
+        padding: 0 !important; /* 移除默认内边距 */
+        margin-bottom: 0 !important;
+    }
+
+    /* 确保标题文字不被挤压 */
+    .md-nav__title .md-nav__text {
+        flex-grow: 1; /* 标题占据可用空间 */
+        text-align: left; /* 文本左对齐 */
+    }
+}
+
+/* --- 3. 强制背景透明，消除可能的残余底色 (全局) --- */
 .md-logo img {
     background: transparent !important;
-    border-radius: 0 !important; /* 如果你有全局图片圆角，这里强制取消 */
+    border-radius: 0 !important;
 }
