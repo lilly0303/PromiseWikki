@@ -316,7 +316,7 @@
 
 /* 2. 放大手机端侧边栏（抽屉菜单）顶部的 Logo */
 .md-nav__button.md-logo img {
-    height: 4.5rem !important;  /* 侧边栏空间大，可以放更大 */
+    height: 3rem !important;  /* 侧边栏空间大，可以放更大 */
     width: auto !important;
     margin-bottom: 0.5rem;
 }
