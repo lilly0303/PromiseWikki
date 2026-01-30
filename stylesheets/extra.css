@@ -317,7 +317,7 @@
 
 /* 确保标题文字和 Logo 之间有适当间距，并且 Logo 在左侧 */
 .md-header__title {
-    margin-left: 0.6rem !important; /* 标题与 Logo 的间距 */
+    margin-left: 0.4rem !important; /* 标题与 Logo 的间距 */
     /* 其他默认样式保持不变 */
 }
 
