@@ -297,3 +297,37 @@
 [data-md-color-scheme="slate"] .md-typeset h2 {
     color: var(--night-pink) !important;
 }
+/* ==========================================================================
+   🖼️ 7. Logo 尺寸调整 (放大你的专属图标)
+   ========================================================================== */
+
+/* 1. 放大电脑端顶部导航栏的 Logo */
+.md-header__button.md-logo img {
+    height: 3rem !important;    /* 原本只有 1.2rem 左右，3rem 会明显变大 */
+    width: auto !important;
+    margin-top: -0.2rem;        /* 如果觉得 Logo 偏下，可以用负数把它往上提 */
+    transition: transform 0.3s; /* 顺便加个悬停小动画 */
+}
+
+/* 鼠标放上去时 Logo 微微放大，更有灵动感 */
+.md-header__button.md-logo:hover img {
+    transform: scale(1.1);
+}
+
+/* 2. 放大手机端侧边栏（抽屉菜单）顶部的 Logo */
+.md-nav__button.md-logo img {
+    height: 4.5rem !important;  /* 侧边栏空间大，可以放更大 */
+    width: auto !important;
+    margin-bottom: 0.5rem;
+}
+
+/* 3. 修正 Logo 容器的间距，防止大图标挤压标题 */
+.md-header__title {
+    margin-left: 1rem !important; 
+}
+
+/* 4. 强制背景透明，消除可能的残余底色 */
+.md-logo img {
+    background: transparent !important;
+    border-radius: 0 !important; /* 如果你有全局图片圆角，这里强制取消 */
+}
