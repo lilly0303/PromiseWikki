@@ -27,81 +27,61 @@
 
 ### 2.2 阶段性代码 (X-Ray Scan)
 
+> **更新日志**：增加了对 `LabelScriptLine` (标签行) 的识别，以便追踪 `Goto` 指令的具体落点。
+
 <details>
-<summary>🔻 点击展开：逻辑架构透视脚本 (C#)</summary>
+<summary>🔻 点击展开：逻辑架构透视脚本 (C#) - V2.0</summary>
 
 ```csharp
 // --- [1] 初始化输出构建器 ---
-// 用于将所有提取到的信息暂时存在内存里，最后一次性导出
 var sb = new System.Text.StringBuilder();
-sb.AppendLine("《纸房子》全字段无差别透视版 - " + System.DateTime.Now.ToString());
+sb.AppendLine("《纸房子》全字段无差别透视版 (含标签) - " + System.DateTime.Now.ToString());
 sb.AppendLine("--------------------------------------------------");
 
 // --- [2] 设定目标范围 ---
-// 在这里定义你想提取的剧本文件名
 var targetNames = new System.Collections.Generic.HashSet<string>() { "Script1", "Newscript", "Newscript1" };
 var foundScripts = new System.Collections.Generic.List<Naninovel.Script>();
 
-// --- [3] 锁定剧本 (双重保险) ---
-// 第一步：查找当前内存中已经加载的剧本对象
+// --- [3] 锁定剧本 ---
 var scripts = UnityEngine.Resources.FindObjectsOfTypeAll<Naninovel.Script>();
 foreach (var s in scripts) if (targetNames.Contains(s.name)) foundScripts.Add(s);
 
-// 第二步：如果内存里没找到，尝试强制从游戏资源包(Resources)里加载
 if (foundScripts.Count == 0) {
     var loaded = UnityEngine.Resources.LoadAll<Naninovel.Script>("");
     foreach (var s in loaded) if (targetNames.Contains(s.name)) foundScripts.Add(s);
 }
 
-// --- [4] 定义核心工具：反射透视 (Reflection) ---
-// 这是一个辅助函数，用于提取 Naninovel 特有的 "Nullable" 参数类型的值
+// --- [4] 定义核心工具 ---
 System.Func<object, string> GetVal = (obj) => {
     if (obj == null) return null;
     try {
         var t = obj.GetType();
-        // 确保只处理 Naninovel 类型的参数
         if (!t.Namespace.StartsWith("Naninovel")) return null;
-        
-        // 检查该参数是否有值 (HasValue)
         var hv = t.GetProperty("HasValue");
         if (hv != null && !(bool)hv.GetValue(obj)) return null;
-        
-        // 获取实际的值
         return t.GetProperty("Value")?.GetValue(obj)?.ToString();
     } catch { return null; }
 };
 
-// ★★★ 暴力搜身函数 ★★★
-// 无论字段是公开的(Public)还是私有的(Private)，强制读取所有参数
 System.Func<object, string> InspectAllFields = (cmdObj) =>
 {
     if (cmdObj == null) return "";
     var info = new System.Collections.Generic.List<string>();
-    
     try {
-        // 获取所有字段信息
         var fields = cmdObj.GetType().GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
         foreach (var f in fields)
         {
-            // 过滤掉行号等无用的元数据，只看核心逻辑
             if (f.Name == "LineNumber" || f.Name == "Indent" || f.Name == "PlaybackSpot") continue;
-            
             var valObj = f.GetValue(cmdObj);
-            var strVal = GetVal(valObj); // 尝试解析值
-
-            // 如果找到了有效值，就记录下来：[参数名=参数值]
-            if (!string.IsNullOrEmpty(strVal))
-            {
-                info.Add($"{f.Name}=[{strVal}]");
-            }
+            var strVal = GetVal(valObj);
+            if (!string.IsNullOrEmpty(strVal)) info.Add($"{f.Name}=[{strVal}]");
         }
     } catch {}
-
     if (info.Count > 0) return " (" + string.Join(", ", info.ToArray()) + ")";
     return "";
 };
 
-// --- [5] 开始遍历并提取 ---
+// --- [5] 开始遍历 ---
 foreach (var script in foundScripts)
 {
     sb.AppendLine();
@@ -109,18 +89,16 @@ foreach (var script in foundScripts)
     sb.AppendLine("--------------------------------------------------");
     int lineIndex = 0;
     
-    // 逐行分析剧本
     foreach (var line in script.Lines)
     {
         lineIndex++;
         if (line == null) continue;
         string lType = line.GetType().Name;
 
-        // === 类型A: 剧情文本行 ===
+        // A. 剧情文本
         if (lType == "GenericTextScriptLine")
         {
             try {
-                // 深入挖掘私有的 inlinedCommands 字段
                 var listField = line.GetType().GetField("inlinedCommands", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
                 var list = listField?.GetValue(line) as System.Collections.IList;
                 if (list != null && list.Count > 0)
@@ -132,8 +110,6 @@ foreach (var script in foundScripts)
                         var authProp = cmd.GetType().GetField("AuthorId");
                         var text = GetVal(textProp?.GetValue(cmd));
                         var auth = GetVal(authProp?.GetValue(cmd));
-                        
-                        // 拼接：[角色名]：[台词]
                         if (!string.IsNullOrEmpty(auth)) sbLine.Append(auth + "：");
                         if (!string.IsNullOrEmpty(text)) sbLine.Append(text);
                     }
@@ -141,7 +117,19 @@ foreach (var script in foundScripts)
                 }
             } catch {}
         }
-        // === 类型B: 逻辑指令行 ===
+        // B. 标签 (★ 修复新增 ★)
+        else if (lType == "LabelScriptLine")
+        {
+            try {
+                var labelProp = line.GetType().GetProperty("LabelText");
+                var labelVal = labelProp?.GetValue(line)?.ToString();
+                if (!string.IsNullOrEmpty(labelVal))
+                {
+                    sb.AppendLine($"   [{lineIndex}] 🔖 [标签] {labelVal}");
+                }
+            } catch {}
+        }
+        // C. 逻辑指令
         else if (lType == "CommandScriptLine")
         {
             var cmdProp = line.GetType().GetProperty("Command");
@@ -151,55 +139,28 @@ foreach (var script in foundScripts)
                 if (cmdObj != null)
                 {
                     string cName = cmdObj.GetType().Name;
-                    // 直接调用上面的“暴力搜身”函数，获取该指令的所有参数
                     string allParams = InspectAllFields(cmdObj);
 
-                    // 根据指令类型，打上不同的标记，方便阅读
-                    if (cName.Contains("Choice"))
-                    {
-                        sb.AppendLine($"   [{lineIndex}] 🔘 [选项] {allParams}");
-                    }
-                    else if (cName == "Set" || cName == "SetCustomVariable")
-                    {
-                        sb.AppendLine($"   [{lineIndex}] 🔧 [变量] {allParams}");
-                    }
-                    else if (cName == "Goto")
-                    {
-                        sb.AppendLine($"   [{lineIndex}] 🔀 [跳转] {allParams}");
-                    }
-                    else if (cName == "Stop")
-                    {
-                        sb.AppendLine($"   [{lineIndex}] 🛑 [停止] {allParams}");
-                    }
-                    else if (cName == "Else" || cName == "ElseIf")
-                    {
-                        sb.AppendLine($"   [{lineIndex}] 🔹 [分支判定] {cName} {allParams}");
-                    }
-                    else if (cName == "If" || cName == "BeginIf" || cName == "EndIf")
-                    {
-                        sb.AppendLine($"   [{lineIndex}] 🔹 [逻辑块] {cName} {allParams}");
-                    }
-                    // 其他杂项指令，仅当包含条件判断(ConditionalExpression)时才显示
-                    else if (!string.IsNullOrEmpty(allParams) && allParams.Contains("ConditionalExpression"))
-                    {
-                        sb.AppendLine($"   [{lineIndex}] ⚙️ [{cName}] {allParams}");
-                    }
+                    if (cName.Contains("Choice")) sb.AppendLine($"   [{lineIndex}] 🔘 [选项] {allParams}");
+                    else if (cName == "Set" || cName == "SetCustomVariable") sb.AppendLine($"   [{lineIndex}] 🔧 [变量] {allParams}");
+                    else if (cName == "Goto") sb.AppendLine($"   [{lineIndex}] 🔀 [跳转] {allParams}");
+                    else if (cName == "Stop") sb.AppendLine($"   [{lineIndex}] 🛑 [停止] {allParams}");
+                    else if (cName == "Else" || cName == "ElseIf") sb.AppendLine($"   [{lineIndex}] 🔹 [分支判定] {cName} {allParams}");
+                    else if (cName == "If" || cName == "BeginIf" || cName == "EndIf") sb.AppendLine($"   [{lineIndex}] 🔹 [逻辑块] {cName} {allParams}");
+                    else if (!string.IsNullOrEmpty(allParams) && allParams.Contains("ConditionalExpression")) sb.AppendLine($"   [{lineIndex}] ⚙️ [{cName}] {allParams}");
                 }
             }
         }
     }
 }
 
-// --- [6] 导出到桌面 ---
+// --- [6] 导出 ---
 var finalContent = sb.ToString();
-
-// 简单的文本替换 (将代码代号替换为中文名)
 finalContent = finalContent.Replace("WYH", "王艺菡").Replace("LT", "陆婷").Replace("XMM", "徐敏敏").Replace("HYH", "贺老师");
 finalContent = finalContent.Replace(" A ", " [进度锁A] ").Replace(" B ", " [进度锁B] ");
 
-// 获取桌面路径并写入文件
 var desktop = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
-var exportPath = System.IO.Path.Combine(desktop, "PaperHouse_XRAY_Scan.txt");
+var exportPath = System.IO.Path.Combine(desktop, "PaperHouse_XRAY_Scan_Labeled.txt");
 
 System.IO.File.WriteAllText(exportPath, finalContent, System.Text.Encoding.UTF8);
 Naninovel.Engine.Log("✅ 全字段透视提取完成！请查看: " + exportPath);
@@ -212,11 +173,7 @@ Naninovel.Engine.Log("✅ 全字段透视提取完成！请查看: " + exportPat
 
 这一步成功提取了游戏的骨架，但暴露了一个关键问题：
 
-> **💡 发现**：生成的报告中，大量出现了类似于 `[剧情] wyh：Newscript #36.1 |#~3fb402f3|` 的内容。
-> * **代码含义**：这说明游戏启用了 **Managed Text（托管文本）** 模式。脚本文件中只存储了文本的索引 ID（Hash Key），而没有直接存储中文文本。
-> * **现状**：虽然我掌握了所有的变量操作（如 `Expression=[王艺菡=0]`）和分支条件，但没有文本，依然无法理解剧情全貌。
-> 
-> 
+> **💡 发现**：生成的报告中，大量出现了类似于 `[剧情] wyh：Newscript #36.1 |#~3fb402f3|` 的内容。这是因为游戏启用了 Managed Text 模式，文本被哈希 ID 替代。
 
 ---
 
@@ -224,15 +181,7 @@ Naninovel.Engine.Log("✅ 全字段透视提取完成！请查看: " + exportPat
 
 ### 3.1 深入内存分析
 
-为了找到“消失的文本”，我通过对象分析器（Object Inspector）追踪了 `Naninovel.Script` 对象的内部结构。
-
-经过排查，数据的真实存储路径如下：
-
-1. **Script (剧本对象)**：包含逻辑指令。
-2. **TextMap (映射容器)**：剧本对象中的私有字段。
-3. **idToText (关键字段)**：在 `TextMap` 内部，真正的字典数据被存储在一个名为 `idToText` 的 `SerializableTextMap` 对象中。
-
-常规的 API 无法访问这个层级，必须使用反射进行“深层钻取”。
+为了找到“消失的文本”，我通过对象分析器（Object Inspector）追踪了 `Naninovel.Script` 对象的内部结构。经过排查，数据的真实存储路径在私有字段 `TextMap` 的嵌套对象 `idToText` 中。
 
 ### 3.2 阶段性代码 (Dictionary Dump)
 
@@ -240,70 +189,48 @@ Naninovel.Engine.Log("✅ 全字段透视提取完成！请查看: " + exportPat
 <summary>🔻 点击展开：字典提取脚本 (C#)</summary>
 
 ```csharp
-// --- [1] 初始化输出流 ---
+// --- [1] 初始化 ---
 var sb = new System.Text.StringBuilder();
 sb.AppendLine("《纸房子》字典文本深度提取版 - " + System.DateTime.Now.ToString());
 sb.AppendLine("--------------------------------------------------");
 
-// --- [2] 查找内存中的剧本资源 ---
-// Naninovel.Script 是 Unity 的 ScriptableObject，因此可以使用 Resources API 全局查找
+// --- [2] 查找剧本 ---
 var scripts = UnityEngine.Resources.FindObjectsOfTypeAll<Naninovel.Script>();
 sb.AppendLine($"系统中共找到 {scripts.Length} 个剧本文件");
 
-// --- [3] 遍历剧本并执行“钻取”操作 ---
+// --- [3] 钻取私有字段 ---
 foreach (var script in scripts)
 {
     if (script == null) continue;
-
     try 
     {
-        // === 第一层：获取 TextMap 容器 ===
-        // 利用反射获取私有字段 "TextMap" 或 "textMap"
-        var scriptType = script.GetType();
-        var mapField = scriptType.GetField("TextMap", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance) 
-                    ?? scriptType.GetField("textMap", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-        
-        // 同时也尝试获取属性 (Property)，防止字段被封装
-        var mapProp = scriptType.GetProperty("TextMap") ?? scriptType.GetProperty("textMap");
+        // 反射获取 TextMap
+        var sType = script.GetType();
+        var mapField = sType.GetField("TextMap", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance) 
+                    ?? sType.GetField("textMap", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        var mapProp = sType.GetProperty("TextMap") ?? sType.GetProperty("textMap");
 
         object textMapObj = null;
         if (mapProp != null) textMapObj = mapProp.GetValue(script);
         else if (mapField != null) textMapObj = mapField.GetValue(script);
 
-        // 如果获取到了 TextMap 容器
         if (textMapObj != null)
         {
-            // === 第二层：精准打击 idToText 字段 ===
-            // 这是一个 SerializableTextMap 类型的内部对象，存放着真正的字典
-            // 必须使用 BindingFlags.NonPublic 才能访问
+            // 精准打击 idToText
             var targetField = textMapObj.GetType().GetField("idToText", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            
-            object finalDataMap = null;
-            if (targetField != null)
-            {
-                finalDataMap = targetField.GetValue(textMapObj);
-            }
-            else
-            {
-                // 兼容性处理：如果找不到 idToText，尝试直接在当前层级查找
-                finalDataMap = textMapObj;
-            }
+            object finalDataMap = (targetField != null) ? targetField.GetValue(textMapObj) : textMapObj;
 
-            // === 第三层：提取 Keys 和 Values 列表 ===
             if (finalDataMap != null)
             {
-                var dataType = finalDataMap.GetType();
-                // 动态获取 Keys 和 Values 属性（适配不同的命名规则）
-                var keysProp = dataType.GetProperty("Keys") ?? dataType.GetProperty("keys");
-                var valsProp = dataType.GetProperty("Values") ?? dataType.GetProperty("values");
+                var dType = finalDataMap.GetType();
+                var keysProp = dType.GetProperty("Keys") ?? dType.GetProperty("keys");
+                var valsProp = dType.GetProperty("Values") ?? dType.GetProperty("values");
 
                 if (keysProp != null && valsProp != null)
                 {
-                    // 转换为可枚举的集合
                     var keys = keysProp.GetValue(finalDataMap) as System.Collections.Generic.ICollection<string>;
                     var vals = valsProp.GetValue(finalDataMap) as System.Collections.Generic.ICollection<string>;
 
-                    // 导出数据
                     if (keys != null && vals != null)
                     {
                         var kList = new System.Collections.Generic.List<string>(keys);
@@ -314,17 +241,10 @@ foreach (var script in scripts)
                             sb.AppendLine();
                             sb.AppendLine($"📂 剧本源 [{script.name}] - 包含 {kList.Count} 条目");
                             sb.AppendLine("--------------------------------------------------");
-
                             for (int i = 0; i < kList.Count; i++)
                             {
-                                string k = kList[i]; // Hash ID (例如 ~3fb402f3)
-                                string v = vList[i]; // 中文文本
-                                
-                                if (!string.IsNullOrEmpty(k))
-                                {
-                                    // 格式化输出：Hash = 文本
-                                    sb.AppendLine($"{k} = {v}");
-                                }
+                                if (!string.IsNullOrEmpty(kList[i])) 
+                                    sb.AppendLine($"{kList[i]} = {vList[i]}");
                             }
                         }
                     }
@@ -332,17 +252,11 @@ foreach (var script in scripts)
             }
         }
     }
-    catch (System.Exception ex)
-    {
-        // 捕获反射过程中的异常，防止单个文件错误中断整个流程
-        // sb.AppendLine($"[错误] 解析 {script.name} 失败: {ex.Message}");
-    }
+    catch {}
 }
 
-// --- [4] 导出结果至桌面 ---
 var desktop = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
 var exportPath = System.IO.Path.Combine(desktop, "PaperHouse_Dictionary_Dump.txt");
-
 System.IO.File.WriteAllText(exportPath, sb.ToString(), System.Text.Encoding.UTF8);
 Naninovel.Engine.Log("✅ 字典提取完成！文件已生成: " + exportPath);
 
@@ -350,54 +264,40 @@ Naninovel.Engine.Log("✅ 字典提取完成！文件已生成: " + exportPath);
 
 </details>
 
-### 3.3 结果应用
-
-运行该脚本后，我成功提取了 Hash 到中文的映射表：
-
-```text
-~9be251d0 = 2017年 12月 5日
-~3fb402f3 = 怎么今天早上迟到了这么久？
-~99926b64 = 家里那堆破事呗。
-...
-
-```
-
 ---
 
 ## 4. 第三阶段：终极重构 (Runtime Linker)
 
 ### 4.1 数据清洗与合并
 
-虽然我分别拿到了“逻辑”和“文本”，但手动比对两者极其低效。更棘手的问题是：
+虽然我分别拿到了“逻辑”和“文本”，但手动比对效率极低。且剧本中的 ID 夹带元数据（如 `Newscript #36.1 |#~Hash`），导致无法直接匹配字典。
 
-* **脏数据 (Dirty Data)**：逻辑层提取的 ID 往往夹带元数据（如 `Newscript #36.1 |#~3fb402f3|`），而字典里的 Key 是纯净的 `~3fb402f3`。这导致直接的字符串匹配（String Matching）失败。
+为此，我开发了最终版的**运行时连接器**，并**合入了最新的标签 (Label) 识别功能**。
 
-为了解决这个问题，我开发了一个**运行时连接器 (Runtime Linker)**。它引入了 **正则表达式 (Regular Expressions)** 模块，在内存中动态完成“清洗”与“连接”工作。
+### 4.2 最终解决方案代码 (All-in-One)
 
-### 4.2 最终解决方案代码
-
-该脚本专为 UnityExplorer 的 REPL 环境设计，集成了**正则清洗**、**自动翻译**和**变量汉化**三大功能。
+该脚本专为 UnityExplorer 的 REPL 环境设计，集成了**正则清洗**、**自动翻译**、**标签锚点识别**和**变量汉化**四大功能。
 
 <details>
 <summary>🔻 点击查看：全能重构工具代码 (Final Version)</summary>
 
 ```csharp
 // =============================================================
-//  工具名称：Naninovel 剧本自动化合并与清洗脚本
+//  工具名称：Naninovel 剧本自动化合并与清洗脚本 (V3.0 Final)
 //  环境兼容：UnityExplorer (REPL Safe Mode)
 //  核心功能：
 //    1. 内存字典构建 (Memory Mapping)
 //    2. 正则表达式清洗 (Regex Cleaning)
-//    3. 变量可视化翻译 (Variable Localization)
+//    3. 标签锚点识别 (Label Extraction) ★修复合并★
+//    4. 变量可视化翻译 (Variable Localization)
 // =============================================================
 
 // --- [1] 初始化环境 ---
 var sb = new System.Text.StringBuilder();
-sb.AppendLine("《纸房子》剧本重构报告 - " + System.DateTime.Now.ToString());
+sb.AppendLine("《纸房子》剧本完美重构报告 - " + System.DateTime.Now.ToString());
 sb.AppendLine("--------------------------------------------------");
 
 // --- [2] 构建全局哈希索引 (Global Indexing) ---
-// 使用 Dictionary 提供 O(1) 的查询复杂度
 var globalTextMap = new System.Collections.Generic.Dictionary<string, string>();
 var allScripts = UnityEngine.Resources.FindObjectsOfTypeAll<Naninovel.Script>();
 
@@ -408,7 +308,7 @@ foreach (var script in allScripts)
     if (script == null) continue;
     try 
     {
-        // 反射获取 TextMap 容器 (兼容 Field 和 Property)
+        // 获取 TextMap 容器
         var sType = script.GetType();
         var mapField = sType.GetField("TextMap", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance) ?? sType.GetField("textMap", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
         var mapProp = sType.GetProperty("TextMap") ?? sType.GetProperty("textMap");
@@ -419,13 +319,12 @@ foreach (var script in allScripts)
 
         if (textMapObj != null)
         {
-            // 深度钻取：定位内部的 idToText 序列化对象
+            // 钻取 idToText
             var targetField = textMapObj.GetType().GetField("idToText", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             object finalDataMap = (targetField != null) ? targetField.GetValue(textMapObj) : textMapObj;
 
             if (finalDataMap != null)
             {
-                // 提取键值对数据
                 var dType = finalDataMap.GetType();
                 var kProp = dType.GetProperty("Keys") ?? dType.GetProperty("keys");
                 var vProp = dType.GetProperty("Values") ?? dType.GetProperty("values");
@@ -440,15 +339,12 @@ foreach (var script in allScripts)
                         var kList = new System.Collections.Generic.List<string>(keys);
                         var vList = new System.Collections.Generic.List<string>(vals);
                         
-                        // 填充全局字典
                         for (int i = 0; i < kList.Count; i++)
                         {
                             string k = kList[i];
                             string v = vList[i];
                             if (!string.IsNullOrEmpty(k) && !globalTextMap.ContainsKey(k))
-                            {
                                 globalTextMap.Add(k, v);
-                            }
                         }
                     }
                 }
@@ -462,30 +358,22 @@ sb.AppendLine($"[Success] 索引构建完毕，共载入 {globalTextMap.Count} �
 sb.AppendLine("--------------------------------------------------");
 
 
-// --- [3] 核心翻译算法 (The Translator) ---
-// 输入原始乱码字符串，输出清洗后的中文
+// --- [3] 核心翻译算法 ---
 System.Func<string, string> TryTranslate = (rawText) => {
     if (string.IsNullOrEmpty(rawText)) return "";
-
-    // 1. 尝试直接匹配 (Exact Match)
+    // 1. 直接匹配
     if (globalTextMap.ContainsKey(rawText)) return globalTextMap[rawText];
-
-    // 2. 正则清洗 (Regex Extraction)
-    // 解决 "Newscript #36.1 |#~Hash|" 无法匹配的问题
-    // 使用 System.Text.RegularExpressions 避免 REPL 命名空间冲突
+    // 2. 正则清洗 (System.Text.RegularExpressions)
     var match = System.Text.RegularExpressions.Regex.Match(rawText, @"~[a-zA-Z0-9]+");
     if (match.Success)
     {
         string extractedHash = match.Value;
-        if (globalTextMap.ContainsKey(extractedHash))
-        {
-            return globalTextMap[extractedHash]; // 返回翻译文本
-        }
+        if (globalTextMap.ContainsKey(extractedHash)) return globalTextMap[extractedHash];
     }
-    return rawText; // 无法翻译则保留原样
+    return rawText;
 };
 
-// 辅助函数：安全获取 Naninovel 封装值
+// 辅助函数
 System.Func<object, string> GetNaninovelVal = (obj) => {
     if (obj == null) return null;
     try {
@@ -498,11 +386,11 @@ System.Func<object, string> GetNaninovelVal = (obj) => {
 };
 
 
-// --- [4] 剧本遍历与重组 (Iteration & Merge) ---
+// --- [4] 剧本遍历与重组 ---
 foreach (var script in allScripts)
 {
-    // 可选：过滤掉非核心剧本
-    // if (!script.name.Contains("Script") && !script.name.Contains("script")) continue;
+    // 可选：过滤
+    // if (!script.name.Contains("Script")) continue;
 
     sb.AppendLine();
     sb.AppendLine($"📄 剧本: {script.name}");
@@ -515,11 +403,10 @@ foreach (var script in allScripts)
         if (line == null) continue;
         string lType = line.GetType().Name;
 
-        // Type A: 对话文本行 (GenericText)
+        // Type A: 对话文本行
         if (lType == "GenericTextScriptLine")
         {
             try {
-                // 获取行内指令列表
                 var listField = line.GetType().GetField("inlinedCommands", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
                 var list = listField?.GetValue(line) as System.Collections.IList;
                 if (list != null && list.Count > 0)
@@ -533,7 +420,7 @@ foreach (var script in allScripts)
                         var rawText = GetNaninovelVal(textProp?.GetValue(cmd));
                         var rawAuth = GetNaninovelVal(authProp?.GetValue(cmd));
                         
-                        // 执行翻译
+                        // 翻译
                         var cleanText = TryTranslate(rawText);
                         var cleanAuth = TryTranslate(rawAuth);
 
@@ -544,7 +431,19 @@ foreach (var script in allScripts)
                 }
             } catch {}
         }
-        // Type B: 逻辑指令行 (Command)
+        // Type B: 标签行 (★ 新增合并 ★)
+        else if (lType == "LabelScriptLine")
+        {
+            try {
+                var labelProp = line.GetType().GetProperty("LabelText");
+                var labelVal = labelProp?.GetValue(line)?.ToString();
+                if (!string.IsNullOrEmpty(labelVal))
+                {
+                    sb.AppendLine($"   [{lineIndex:D4}] 🔖 [标签] {labelVal}");
+                }
+            } catch {}
+        }
+        // Type C: 逻辑指令行
         else if (lType == "CommandScriptLine")
         {
             var cmdProp = line.GetType().GetProperty("Command");
@@ -559,7 +458,6 @@ foreach (var script in allScripts)
 
                     foreach (var f in fields)
                     {
-                         // 过滤无关元数据
                          if (f.Name == "LineNumber" || f.Name == "Indent" || f.Name == "PlaybackSpot") continue;
                          
                          var valObj = f.GetValue(cmdObj);
@@ -567,9 +465,8 @@ foreach (var script in allScripts)
                          
                          if (!string.IsNullOrEmpty(strVal))
                          {
-                             // 特殊处理：选项文本也需要翻译
+                             // 尝试翻译选项文本和带 Hash 的参数
                              if (cName.Contains("Choice") && f.Name.Contains("ChoiceText")) strVal = TryTranslate(strVal);
-                             // 尝试翻译任何包含 Hash 特征的参数
                              else if (strVal.Contains("~")) strVal = TryTranslate(strVal);
                              
                              paramInfo.Add($"{f.Name}=[{strVal}]");
@@ -577,7 +474,6 @@ foreach (var script in allScripts)
                     }
                     string allParams = string.Join(", ", paramInfo.ToArray());
 
-                    // 格式化输出逻辑块
                     if (cName.Contains("Choice")) sb.AppendLine($"   [{lineIndex:D4}] 🔘 [选项] {allParams}");
                     else if (cName == "Set" || cName == "SetCustomVariable") sb.AppendLine($"   [{lineIndex:D4}] 🔧 [变量] {allParams}");
                     else if (cName == "Goto") sb.AppendLine($"   [{lineIndex:D4}] 🔀 [跳转] {allParams}");
@@ -590,10 +486,9 @@ foreach (var script in allScripts)
     }
 }
 
-// --- [5] 数据导出与后处理 (Export & Post-Processing) ---
+// --- [5] 导出与后处理 ---
 var finalContent = sb.ToString();
 
-// 批量替换变量代号为中文角色名，提升可读性
 finalContent = finalContent.Replace("WYH", "王艺菡")
                            .Replace("LT", "陆婷")
                            .Replace("XMM", "徐敏敏")
@@ -602,10 +497,10 @@ finalContent = finalContent.Replace("WYH", "王艺菡")
                            .Replace("Expression=", "计算: ");
 
 var desktop = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
-var exportPath = System.IO.Path.Combine(desktop, "PaperHouse_Final_Translated.txt");
+var exportPath = System.IO.Path.Combine(desktop, "PaperHouse_Final_Merged.txt");
 
 System.IO.File.WriteAllText(exportPath, finalContent, System.Text.Encoding.UTF8);
-Naninovel.Engine.Log("✅ 剧本重构完成！输出文件: " + exportPath);
+Naninovel.Engine.Log("✅ 剧本完美重构完成！输出文件: " + exportPath);
 
 ```
 
@@ -613,7 +508,7 @@ Naninovel.Engine.Log("✅ 剧本重构完成！输出文件: " + exportPath);
 
 ## 5. 最终成果
 
-通过上述工具的处理，我成功将原始的“黑盒”剧本转化为完全可读的中文文档。
+通过上述工具的处理，我成功将原始的“黑盒”剧本转化为完全可读的中文文档。现在，不仅能看到对话，还能通过**标签 (Label)** 精确追踪剧情跳转的逻辑。
 
 **🔴 处理前 (Raw Data):**
 
@@ -624,5 +519,6 @@ Naninovel.Engine.Log("✅ 剧本重构完成！输出文件: " + exportPath);
 
 > `[0036] 王艺菡：怎么今天早上迟到了这么久？`
 > `[0037] 🔘 [选项] ChoiceText=[2017年 12月 5日] GotoPath=[Scene2]`
+> `[0045] 🔖 [标签] Scene2_Start`
 
 该方案不仅解决了本地化文本提取的问题，还为后续的攻略逻辑分析提供了最直观的数据支持。

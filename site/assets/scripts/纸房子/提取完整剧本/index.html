@@ -1,0 +1,1327 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Me">
+      
+      
+        <link rel="canonical" href="https://lilly0303.github.io/PromiseWikki/assets/scripts/%E7%BA%B8%E6%88%BF%E5%AD%90/%E6%8F%90%E5%8F%96%E5%AE%8C%E6%95%B4%E5%89%A7%E6%9C%AC/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>提取完整剧本 - PromiseWikki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#naninovel" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="PromiseWikki" class="md-header__button md-logo" aria-label="PromiseWikki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 17-.72-.66C8.7 14 7 12.46 7 10.57c0-1.54 1.21-2.75 2.75-2.75.87 0 1.7.41 2.25 1.05.55-.64 1.38-1.05 2.25-1.05 1.54 0 2.75 1.21 2.75 2.75 0 1.89-1.7 3.43-4.28 5.77zM5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m0 2v14h14V5z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PromiseWikki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              提取完整剧本
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="pink"  aria-label="切换到 午夜派对🍀"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到 午夜派对🍀" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="pink" data-md-color-accent="pink"  aria-label="切换到 🍰奶油午后🍰"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到 🍰奶油午后🍰" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ・°☆首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../overview/" class="md-tabs__link">
+          
+  
+  
+  ^_^工具仓库
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../resources/overview/" class="md-tabs__link">
+          
+  
+  
+  ˗ˏˋ ★ ˎˊ˗超级pocket
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="PromiseWikki" class="md-nav__button md-logo" aria-label="PromiseWikki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 17-.72-.66C8.7 14 7 12.46 7 10.57c0-1.54 1.21-2.75 2.75-2.75.87 0 1.7.41 2.25 1.05.55-.64 1.38-1.05 2.25-1.05 1.54 0 2.75 1.21 2.75 2.75 0 1.89-1.7 3.43-4.28 5.77zM5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m0 2v14h14V5z"/></svg>
+
+    </a>
+    PromiseWikki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ・°☆首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ^_^工具仓库
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ^_^工具仓库
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    杂货铺
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    游戏逆向解包
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    游戏逆向解包
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../game_re/sweet_home/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    纸房子
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ˗ˏˋ ★ ˎˊ˗超级pocket
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ˗ˏˋ ★ ˎˊ˗超级pocket
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常用链接 (总览)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    小说资源
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    小说资源
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/novels/search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    搜索与导航
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/novels/sites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    在线阅读
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/novels/download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    下载与APP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/comics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    漫画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    影视与追番
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实用工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/disks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网盘搜索
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/visual_novel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉小说素材
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 项目背景与需求
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 技术难点与迭代
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 技术难点与迭代">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔴 问题一：数据封装与访问限制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dirty-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔴 问题二：哈希匹配失效 (Dirty Data)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-runtime-linker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 最终解决方案 (Runtime Linker)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 最终解决方案 (Runtime Linker)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心代码实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 输出效果对比
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<hr />
+<h1 id="naninovel">🔧 Naninovel 剧本重构工具：运行时逻辑与文本的自动化合并</h1>
+<p><strong>关键词</strong>：<code>C#</code> <code>Reflection</code> <code>UnityExplorer</code> <code>Regular Expression</code> <code>Localization</code></p>
+<h2 id="1">1. 项目背景与需求</h2>
+<p>在对 Unity 引擎制作的游戏《纸房子》进行数据提取时，我面临着<strong>逻辑脚本与文本内容分离</strong>的技术挑战。该游戏使用了 Naninovel 插件的 <strong>Managed Text（托管文本）</strong> 机制，导致直接提取出的剧本文件中不包含可读的中文对话，取而代之的是哈希索引（Hash ID）。</p>
+<p>为了获取可用于攻略制作的完整文本，我需要开发一个工具，能够在游戏运行时（Runtime）将<strong>剧本逻辑结构</strong>与<strong>本地化字典</strong>进行动态合并与清洗。</p>
+<h2 id="2">2. 技术难点与迭代</h2>
+<p>在开发过程中，我主要遇到了以下两个核心问题，并逐一进行了算法优化：</p>
+<h3 id="_1">🔴 问题一：数据封装与访问限制</h3>
+<ul>
+<li><strong>现象</strong>：Naninovel 将本地化字典存储在私有字段 <code>TextMap</code> 中，且内部嵌套了名为 <code>idToText</code> 的序列化对象，常规的 API 无法直接访问。</li>
+<li><strong>解决</strong>：利用 C# 的 <strong>反射机制 (Reflection)</strong>，通过 <code>BindingFlags.NonPublic</code> 标志位强制穿透两层封装，成功获取了内存中的 <code>Keys</code> 和 <code>Values</code> 集合。</li>
+</ul>
+<h3 id="dirty-data">🔴 问题二：哈希匹配失效 (Dirty Data)</h3>
+<ul>
+<li><strong>现象</strong>：这是最棘手的问题。初步合并时，字典匹配率为 0%。</li>
+<li>
+<p><strong>原因分析</strong>：字典中的 Key 是纯净的 Hash（如 <code>~3fb402f3</code>），但剧本逻辑层返回的参数包含了大量引擎元数据（如 <code>Newscript #36.1 |#~3fb402f3|</code>）。由于字符串不完全相等，<code>Dictionary.ContainsKey</code> 方法判定匹配失败。</p>
+</li>
+<li>
+<p><strong>解决</strong>：引入 <strong>正则表达式 (Regular Expressions)</strong> 模块。</p>
+</li>
+<li>构建正则模式 <code>~[a-zA-Z0-9]+</code>，从脏数据中精准“抠取”出有效的 Hash ID。</li>
+<li>实施“模糊匹配，精准替换”策略，实现了 100% 的文本还原率。</li>
+</ul>
+<h2 id="3-runtime-linker">3. 最终解决方案 (Runtime Linker)</h2>
+<p>该脚本专为 UnityExplorer 的 REPL (Read-Eval-Print Loop) 环境设计。它在内存中构建全局字典索引，并在遍历剧本的同时实时完成<strong>ID清洗</strong>、<strong>文本翻译</strong>和<strong>变量名人性化处理</strong>。</p>
+<h3 id="_2">核心代码实现</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// =============================================================</span>
+<span class="c1">//  工具名称：Naninovel 剧本自动化合并与清洗脚本</span>
+<span class="c1">//  环境兼容：UnityExplorer (REPL Safe Mode)</span>
+<span class="c1">//  核心功能：</span>
+<span class="c1">//    1. 内存字典构建 (Memory Mapping)</span>
+<span class="c1">//    2. 正则表达式清洗 (Regex Cleaning)</span>
+<span class="c1">//    3. 变量可视化翻译 (Variable Localization)</span>
+<span class="c1">// =============================================================</span>
+
+<span class="c1">// --- [1] 初始化环境 ---</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">sb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">StringBuilder</span><span class="p">();</span>
+<span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;《纸房子》剧本重构报告 - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+<span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;--------------------------------------------------&quot;</span><span class="p">);</span>
+
+<span class="c1">// --- [2] 构建全局哈希索引 (Global Indexing) ---</span>
+<span class="c1">// 使用 Dictionary 提供 O(1) 的查询复杂度</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">globalTextMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">.</span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">allScripts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Resources</span><span class="p">.</span><span class="n">FindObjectsOfTypeAll</span><span class="o">&lt;</span><span class="n">Naninovel</span><span class="p">.</span><span class="n">Script</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;[System] 检测到 {allScripts.Length} 个剧本资源，开始构建索引...&quot;</span><span class="p">);</span>
+
+<span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">allScripts</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">script</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 反射获取 TextMap 容器 (兼容 Field 和 Property)</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">sType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">script</span><span class="p">.</span><span class="n">GetType</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">mapField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sType</span><span class="p">.</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;TextMap&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="n">sType</span><span class="p">.</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;textMap&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">mapProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;TextMap&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="n">sType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;textMap&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="kt">object</span><span class="w"> </span><span class="n">textMapObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mapField</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="n">textMapObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapField</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">script</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">mapProp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="n">textMapObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapProp</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">script</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">textMapObj</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// 深度钻取：定位内部的 idToText 序列化对象</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">targetField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">textMapObj</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;idToText&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">);</span>
+<span class="w">            </span><span class="kt">object</span><span class="w"> </span><span class="n">finalDataMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">targetField</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">targetField</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">textMapObj</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">textMapObj</span><span class="p">;</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">finalDataMap</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// 提取键值对数据</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">dType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">finalDataMap</span><span class="p">.</span><span class="n">GetType</span><span class="p">();</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">kProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;Keys&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="n">dType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;keys&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">vProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;Values&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="n">dType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;values&quot;</span><span class="p">);</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">kProp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">vProp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="kt">var</span><span class="w"> </span><span class="n">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kProp</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">finalDataMap</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">.</span><span class="n">ICollection</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">                    </span><span class="kt">var</span><span class="w"> </span><span class="n">vals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vProp</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">finalDataMap</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">.</span><span class="n">ICollection</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">keys</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">vals</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">kList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">.</span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="n">keys</span><span class="p">);</span>
+<span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">vList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">.</span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="n">vals</span><span class="p">);</span>
+
+<span class="w">                        </span><span class="c1">// 填充全局字典</span>
+<span class="w">                        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">kList</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="kt">string</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kList</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">                            </span><span class="kt">string</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vList</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">                            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">globalTextMap</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="n">globalTextMap</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;[Success] 索引构建完毕，共载入 {globalTextMap.Count} 条本地化数据。&quot;</span><span class="p">);</span>
+<span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;--------------------------------------------------&quot;</span><span class="p">);</span>
+
+
+<span class="c1">// --- [3] 核心翻译算法 (The Translator) ---</span>
+<span class="c1">// 输入原始乱码字符串，输出清洗后的中文</span>
+<span class="n">System</span><span class="p">.</span><span class="n">Func</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TryTranslate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">rawText</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">rawText</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 1. 尝试直接匹配 (Exact Match)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">globalTextMap</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">rawText</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">globalTextMap</span><span class="p">[</span><span class="n">rawText</span><span class="p">];</span>
+
+<span class="w">    </span><span class="c1">// 2. 正则清洗 (Regex Extraction)</span>
+<span class="w">    </span><span class="c1">// 解决 &quot;Newscript #36.1 |#~Hash|&quot; 无法匹配的问题</span>
+<span class="w">    </span><span class="c1">// 使用 System.Text.RegularExpressions 避免 REPL 命名空间冲突</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">RegularExpressions</span><span class="p">.</span><span class="n">Regex</span><span class="p">.</span><span class="n">Match</span><span class="p">(</span><span class="n">rawText</span><span class="p">,</span><span class="w"> </span><span class="s">@&quot;~[a-zA-Z0-9]+&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">match</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="n">extractedHash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">match</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">globalTextMap</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">extractedHash</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">globalTextMap</span><span class="p">[</span><span class="n">extractedHash</span><span class="p">];</span><span class="w"> </span><span class="c1">// 返回翻译文本</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">rawText</span><span class="p">;</span><span class="w"> </span><span class="c1">// 无法翻译则保留原样</span>
+<span class="p">};</span>
+
+<span class="c1">// 辅助函数：安全获取 Naninovel 封装值</span>
+<span class="n">System</span><span class="p">.</span><span class="n">Func</span><span class="o">&lt;</span><span class="kt">object</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetNaninovelVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">obj</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="p">.</span><span class="n">GetType</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">t</span><span class="p">.</span><span class="n">Namespace</span><span class="p">.</span><span class="n">StartsWith</span><span class="p">(</span><span class="s">&quot;Naninovel&quot;</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">hv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;HasValue&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hv</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="kt">bool</span><span class="p">)</span><span class="n">hv</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;Value&quot;</span><span class="p">)</span><span class="o">?.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="o">?.</span><span class="n">ToString</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">};</span>
+
+
+<span class="c1">// --- [4] 剧本遍历与重组 (Iteration &amp; Merge) ---</span>
+<span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">allScripts</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 可选：过滤掉非核心剧本</span>
+<span class="w">    </span><span class="c1">// if (!script.name.Contains(&quot;Script&quot;) &amp;&amp; !script.name.Contains(&quot;script&quot;)) continue;</span>
+
+<span class="w">    </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">();</span>
+<span class="w">    </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;📄 剧本: {script.name}&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;--------------------------------------------------&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">lineIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">script</span><span class="p">.</span><span class="n">Lines</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">lineIndex</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="n">lType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// Type A: 对话文本行 (GenericText)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lType</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;GenericTextScriptLine&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// 获取行内指令列表</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">listField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;inlinedCommands&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listField</span><span class="o">?.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">IList</span><span class="p">;</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">list</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="kt">var</span><span class="w"> </span><span class="n">sbLine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">StringBuilder</span><span class="p">();</span>
+<span class="w">                    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">cmd</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">list</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">textProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cmd</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;Text&quot;</span><span class="p">);</span>
+<span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">authProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cmd</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;AuthorId&quot;</span><span class="p">);</span>
+
+<span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">rawText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetNaninovelVal</span><span class="p">(</span><span class="n">textProp</span><span class="o">?.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">cmd</span><span class="p">));</span>
+<span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">rawAuth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetNaninovelVal</span><span class="p">(</span><span class="n">authProp</span><span class="o">?.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">cmd</span><span class="p">));</span>
+
+<span class="w">                        </span><span class="c1">// 执行翻译</span>
+<span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">cleanText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TryTranslate</span><span class="p">(</span><span class="n">rawText</span><span class="p">);</span>
+<span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">cleanAuth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TryTranslate</span><span class="p">(</span><span class="n">rawAuth</span><span class="p">);</span>
+
+<span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">cleanAuth</span><span class="p">))</span><span class="w"> </span><span class="n">sbLine</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="n">cleanAuth</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;：&quot;</span><span class="p">);</span>
+<span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">cleanText</span><span class="p">))</span><span class="w"> </span><span class="n">sbLine</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="n">cleanText</span><span class="p">);</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sbLine</span><span class="p">.</span><span class="n">Length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex:D4}] {sbLine}&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// Type B: 逻辑指令行 (Command)</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">lType</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;CommandScriptLine&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">cmdProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;Command&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cmdProp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">cmdObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cmdProp</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">line</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cmdObj</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="kt">string</span><span class="w"> </span><span class="n">cName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cmdObj</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">;</span>
+<span class="w">                    </span><span class="kt">var</span><span class="w"> </span><span class="n">fields</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cmdObj</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetFields</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">);</span>
+<span class="w">                    </span><span class="kt">var</span><span class="w"> </span><span class="n">paramInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">.</span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">                    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">fields</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                         </span><span class="c1">// 过滤无关元数据</span>
+<span class="w">                         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;LineNumber&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Indent&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;PlaybackSpot&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                         </span><span class="kt">var</span><span class="w"> </span><span class="n">valObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">cmdObj</span><span class="p">);</span>
+<span class="w">                         </span><span class="kt">var</span><span class="w"> </span><span class="n">strVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetNaninovelVal</span><span class="p">(</span><span class="n">valObj</span><span class="p">);</span>
+
+<span class="w">                         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">strVal</span><span class="p">))</span>
+<span class="w">                         </span><span class="p">{</span>
+<span class="w">                             </span><span class="c1">// 特殊处理：选项文本也需要翻译</span>
+<span class="w">                             </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;Choice&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">Name</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;ChoiceText&quot;</span><span class="p">))</span><span class="w"> </span><span class="n">strVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TryTranslate</span><span class="p">(</span><span class="n">strVal</span><span class="p">);</span>
+<span class="w">                             </span><span class="c1">// 尝试翻译任何包含 Hash 特征的参数</span>
+<span class="w">                             </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">strVal</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;~&quot;</span><span class="p">))</span><span class="w"> </span><span class="n">strVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TryTranslate</span><span class="p">(</span><span class="n">strVal</span><span class="p">);</span>
+
+<span class="w">                             </span><span class="n">paramInfo</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&quot;{f.Name}=[{strVal}]&quot;</span><span class="p">);</span>
+<span class="w">                         </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="kt">string</span><span class="w"> </span><span class="n">allParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">&quot;, &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">paramInfo</span><span class="p">.</span><span class="n">ToArray</span><span class="p">());</span>
+
+<span class="w">                    </span><span class="c1">// 格式化输出逻辑块</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;Choice&quot;</span><span class="p">))</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex:D4}] 🔘 [选项] {allParams}&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Set&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;SetCustomVariable&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex:D4}] 🔧 [变量] {allParams}&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Goto&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex:D4}] 🔀 [跳转] {allParams}&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Stop&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex:D4}] 🛑 [停止]&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="p">.</span><span class="n">StartsWith</span><span class="p">(</span><span class="s">&quot;Else&quot;</span><span class="p">))</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex:D4}] 🔹 [分支] {cName} {allParams}&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="p">.</span><span class="n">EndsWith</span><span class="p">(</span><span class="s">&quot;If&quot;</span><span class="p">))</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex:D4}] 🔹 [逻辑] {cName} {allParams}&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// --- [5] 数据导出与后处理 (Export &amp; Post-Processing) ---</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">finalContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+
+<span class="c1">// 批量替换变量代号为中文角色名，提升可读性</span>
+<span class="n">finalContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">finalContent</span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;WYH&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;王艺菡&quot;</span><span class="p">)</span>
+<span class="w">                           </span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;LT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;陆婷&quot;</span><span class="p">)</span>
+<span class="w">                           </span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;XMM&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;徐敏敏&quot;</span><span class="p">)</span>
+<span class="w">                           </span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;HYH&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;贺老师&quot;</span><span class="p">)</span>
+<span class="w">                           </span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;zy&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;主角&quot;</span><span class="p">)</span>
+<span class="w">                           </span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;Expression=&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;计算: &quot;</span><span class="p">);</span>
+
+<span class="kt">var</span><span class="w"> </span><span class="n">desktop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Environment</span><span class="p">.</span><span class="n">GetFolderPath</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Environment</span><span class="p">.</span><span class="n">SpecialFolder</span><span class="p">.</span><span class="n">Desktop</span><span class="p">);</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">exportPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">desktop</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PaperHouse_Final_Translated.txt&quot;</span><span class="p">);</span>
+
+<span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="n">WriteAllText</span><span class="p">(</span><span class="n">exportPath</span><span class="p">,</span><span class="w"> </span><span class="n">finalContent</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">);</span>
+<span class="n">Naninovel</span><span class="p">.</span><span class="n">Engine</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;✅ 剧本重构完成！输出文件: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">exportPath</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="4">4. 输出效果对比</h2>
+<p>通过上述工具的处理，我成功将原始的“黑盒”剧本转化为完全可读的文档。</p>
+<p><strong>🔴 处理前 (Raw Data):</strong></p>
+<blockquote>
+<p><code>[36] [剧情] wyh：Newscript #36.1 |#~3fb402f3|</code>
+<code>[37] 🔘 [选项] ChoiceText=~9be251d0 GotoPath=Scene2</code></p>
+</blockquote>
+<p><strong>🟢 处理后 (Processed Data):</strong></p>
+<blockquote>
+<p><code>[0036] 王艺菡：怎么今天早上迟到了这么久？</code>
+<code>[0037] 🔘 [选项] ChoiceText=[2017年 12月 5日] GotoPath=[Scene2]</code></p>
+</blockquote>
+<p>该方案不仅解决了本地化文本提取的问题，还为后续的攻略逻辑分析提供了最直观的数据支持。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

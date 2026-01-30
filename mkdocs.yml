@@ -1,43 +1,42 @@
 site_name: PromiseWikki
-site_url: https://example.com/
+site_url: https://lilly0303.github.io/PromiseWikki/  # 这里建议填你真实的GitHub Pages地址
 site_author: Me
 
 # 核心主题配置
-theme:
-  name: material
-  language: zh
-  # 网站图标 (帮你换成了复古像素风的感觉)
+
+  # 网站图标
   icon:
-    logo: material/heart-box-outline # 左上角的爱心图标
-    favicon: material/heart          # 浏览器标签页的小爱心
-    
+    logo: assets/my-icon.png 
+    favicon: assets/my-icon.png 
+
   palette:
-    # --- ☀️ 白天模式 (米色 + 粉色) ---
-    - scheme: default 
-      primary: pink  # 顶部标题栏：粉色
-      accent: pink   # 按钮和链接：粉色
+    # --- ☀️ 白天模式 ---
+    - scheme: default
+      primary: pink
+      accent: pink
       toggle:
         icon: material/weather-sunny
-        name: 切换到 午夜派对🍀 # 鼠标放上去显示的文字，很可爱
+        name: 切换到 午夜派对🍀
 
-    # --- 🌙 黑夜模式 (黑色 + 粉色) ---
+    # --- 🌙 黑夜模式 ---
     - scheme: slate
-      primary: pink  # 顶部标题栏：保持粉色 (黑粉撞色)
-      accent: pink   # 按钮和链接：粉色荧光
+      primary: pink
+      accent: pink
       toggle:
         icon: material/weather-night
         name: 切换到 🍰奶油午后🍰
 
   features:
-    - navigation.tabs # 顶部导航栏
-    - navigation.top  # 返回顶部按钮
-    - search.suggest  # 搜索智能提示
-    - content.code.copy # 复制代码
+    - navigation.tabs
+    - navigation.top
+    - search.suggest
+    - content.code.copy
 
-# 引入自定义 CSS (为了实现你要的“米色”背景)
+# 引入自定义 CSS
 extra_css:
   - stylesheets/extra.css
 
+# 引入自定义 JS
 extra_javascript:
   - javascripts/extra.js
 
@@ -52,17 +51,18 @@ markdown_extensions:
   - pymdownx.superfences
   - attr_list
   - md_in_html
-  - pymdownx.emoji # 开启 Emoji 代码支持
+  - pymdownx.emoji
 
-# --- 🧭 导航菜单 (已添加可爱 Emoji) ---
+# --- 🧭 导航菜单 ---
+# ⚠️ 注意：下面的文件路径必须真实存在！
 nav:
   - '・°☆首页': index.md
-  - '^_^工具仓库':                        # [一级目录]
-      - ' 游戏逆向解包':               # [二级目录] 分类名
-          - '纸房子': game_re/sweet_home.md     
-      - '杂货铺': python_tips.md        # [二级目录] 把原来的文件放在这
+  - '^_^工具仓库':
+      - '杂货铺': overview.md
+      - '游戏逆向解包':
+          - '纸房子': game_re/sweet_home.md
   - '˗ˏˋ ★ ˎˊ˗超级pocket':
-      - '常用链接 (总览)': resources/overview.md  # <--- 这里就是你要的“一开始一样的目录”
+      - '常用链接 (总览)': resources/overview.md
       - '小说资源':
           - '搜索与导航': resources/novels/search.md
           - '在线阅读': resources/novels/sites.md
