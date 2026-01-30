@@ -1,0 +1,15 @@
+# 漫画资源
+
+* [嗨皮漫画](https://m.happymh.com/)
+* [漫蛙](https://manwajs.vip/)
+* [Mangabz](https://www.mangabz.com/)
+* [趣趣漫画](http://45.137.10.94:82/booklist?end=0)
+* [香香腐宅](https://boylove.cc/home/user/index.html)
+* [ManhwaZone](https://manhwazone.to/explore)
+* [Kmoe](https://kxx.moe/)
+* [Webtoon](https://www.webtoons.com/zh-hant/)
+* [Ridibooks](https://ridibooks.com/webtoon/recommendation)
+* [一耽](https://yidan7.club/pages/index/index)
+* [Komiic](https://komiic.com/)
+* [包子漫画](https://www.baozimh.com/)
+* [拷贝漫画](https://www.mangacopy.com/)

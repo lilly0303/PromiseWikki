@@ -18,7 +18,7 @@ theme:
       accent: pink   # 按钮和链接：粉色
       toggle:
         icon: material/weather-sunny
-        name: 切换到 ✨午夜派对✨ # 鼠标放上去显示的文字，很可爱
+        name: 切换到 午夜派对🍀 # 鼠标放上去显示的文字，很可爱
 
     # --- 🌙 黑夜模式 (黑色 + 粉色) ---
     - scheme: slate
@@ -38,6 +38,9 @@ theme:
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/extra.js
+
 # 插件
 plugins:
   - search
@@ -53,8 +56,19 @@ markdown_extensions:
 
 # --- 🧭 导航菜单 (已添加可爱 Emoji) ---
 nav:
-  - 🏠 首页: index.md
-  - 🎀 学习笔记:
-      - 🐍 Python 技巧: python_tips.md
-  - 👜 资源仓库:
-      - 🔗 常用链接: links.md
+  - '・°☆首页': index.md
+  - '^_^工具仓库':                        # [一级目录]
+      - ' 游戏逆向解包':               # [二级目录] 分类名
+          - '纸房子': game_re/sweet_home.md     
+      - '杂货铺': python_tips.md        # [二级目录] 把原来的文件放在这
+  - '˗ˏˋ ★ ˎˊ˗超级pocket':
+      - '常用链接 (总览)': resources/overview.md  # <--- 这里就是你要的“一开始一样的目录”
+      - '小说资源':
+          - '搜索与导航': resources/novels/search.md
+          - '在线阅读': resources/novels/sites.md
+          - '下载与APP': resources/novels/download.md
+      - '漫画': resources/comics.md
+      - '影视与追番': resources/media.md
+      - '实用工具': resources/tools.md
+      - '网盘搜索': resources/disks.md
+      - '视觉小说素材': resources/visual_novel.md

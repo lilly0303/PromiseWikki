@@ -1,7 +1,10 @@
-# 欢迎来到我的个人主页！
+#    𖠚ᐝPromiseWikki⁺.☘︎
 
-这是promise's pocket。
+!!! quote "˗ˏˋ ★ ˎˊ˗🍥家产镇楼💖&#xFE0E; "
+    ![刺客](assets/images/刺客.jpg){ align="center" }
 
-## 导航指引
-* **学习笔记**：存放我的代码心得。
-* **资源仓库**：常用的网站链接和文件下载。
+
+!!! quote " 导航指引 "
+
+    * [工具仓库^_^](python_tips.md)：小小工具箱。
+    * [˗ˏˋ ★ ˎˊ˗超级pocket](resources/overview.md)：皇帝的宝藏。
