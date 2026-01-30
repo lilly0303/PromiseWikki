@@ -14,7 +14,6 @@
 * [16.N飞工厂](https://www.netflixgc.com/)
 * [17.茶杯虎](https://www.725998.com/)
 * [18.SunshineBoy](https://openlist.sunshineboy.top/)
-* [19.梓澪の妙妙屋](https://zi6.cc/)
 * [20.洛琪希](https://pan.roxylib.com/)
 * [21.影猫](https://ymck.pro/)
 * [22.楚门](https://www.chumenys.com/)

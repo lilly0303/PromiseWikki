@@ -22,7 +22,7 @@
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/logo.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
@@ -96,8 +96,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="PromiseWikki" class="md-header__button md-logo" aria-label="PromiseWikki" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 17-.72-.66C8.7 14 7 12.46 7 10.57c0-1.54 1.21-2.75 2.75-2.75.87 0 1.7.41 2.25 1.05.55-.64 1.38-1.05 2.25-1.05 1.54 0 2.75 1.21 2.75 2.75 0 1.89-1.7 3.43-4.28 5.77zM5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m0 2v14h14V5z"/></svg>
+  <img src="../../assets/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -294,8 +293,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="PromiseWikki" class="md-nav__button md-logo" aria-label="PromiseWikki" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 17-.72-.66C8.7 14 7 12.46 7 10.57c0-1.54 1.21-2.75 2.75-2.75.87 0 1.7.41 2.25 1.05.55-.64 1.38-1.05 2.25-1.05 1.54 0 2.75 1.21 2.75 2.75 0 1.89-1.7 3.43-4.28 5.77zM5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m0 2v14h14V5z"/></svg>
+  <img src="../../assets/logo.png" alt="logo">
 
     </a>
     PromiseWikki
@@ -626,17 +624,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#33" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.3 结果应用
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -666,10 +653,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#42" class="md-nav__link">
+  <a href="#42-all-in-one" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2 最终解决方案代码
+        4.2 最终解决方案代码 (All-in-One)
       
     </span>
   </a>
@@ -1048,34 +1035,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../resources/visual_novel/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    视觉小说素材
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1204,17 +1163,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#33" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.3 结果应用
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1244,10 +1192,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#42" class="md-nav__link">
+  <a href="#42-all-in-one" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2 最终解决方案代码
+        4.2 最终解决方案代码 (All-in-One)
       
     </span>
   </a>
@@ -1306,80 +1254,61 @@
 <p>最初，我的目标是理解剧本的基本运行逻辑。通过 UnityExplorer，我编写了一个基于反射的“透视脚本”，试图强制读取内存中 <code>Naninovel.Script</code> 对象的指令流。</p>
 <p>此脚本的主要功能是绕过 <code>private</code> 权限，提取所有隐藏的参数值。</p>
 <h3 id="22-x-ray-scan">2.2 阶段性代码 (X-Ray Scan)</h3>
+<blockquote>
+<p><strong>更新日志</strong>：增加了对 <code>LabelScriptLine</code> (标签行) 的识别，以便追踪 <code>Goto</code> 指令的具体落点。</p>
+</blockquote>
 <details>
-<summary>🔻 点击展开：逻辑架构透视脚本 (C#)</summary>
+<summary>🔻 点击展开：逻辑架构透视脚本 (C#) - V2.0</summary>
 
 <div class="highlight"><pre><span></span><code><span class="c1">// --- [1] 初始化输出构建器 ---</span>
-<span class="c1">// 用于将所有提取到的信息暂时存在内存里，最后一次性导出</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">sb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">StringBuilder</span><span class="p">();</span>
-<span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;《纸房子》全字段无差别透视版 - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+<span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;《纸房子》全字段无差别透视版 (含标签) - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
 <span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;--------------------------------------------------&quot;</span><span class="p">);</span>
 
 <span class="c1">// --- [2] 设定目标范围 ---</span>
-<span class="c1">// 在这里定义你想提取的剧本文件名</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">targetNames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">.</span><span class="n">HashSet</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Script1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Newscript&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Newscript1&quot;</span><span class="w"> </span><span class="p">};</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">foundScripts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">.</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Naninovel</span><span class="p">.</span><span class="n">Script</span><span class="o">&gt;</span><span class="p">();</span>
 
-<span class="c1">// --- [3] 锁定剧本 (双重保险) ---</span>
-<span class="c1">// 第一步：查找当前内存中已经加载的剧本对象</span>
+<span class="c1">// --- [3] 锁定剧本 ---</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">scripts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Resources</span><span class="p">.</span><span class="n">FindObjectsOfTypeAll</span><span class="o">&lt;</span><span class="n">Naninovel</span><span class="p">.</span><span class="n">Script</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">scripts</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">targetNames</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="n">foundScripts</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
 
-<span class="c1">// 第二步：如果内存里没找到，尝试强制从游戏资源包(Resources)里加载</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">foundScripts</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">loaded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Resources</span><span class="p">.</span><span class="n">LoadAll</span><span class="o">&lt;</span><span class="n">Naninovel</span><span class="p">.</span><span class="n">Script</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">loaded</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">targetNames</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="n">foundScripts</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// --- [4] 定义核心工具：反射透视 (Reflection) ---</span>
-<span class="c1">// 这是一个辅助函数，用于提取 Naninovel 特有的 &quot;Nullable&quot; 参数类型的值</span>
+<span class="c1">// --- [4] 定义核心工具 ---</span>
 <span class="n">System</span><span class="p">.</span><span class="n">Func</span><span class="o">&lt;</span><span class="kt">object</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">obj</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="p">.</span><span class="n">GetType</span><span class="p">();</span>
-<span class="w">        </span><span class="c1">// 确保只处理 Naninovel 类型的参数</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">t</span><span class="p">.</span><span class="n">Namespace</span><span class="p">.</span><span class="n">StartsWith</span><span class="p">(</span><span class="s">&quot;Naninovel&quot;</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
-
-<span class="w">        </span><span class="c1">// 检查该参数是否有值 (HasValue)</span>
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">hv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;HasValue&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hv</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="kt">bool</span><span class="p">)</span><span class="n">hv</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
-
-<span class="w">        </span><span class="c1">// 获取实际的值</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;Value&quot;</span><span class="p">)</span><span class="o">?.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="o">?.</span><span class="n">ToString</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">};</span>
 
-<span class="c1">// ★★★ 暴力搜身函数 ★★★</span>
-<span class="c1">// 无论字段是公开的(Public)还是私有的(Private)，强制读取所有参数</span>
 <span class="n">System</span><span class="p">.</span><span class="n">Func</span><span class="o">&lt;</span><span class="kt">object</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">InspectAllFields</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">cmdObj</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cmdObj</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">.</span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">();</span>
-
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// 获取所有字段信息</span>
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">fields</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cmdObj</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetFields</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">);</span>
 <span class="w">        </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">fields</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// 过滤掉行号等无用的元数据，只看核心逻辑</span>
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;LineNumber&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Indent&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;PlaybackSpot&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
-
 <span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">valObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">cmdObj</span><span class="p">);</span>
-<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">strVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetVal</span><span class="p">(</span><span class="n">valObj</span><span class="p">);</span><span class="w"> </span><span class="c1">// 尝试解析值</span>
-
-<span class="w">            </span><span class="c1">// 如果找到了有效值，就记录下来：[参数名=参数值]</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">strVal</span><span class="p">))</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">info</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&quot;{f.Name}=[{strVal}]&quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">strVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetVal</span><span class="p">(</span><span class="n">valObj</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">strVal</span><span class="p">))</span><span class="w"> </span><span class="n">info</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&quot;{f.Name}=[{strVal}]&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{}</span>
-
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">info</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot; (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">&quot;, &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">info</span><span class="p">.</span><span class="n">ToArray</span><span class="p">())</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="c1">// --- [5] 开始遍历并提取 ---</span>
+<span class="c1">// --- [5] 开始遍历 ---</span>
 <span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">foundScripts</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">();</span>
@@ -1387,18 +1316,16 @@
 <span class="w">    </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;--------------------------------------------------&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">lineIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">// 逐行分析剧本</span>
 <span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">script</span><span class="p">.</span><span class="n">Lines</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">lineIndex</span><span class="o">++</span><span class="p">;</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
 <span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="n">lType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">;</span>
 
-<span class="w">        </span><span class="c1">// === 类型A: 剧情文本行 ===</span>
+<span class="w">        </span><span class="c1">// A. 剧情文本</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lType</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;GenericTextScriptLine&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="c1">// 深入挖掘私有的 inlinedCommands 字段</span>
 <span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">listField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;inlinedCommands&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">);</span>
 <span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listField</span><span class="o">?.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">IList</span><span class="p">;</span>
 <span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">list</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
@@ -1410,8 +1337,6 @@
 <span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">authProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cmd</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;AuthorId&quot;</span><span class="p">);</span>
 <span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetVal</span><span class="p">(</span><span class="n">textProp</span><span class="o">?.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">cmd</span><span class="p">));</span>
 <span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">auth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetVal</span><span class="p">(</span><span class="n">authProp</span><span class="o">?.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">cmd</span><span class="p">));</span>
-
-<span class="w">                        </span><span class="c1">// 拼接：[角色名]：[台词]</span>
 <span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">auth</span><span class="p">))</span><span class="w"> </span><span class="n">sbLine</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="n">auth</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;：&quot;</span><span class="p">);</span>
 <span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">text</span><span class="p">))</span><span class="w"> </span><span class="n">sbLine</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
 <span class="w">                    </span><span class="p">}</span>
@@ -1419,7 +1344,19 @@
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="c1">// === 类型B: 逻辑指令行 ===</span>
+<span class="w">        </span><span class="c1">// B. 标签 (★ 修复新增 ★)</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">lType</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;LabelScriptLine&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">labelProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;LabelText&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">labelVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">labelProp</span><span class="o">?.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="o">?.</span><span class="n">ToString</span><span class="p">();</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">labelVal</span><span class="p">))</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex}] 🔖 [标签] {labelVal}&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// C. 逻辑指令</span>
 <span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">lType</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;CommandScriptLine&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">cmdProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;Command&quot;</span><span class="p">);</span>
@@ -1429,55 +1366,28 @@
 <span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cmdObj</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="kt">string</span><span class="w"> </span><span class="n">cName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cmdObj</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">;</span>
-<span class="w">                    </span><span class="c1">// 直接调用上面的“暴力搜身”函数，获取该指令的所有参数</span>
 <span class="w">                    </span><span class="kt">string</span><span class="w"> </span><span class="n">allParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InspectAllFields</span><span class="p">(</span><span class="n">cmdObj</span><span class="p">);</span>
 
-<span class="w">                    </span><span class="c1">// 根据指令类型，打上不同的标记，方便阅读</span>
-<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;Choice&quot;</span><span class="p">))</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex}] 🔘 [选项] {allParams}&quot;</span><span class="p">);</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Set&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;SetCustomVariable&quot;</span><span class="p">)</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex}] 🔧 [变量] {allParams}&quot;</span><span class="p">);</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Goto&quot;</span><span class="p">)</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex}] 🔀 [跳转] {allParams}&quot;</span><span class="p">);</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Stop&quot;</span><span class="p">)</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex}] 🛑 [停止] {allParams}&quot;</span><span class="p">);</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Else&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;ElseIf&quot;</span><span class="p">)</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex}] 🔹 [分支判定] {cName} {allParams}&quot;</span><span class="p">);</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;If&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;BeginIf&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;EndIf&quot;</span><span class="p">)</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex}] 🔹 [逻辑块] {cName} {allParams}&quot;</span><span class="p">);</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                    </span><span class="c1">// 其他杂项指令，仅当包含条件判断(ConditionalExpression)时才显示</span>
-<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">allParams</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">allParams</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;ConditionalExpression&quot;</span><span class="p">))</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex}] ⚙️ [{cName}] {allParams}&quot;</span><span class="p">);</span>
-<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;Choice&quot;</span><span class="p">))</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex}] 🔘 [选项] {allParams}&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Set&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;SetCustomVariable&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex}] 🔧 [变量] {allParams}&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Goto&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex}] 🔀 [跳转] {allParams}&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Stop&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex}] 🛑 [停止] {allParams}&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Else&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;ElseIf&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex}] 🔹 [分支判定] {cName} {allParams}&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;If&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;BeginIf&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;EndIf&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex}] 🔹 [逻辑块] {cName} {allParams}&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">allParams</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">allParams</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;ConditionalExpression&quot;</span><span class="p">))</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex}] ⚙️ [{cName}] {allParams}&quot;</span><span class="p">);</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// --- [6] 导出到桌面 ---</span>
+<span class="c1">// --- [6] 导出 ---</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">finalContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
-
-<span class="c1">// 简单的文本替换 (将代码代号替换为中文名)</span>
 <span class="n">finalContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">finalContent</span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;WYH&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;王艺菡&quot;</span><span class="p">).</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;LT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;陆婷&quot;</span><span class="p">).</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;XMM&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;徐敏敏&quot;</span><span class="p">).</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;HYH&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;贺老师&quot;</span><span class="p">);</span>
 <span class="n">finalContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">finalContent</span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot; A &quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; [进度锁A] &quot;</span><span class="p">).</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot; B &quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; [进度锁B] &quot;</span><span class="p">);</span>
 
-<span class="c1">// 获取桌面路径并写入文件</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">desktop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Environment</span><span class="p">.</span><span class="n">GetFolderPath</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Environment</span><span class="p">.</span><span class="n">SpecialFolder</span><span class="p">.</span><span class="n">Desktop</span><span class="p">);</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">exportPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">desktop</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PaperHouse_XRAY_Scan.txt&quot;</span><span class="p">);</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">exportPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">desktop</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PaperHouse_XRAY_Scan_Labeled.txt&quot;</span><span class="p">);</span>
 
 <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="n">WriteAllText</span><span class="p">(</span><span class="n">exportPath</span><span class="p">,</span><span class="w"> </span><span class="n">finalContent</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">);</span>
 <span class="n">Naninovel</span><span class="p">.</span><span class="n">Engine</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;✅ 全字段透视提取完成！请查看: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">exportPath</span><span class="p">);</span>
@@ -1488,89 +1398,58 @@
 <h3 id="23">2.3 结果分析</h3>
 <p>这一步成功提取了游戏的骨架，但暴露了一个关键问题：</p>
 <blockquote>
-<p><strong>💡 发现</strong>：生成的报告中，大量出现了类似于 <code>[剧情] wyh：Newscript #36.1 |#~3fb402f3|</code> 的内容。
-* <strong>代码含义</strong>：这说明游戏启用了 <strong>Managed Text（托管文本）</strong> 模式。脚本文件中只存储了文本的索引 ID（Hash Key），而没有直接存储中文文本。
-* <strong>现状</strong>：虽然我掌握了所有的变量操作（如 <code>Expression=[王艺菡=0]</code>）和分支条件，但没有文本，依然无法理解剧情全貌。</p>
+<p><strong>💡 发现</strong>：生成的报告中，大量出现了类似于 <code>[剧情] wyh：Newscript #36.1 |#~3fb402f3|</code> 的内容。这是因为游戏启用了 Managed Text 模式，文本被哈希 ID 替代。</p>
 </blockquote>
 <hr />
 <h2 id="3">3. 第二阶段：数据挖掘 (本地化字典提取)</h2>
 <h3 id="31">3.1 深入内存分析</h3>
-<p>为了找到“消失的文本”，我通过对象分析器（Object Inspector）追踪了 <code>Naninovel.Script</code> 对象的内部结构。</p>
-<p>经过排查，数据的真实存储路径如下：</p>
-<ol>
-<li><strong>Script (剧本对象)</strong>：包含逻辑指令。</li>
-<li><strong>TextMap (映射容器)</strong>：剧本对象中的私有字段。</li>
-<li><strong>idToText (关键字段)</strong>：在 <code>TextMap</code> 内部，真正的字典数据被存储在一个名为 <code>idToText</code> 的 <code>SerializableTextMap</code> 对象中。</li>
-</ol>
-<p>常规的 API 无法访问这个层级，必须使用反射进行“深层钻取”。</p>
+<p>为了找到“消失的文本”，我通过对象分析器（Object Inspector）追踪了 <code>Naninovel.Script</code> 对象的内部结构。经过排查，数据的真实存储路径在私有字段 <code>TextMap</code> 的嵌套对象 <code>idToText</code> 中。</p>
 <h3 id="32-dictionary-dump">3.2 阶段性代码 (Dictionary Dump)</h3>
 <details>
 <summary>🔻 点击展开：字典提取脚本 (C#)</summary>
 
-<div class="highlight"><pre><span></span><code><span class="c1">// --- [1] 初始化输出流 ---</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// --- [1] 初始化 ---</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">sb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">StringBuilder</span><span class="p">();</span>
 <span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;《纸房子》字典文本深度提取版 - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
 <span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;--------------------------------------------------&quot;</span><span class="p">);</span>
 
-<span class="c1">// --- [2] 查找内存中的剧本资源 ---</span>
-<span class="c1">// Naninovel.Script 是 Unity 的 ScriptableObject，因此可以使用 Resources API 全局查找</span>
+<span class="c1">// --- [2] 查找剧本 ---</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">scripts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Resources</span><span class="p">.</span><span class="n">FindObjectsOfTypeAll</span><span class="o">&lt;</span><span class="n">Naninovel</span><span class="p">.</span><span class="n">Script</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;系统中共找到 {scripts.Length} 个剧本文件&quot;</span><span class="p">);</span>
 
-<span class="c1">// --- [3] 遍历剧本并执行“钻取”操作 ---</span>
+<span class="c1">// --- [3] 钻取私有字段 ---</span>
 <span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">scripts</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">script</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
-
 <span class="w">    </span><span class="k">try</span><span class="w"> </span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// === 第一层：获取 TextMap 容器 ===</span>
-<span class="w">        </span><span class="c1">// 利用反射获取私有字段 &quot;TextMap&quot; 或 &quot;textMap&quot;</span>
-<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">scriptType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">script</span><span class="p">.</span><span class="n">GetType</span><span class="p">();</span>
-<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">mapField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scriptType</span><span class="p">.</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;TextMap&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">)</span><span class="w"> </span>
-<span class="w">                    </span><span class="o">??</span><span class="w"> </span><span class="n">scriptType</span><span class="p">.</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;textMap&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">);</span>
-
-<span class="w">        </span><span class="c1">// 同时也尝试获取属性 (Property)，防止字段被封装</span>
-<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">mapProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scriptType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;TextMap&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="n">scriptType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;textMap&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// 反射获取 TextMap</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">sType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">script</span><span class="p">.</span><span class="n">GetType</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">mapField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sType</span><span class="p">.</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;TextMap&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">)</span><span class="w"> </span>
+<span class="w">                    </span><span class="o">??</span><span class="w"> </span><span class="n">sType</span><span class="p">.</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;textMap&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">mapProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;TextMap&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="n">sType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;textMap&quot;</span><span class="p">);</span>
 
 <span class="w">        </span><span class="kt">object</span><span class="w"> </span><span class="n">textMapObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mapProp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="n">textMapObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapProp</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">script</span><span class="p">);</span>
 <span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">mapField</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="n">textMapObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapField</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">script</span><span class="p">);</span>
 
-<span class="w">        </span><span class="c1">// 如果获取到了 TextMap 容器</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">textMapObj</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// === 第二层：精准打击 idToText 字段 ===</span>
-<span class="w">            </span><span class="c1">// 这是一个 SerializableTextMap 类型的内部对象，存放着真正的字典</span>
-<span class="w">            </span><span class="c1">// 必须使用 BindingFlags.NonPublic 才能访问</span>
+<span class="w">            </span><span class="c1">// 精准打击 idToText</span>
 <span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">targetField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">textMapObj</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;idToText&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">);</span>
+<span class="w">            </span><span class="kt">object</span><span class="w"> </span><span class="n">finalDataMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">targetField</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">targetField</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">textMapObj</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">textMapObj</span><span class="p">;</span>
 
-<span class="w">            </span><span class="kt">object</span><span class="w"> </span><span class="n">finalDataMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">targetField</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">finalDataMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">targetField</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">textMapObj</span><span class="p">);</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="k">else</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="c1">// 兼容性处理：如果找不到 idToText，尝试直接在当前层级查找</span>
-<span class="w">                </span><span class="n">finalDataMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">textMapObj</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-
-<span class="w">            </span><span class="c1">// === 第三层：提取 Keys 和 Values 列表 ===</span>
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">finalDataMap</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">dataType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">finalDataMap</span><span class="p">.</span><span class="n">GetType</span><span class="p">();</span>
-<span class="w">                </span><span class="c1">// 动态获取 Keys 和 Values 属性（适配不同的命名规则）</span>
-<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">keysProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;Keys&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="n">dataType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;keys&quot;</span><span class="p">);</span>
-<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">valsProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;Values&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="n">dataType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;values&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">dType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">finalDataMap</span><span class="p">.</span><span class="n">GetType</span><span class="p">();</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">keysProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;Keys&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="n">dType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;keys&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">valsProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;Values&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="n">dType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;values&quot;</span><span class="p">);</span>
 
 <span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">keysProp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">valsProp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="c1">// 转换为可枚举的集合</span>
 <span class="w">                    </span><span class="kt">var</span><span class="w"> </span><span class="n">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">keysProp</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">finalDataMap</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">.</span><span class="n">ICollection</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="w">                    </span><span class="kt">var</span><span class="w"> </span><span class="n">vals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">valsProp</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">finalDataMap</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">.</span><span class="n">ICollection</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">;</span>
 
-<span class="w">                    </span><span class="c1">// 导出数据</span>
 <span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">keys</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">vals</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
 <span class="w">                    </span><span class="p">{</span>
 <span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">kList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">.</span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="n">keys</span><span class="p">);</span>
@@ -1581,17 +1460,10 @@
 <span class="w">                            </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">();</span>
 <span class="w">                            </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;📂 剧本源 [{script.name}] - 包含 {kList.Count} 条目&quot;</span><span class="p">);</span>
 <span class="w">                            </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;--------------------------------------------------&quot;</span><span class="p">);</span>
-
 <span class="w">                            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">kList</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="w">                            </span><span class="p">{</span>
-<span class="w">                                </span><span class="kt">string</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kList</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"> </span><span class="c1">// Hash ID (例如 ~3fb402f3)</span>
-<span class="w">                                </span><span class="kt">string</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vList</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"> </span><span class="c1">// 中文文本</span>
-
-<span class="w">                                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
-<span class="w">                                </span><span class="p">{</span>
-<span class="w">                                    </span><span class="c1">// 格式化输出：Hash = 文本</span>
-<span class="w">                                    </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;{k} = {v}&quot;</span><span class="p">);</span>
-<span class="w">                                </span><span class="p">}</span>
+<span class="w">                                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">kList</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="w"> </span>
+<span class="w">                                    </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;{kList[i]} = {vList[i]}&quot;</span><span class="p">);</span>
 <span class="w">                            </span><span class="p">}</span>
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">}</span>
@@ -1599,59 +1471,43 @@
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// 捕获反射过程中的异常，防止单个文件错误中断整个流程</span>
-<span class="w">        </span><span class="c1">// sb.AppendLine($&quot;[错误] 解析 {script.name} 失败: {ex.Message}&quot;);</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 
-<span class="c1">// --- [4] 导出结果至桌面 ---</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">desktop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Environment</span><span class="p">.</span><span class="n">GetFolderPath</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Environment</span><span class="p">.</span><span class="n">SpecialFolder</span><span class="p">.</span><span class="n">Desktop</span><span class="p">);</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">exportPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">desktop</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PaperHouse_Dictionary_Dump.txt&quot;</span><span class="p">);</span>
-
 <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="n">WriteAllText</span><span class="p">(</span><span class="n">exportPath</span><span class="p">,</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">ToString</span><span class="p">(),</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">);</span>
 <span class="n">Naninovel</span><span class="p">.</span><span class="n">Engine</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;✅ 字典提取完成！文件已生成: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">exportPath</span><span class="p">);</span>
 </code></pre></div>
 
 </details>
 
-<h3 id="33">3.3 结果应用</h3>
-<p>运行该脚本后，我成功提取了 Hash 到中文的映射表：</p>
-<div class="highlight"><pre><span></span><code>~9be251d0 = 2017年 12月 5日
-~3fb402f3 = 怎么今天早上迟到了这么久？
-~99926b64 = 家里那堆破事呗。
-...
-</code></pre></div>
 <hr />
 <h2 id="4-runtime-linker">4. 第三阶段：终极重构 (Runtime Linker)</h2>
 <h3 id="41">4.1 数据清洗与合并</h3>
-<p>虽然我分别拿到了“逻辑”和“文本”，但手动比对两者极其低效。更棘手的问题是：</p>
-<ul>
-<li><strong>脏数据 (Dirty Data)</strong>：逻辑层提取的 ID 往往夹带元数据（如 <code>Newscript #36.1 |#~3fb402f3|</code>），而字典里的 Key 是纯净的 <code>~3fb402f3</code>。这导致直接的字符串匹配（String Matching）失败。</li>
-</ul>
-<p>为了解决这个问题，我开发了一个<strong>运行时连接器 (Runtime Linker)</strong>。它引入了 <strong>正则表达式 (Regular Expressions)</strong> 模块，在内存中动态完成“清洗”与“连接”工作。</p>
-<h3 id="42">4.2 最终解决方案代码</h3>
-<p>该脚本专为 UnityExplorer 的 REPL 环境设计，集成了<strong>正则清洗</strong>、<strong>自动翻译</strong>和<strong>变量汉化</strong>三大功能。</p>
+<p>虽然我分别拿到了“逻辑”和“文本”，但手动比对效率极低。且剧本中的 ID 夹带元数据（如 <code>Newscript #36.1 |#~Hash</code>），导致无法直接匹配字典。</p>
+<p>为此，我开发了最终版的<strong>运行时连接器</strong>，并<strong>合入了最新的标签 (Label) 识别功能</strong>。</p>
+<h3 id="42-all-in-one">4.2 最终解决方案代码 (All-in-One)</h3>
+<p>该脚本专为 UnityExplorer 的 REPL 环境设计，集成了<strong>正则清洗</strong>、<strong>自动翻译</strong>、<strong>标签锚点识别</strong>和<strong>变量汉化</strong>四大功能。</p>
 <details>
 <summary>🔻 点击查看：全能重构工具代码 (Final Version)</summary>
 
 <div class="highlight"><pre><span></span><code><span class="c1">// =============================================================</span>
-<span class="c1">//  工具名称：Naninovel 剧本自动化合并与清洗脚本</span>
+<span class="c1">//  工具名称：Naninovel 剧本自动化合并与清洗脚本 (V3.0 Final)</span>
 <span class="c1">//  环境兼容：UnityExplorer (REPL Safe Mode)</span>
 <span class="c1">//  核心功能：</span>
 <span class="c1">//    1. 内存字典构建 (Memory Mapping)</span>
 <span class="c1">//    2. 正则表达式清洗 (Regex Cleaning)</span>
-<span class="c1">//    3. 变量可视化翻译 (Variable Localization)</span>
+<span class="c1">//    3. 标签锚点识别 (Label Extraction) ★修复合并★</span>
+<span class="c1">//    4. 变量可视化翻译 (Variable Localization)</span>
 <span class="c1">// =============================================================</span>
 
 <span class="c1">// --- [1] 初始化环境 ---</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">sb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">StringBuilder</span><span class="p">();</span>
-<span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;《纸房子》剧本重构报告 - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+<span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;《纸房子》剧本完美重构报告 - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
 <span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;--------------------------------------------------&quot;</span><span class="p">);</span>
 
 <span class="c1">// --- [2] 构建全局哈希索引 (Global Indexing) ---</span>
-<span class="c1">// 使用 Dictionary 提供 O(1) 的查询复杂度</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">globalTextMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">.</span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">allScripts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Resources</span><span class="p">.</span><span class="n">FindObjectsOfTypeAll</span><span class="o">&lt;</span><span class="n">Naninovel</span><span class="p">.</span><span class="n">Script</span><span class="o">&gt;</span><span class="p">();</span>
 
@@ -1662,7 +1518,7 @@
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">script</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
 <span class="w">    </span><span class="k">try</span><span class="w"> </span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// 反射获取 TextMap 容器 (兼容 Field 和 Property)</span>
+<span class="w">        </span><span class="c1">// 获取 TextMap 容器</span>
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">sType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">script</span><span class="p">.</span><span class="n">GetType</span><span class="p">();</span>
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">mapField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sType</span><span class="p">.</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;TextMap&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="n">sType</span><span class="p">.</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;textMap&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">);</span>
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">mapProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;TextMap&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="n">sType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;textMap&quot;</span><span class="p">);</span>
@@ -1673,13 +1529,12 @@
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">textMapObj</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// 深度钻取：定位内部的 idToText 序列化对象</span>
+<span class="w">            </span><span class="c1">// 钻取 idToText</span>
 <span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">targetField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">textMapObj</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;idToText&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">);</span>
 <span class="w">            </span><span class="kt">object</span><span class="w"> </span><span class="n">finalDataMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">targetField</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">targetField</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">textMapObj</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">textMapObj</span><span class="p">;</span>
 
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">finalDataMap</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="c1">// 提取键值对数据</span>
 <span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">dType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">finalDataMap</span><span class="p">.</span><span class="n">GetType</span><span class="p">();</span>
 <span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">kProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;Keys&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="n">dType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;keys&quot;</span><span class="p">);</span>
 <span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">vProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;Values&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="n">dType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;values&quot;</span><span class="p">);</span>
@@ -1694,15 +1549,12 @@
 <span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">kList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">.</span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="n">keys</span><span class="p">);</span>
 <span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">vList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">.</span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="n">vals</span><span class="p">);</span>
 
-<span class="w">                        </span><span class="c1">// 填充全局字典</span>
 <span class="w">                        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">kList</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="w">                        </span><span class="p">{</span>
 <span class="w">                            </span><span class="kt">string</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kList</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
 <span class="w">                            </span><span class="kt">string</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vList</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
 <span class="w">                            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">globalTextMap</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
-<span class="w">                            </span><span class="p">{</span>
 <span class="w">                                </span><span class="n">globalTextMap</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
-<span class="w">                            </span><span class="p">}</span>
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                </span><span class="p">}</span>
@@ -1716,30 +1568,22 @@
 <span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;--------------------------------------------------&quot;</span><span class="p">);</span>
 
 
-<span class="c1">// --- [3] 核心翻译算法 (The Translator) ---</span>
-<span class="c1">// 输入原始乱码字符串，输出清洗后的中文</span>
+<span class="c1">// --- [3] 核心翻译算法 ---</span>
 <span class="n">System</span><span class="p">.</span><span class="n">Func</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TryTranslate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">rawText</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">rawText</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// 1. 尝试直接匹配 (Exact Match)</span>
+<span class="w">    </span><span class="c1">// 1. 直接匹配</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">globalTextMap</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">rawText</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">globalTextMap</span><span class="p">[</span><span class="n">rawText</span><span class="p">];</span>
-
-<span class="w">    </span><span class="c1">// 2. 正则清洗 (Regex Extraction)</span>
-<span class="w">    </span><span class="c1">// 解决 &quot;Newscript #36.1 |#~Hash|&quot; 无法匹配的问题</span>
-<span class="w">    </span><span class="c1">// 使用 System.Text.RegularExpressions 避免 REPL 命名空间冲突</span>
+<span class="w">    </span><span class="c1">// 2. 正则清洗 (System.Text.RegularExpressions)</span>
 <span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">RegularExpressions</span><span class="p">.</span><span class="n">Regex</span><span class="p">.</span><span class="n">Match</span><span class="p">(</span><span class="n">rawText</span><span class="p">,</span><span class="w"> </span><span class="s">@&quot;~[a-zA-Z0-9]+&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">match</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="n">extractedHash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">match</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">globalTextMap</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">extractedHash</span><span class="p">))</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">globalTextMap</span><span class="p">[</span><span class="n">extractedHash</span><span class="p">];</span><span class="w"> </span><span class="c1">// 返回翻译文本</span>
-<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">globalTextMap</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">extractedHash</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">globalTextMap</span><span class="p">[</span><span class="n">extractedHash</span><span class="p">];</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">rawText</span><span class="p">;</span><span class="w"> </span><span class="c1">// 无法翻译则保留原样</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">rawText</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="c1">// 辅助函数：安全获取 Naninovel 封装值</span>
+<span class="c1">// 辅助函数</span>
 <span class="n">System</span><span class="p">.</span><span class="n">Func</span><span class="o">&lt;</span><span class="kt">object</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetNaninovelVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">obj</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
@@ -1752,11 +1596,11 @@
 <span class="p">};</span>
 
 
-<span class="c1">// --- [4] 剧本遍历与重组 (Iteration &amp; Merge) ---</span>
+<span class="c1">// --- [4] 剧本遍历与重组 ---</span>
 <span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">allScripts</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="c1">// 可选：过滤掉非核心剧本</span>
-<span class="w">    </span><span class="c1">// if (!script.name.Contains(&quot;Script&quot;) &amp;&amp; !script.name.Contains(&quot;script&quot;)) continue;</span>
+<span class="w">    </span><span class="c1">// 可选：过滤</span>
+<span class="w">    </span><span class="c1">// if (!script.name.Contains(&quot;Script&quot;)) continue;</span>
 
 <span class="w">    </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">();</span>
 <span class="w">    </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;📄 剧本: {script.name}&quot;</span><span class="p">);</span>
@@ -1769,11 +1613,10 @@
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
 <span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="n">lType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">;</span>
 
-<span class="w">        </span><span class="c1">// Type A: 对话文本行 (GenericText)</span>
+<span class="w">        </span><span class="c1">// Type A: 对话文本行</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lType</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;GenericTextScriptLine&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="c1">// 获取行内指令列表</span>
 <span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">listField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetField</span><span class="p">(</span><span class="s">&quot;inlinedCommands&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Reflection</span><span class="p">.</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">);</span>
 <span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listField</span><span class="o">?.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">IList</span><span class="p">;</span>
 <span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">list</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
@@ -1787,7 +1630,7 @@
 <span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">rawText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetNaninovelVal</span><span class="p">(</span><span class="n">textProp</span><span class="o">?.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">cmd</span><span class="p">));</span>
 <span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">rawAuth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetNaninovelVal</span><span class="p">(</span><span class="n">authProp</span><span class="o">?.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">cmd</span><span class="p">));</span>
 
-<span class="w">                        </span><span class="c1">// 执行翻译</span>
+<span class="w">                        </span><span class="c1">// 翻译</span>
 <span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">cleanText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TryTranslate</span><span class="p">(</span><span class="n">rawText</span><span class="p">);</span>
 <span class="w">                        </span><span class="kt">var</span><span class="w"> </span><span class="n">cleanAuth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TryTranslate</span><span class="p">(</span><span class="n">rawAuth</span><span class="p">);</span>
 
@@ -1798,7 +1641,19 @@
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="c1">// Type B: 逻辑指令行 (Command)</span>
+<span class="w">        </span><span class="c1">// Type B: 标签行 (★ 新增合并 ★)</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">lType</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;LabelScriptLine&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">labelProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;LabelText&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">labelVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">labelProp</span><span class="o">?.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="o">?.</span><span class="n">ToString</span><span class="p">();</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">labelVal</span><span class="p">))</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex:D4}] 🔖 [标签] {labelVal}&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// Type C: 逻辑指令行</span>
 <span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">lType</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;CommandScriptLine&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">cmdProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;Command&quot;</span><span class="p">);</span>
@@ -1813,7 +1668,6 @@
 
 <span class="w">                    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">fields</span><span class="p">)</span>
 <span class="w">                    </span><span class="p">{</span>
-<span class="w">                         </span><span class="c1">// 过滤无关元数据</span>
 <span class="w">                         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;LineNumber&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Indent&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;PlaybackSpot&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
 
 <span class="w">                         </span><span class="kt">var</span><span class="w"> </span><span class="n">valObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">cmdObj</span><span class="p">);</span>
@@ -1821,9 +1675,8 @@
 
 <span class="w">                         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">strVal</span><span class="p">))</span>
 <span class="w">                         </span><span class="p">{</span>
-<span class="w">                             </span><span class="c1">// 特殊处理：选项文本也需要翻译</span>
+<span class="w">                             </span><span class="c1">// 尝试翻译选项文本和带 Hash 的参数</span>
 <span class="w">                             </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;Choice&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">Name</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;ChoiceText&quot;</span><span class="p">))</span><span class="w"> </span><span class="n">strVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TryTranslate</span><span class="p">(</span><span class="n">strVal</span><span class="p">);</span>
-<span class="w">                             </span><span class="c1">// 尝试翻译任何包含 Hash 特征的参数</span>
 <span class="w">                             </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">strVal</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;~&quot;</span><span class="p">))</span><span class="w"> </span><span class="n">strVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TryTranslate</span><span class="p">(</span><span class="n">strVal</span><span class="p">);</span>
 
 <span class="w">                             </span><span class="n">paramInfo</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&quot;{f.Name}=[{strVal}]&quot;</span><span class="p">);</span>
@@ -1831,7 +1684,6 @@
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                    </span><span class="kt">string</span><span class="w"> </span><span class="n">allParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">&quot;, &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">paramInfo</span><span class="p">.</span><span class="n">ToArray</span><span class="p">());</span>
 
-<span class="w">                    </span><span class="c1">// 格式化输出逻辑块</span>
 <span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;Choice&quot;</span><span class="p">))</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex:D4}] 🔘 [选项] {allParams}&quot;</span><span class="p">);</span>
 <span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Set&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;SetCustomVariable&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex:D4}] 🔧 [变量] {allParams}&quot;</span><span class="p">);</span>
 <span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">cName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Goto&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;   [{lineIndex:D4}] 🔀 [跳转] {allParams}&quot;</span><span class="p">);</span>
@@ -1844,10 +1696,9 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// --- [5] 数据导出与后处理 (Export &amp; Post-Processing) ---</span>
+<span class="c1">// --- [5] 导出与后处理 ---</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">finalContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
 
-<span class="c1">// 批量替换变量代号为中文角色名，提升可读性</span>
 <span class="n">finalContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">finalContent</span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;WYH&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;王艺菡&quot;</span><span class="p">)</span>
 <span class="w">                           </span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;LT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;陆婷&quot;</span><span class="p">)</span>
 <span class="w">                           </span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;XMM&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;徐敏敏&quot;</span><span class="p">)</span>
@@ -1856,16 +1707,16 @@
 <span class="w">                           </span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;Expression=&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;计算: &quot;</span><span class="p">);</span>
 
 <span class="kt">var</span><span class="w"> </span><span class="n">desktop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Environment</span><span class="p">.</span><span class="n">GetFolderPath</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Environment</span><span class="p">.</span><span class="n">SpecialFolder</span><span class="p">.</span><span class="n">Desktop</span><span class="p">);</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">exportPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">desktop</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PaperHouse_Final_Translated.txt&quot;</span><span class="p">);</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">exportPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">desktop</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PaperHouse_Final_Merged.txt&quot;</span><span class="p">);</span>
 
 <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="n">WriteAllText</span><span class="p">(</span><span class="n">exportPath</span><span class="p">,</span><span class="w"> </span><span class="n">finalContent</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">);</span>
-<span class="n">Naninovel</span><span class="p">.</span><span class="n">Engine</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;✅ 剧本重构完成！输出文件: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">exportPath</span><span class="p">);</span>
+<span class="n">Naninovel</span><span class="p">.</span><span class="n">Engine</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;✅ 剧本完美重构完成！输出文件: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">exportPath</span><span class="p">);</span>
 </code></pre></div>
 
 </details>
 
 <h2 id="5">5. 最终成果</h2>
-<p>通过上述工具的处理，我成功将原始的“黑盒”剧本转化为完全可读的中文文档。</p>
+<p>通过上述工具的处理，我成功将原始的“黑盒”剧本转化为完全可读的中文文档。现在，不仅能看到对话，还能通过<strong>标签 (Label)</strong> 精确追踪剧情跳转的逻辑。</p>
 <p><strong>🔴 处理前 (Raw Data):</strong></p>
 <blockquote>
 <p><code>[36] [剧情] wyh：Newscript #36.1 |#~3fb402f3|</code>
@@ -1874,9 +1725,11 @@
 <p><strong>🟢 处理后 (Processed Data):</strong></p>
 <blockquote>
 <p><code>[0036] 王艺菡：怎么今天早上迟到了这么久？</code>
-<code>[0037] 🔘 [选项] ChoiceText=[2017年 12月 5日] GotoPath=[Scene2]</code></p>
+<code>[0037] 🔘 [选项] ChoiceText=[2017年 12月 5日] GotoPath=[Scene2]</code>
+<code>[0045] 🔖 [标签] Scene2_Start</code></p>
 </blockquote>
 <p>该方案不仅解决了本地化文本提取的问题，还为后续的攻略逻辑分析提供了最直观的数据支持。</p>
+<p><a href="../../assets/files/sweethome.txt" download="SweetHome.txt">⛇点击下载纸房子完整剧本</a></p>
 
 
 

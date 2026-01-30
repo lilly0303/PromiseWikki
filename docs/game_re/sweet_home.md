@@ -522,3 +522,5 @@ Naninovel.Engine.Log("✅ 剧本完美重构完成！输出文件: " + exportPat
 > `[0045] 🔖 [标签] Scene2_Start`
 
 该方案不仅解决了本地化文本提取的问题，还为后续的攻略逻辑分析提供了最直观的数据支持。
+
+<a href="../../assets/files/sweethome.txt" download="SweetHome.txt">⛇点击下载纸房子完整剧本</a>

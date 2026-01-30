@@ -4,10 +4,12 @@ site_author: Me
 
 # 核心主题配置
 
+theme:
+  name: material
+  language: zh
   # 网站图标
-  icon:
-    logo: assets/my-icon.png 
-    favicon: assets/my-icon.png 
+  logo: assets/logo.png
+  favicon: assets/logo.png
 
   palette:
     # --- ☀️ 白天模式 ---
@@ -71,4 +73,3 @@ nav:
       - '影视与追番': resources/media.md
       - '实用工具': resources/tools.md
       - '网盘搜索': resources/disks.md
-      - '视觉小说素材': resources/visual_novel.md

@@ -163,12 +163,6 @@
     * [EN Yomimanga](https://yomimanga.com/)
 
 
-??? success "🎮 视觉小说素材 (点击展开)"
-
-    * [Itch.io](https://itch.io) - 独立游戏素材
-    * [Ren'Py 官网](https://www.renpy.org) - 引擎文档
-    * <a href="../assets/files/SweetHome.pdf" download="纸房子剧本.pdf">纸房子剧本 (点击下载)</a>
-
 ??? tip "🛠️ 实用工具 (AI/转换/下载)"
 
     * [简单搜索 (影视聚合)](https://jiandantv.cc/)

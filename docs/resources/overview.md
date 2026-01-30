@@ -67,7 +67,9 @@
         * [trantor](https://trantor.is/)
 
     ??? quote " Part 5. 阅读 APP 与书源 (神器)"
+
         **推荐 APP 下载：**
+
         * [阅读APP (Android开源神器)](https://github.com/gedoor/MyBookshelf)
         * [一起搜Pro (Android)](https://www.yqs8.com/)
         * [静读天下 (Android)](http://www.moondownload.com/chinese.html)
@@ -76,6 +78,7 @@
 
         ---
         **🛠️ 「阅读」APP 书源导入教程：**
+
         1. 打开 APP -> 右下角「我的」 -> 「书源管理」
         2. 点击右上角三个点 -> 「网络导入」
         3. 复制下方任意一个链接填入即可：
@@ -165,11 +168,7 @@
     * [EN Yomimanga](https://yomimanga.com/)
 
 
-??? quote " 视觉小说素材 (点击展开)"
 
-    * [Itch.io](https://itch.io) - 独立游戏素材
-    * [Ren'Py 官网](https://www.renpy.org) - 引擎文档
-    * <a href="../assets/files/SweetHome.pdf" download="纸房子剧本.pdf">纸房子剧本 (点击下载)</a>
 
 ??? quote " 实用工具 (AI/转换/下载)"
 
@@ -194,7 +193,6 @@
     * [爱看](https://v.ikanbot.com/)
     * [茶杯虎](https://www.725998.com/)
     * [SunshineBoy](https://openlist.sunshineboy.top/)
-    * [梓澪の妙妙屋](https://zi6.cc/)
     * [洛琪希](https://pan.roxylib.com/)
     * [影猫](https://ymck.pro/)
     * [楚门](https://www.chumenys.com/)
