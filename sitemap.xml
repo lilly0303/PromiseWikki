@@ -2,54 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://example.com/</loc>
-         <lastmod>2026-01-29</lastmod>
+         <lastmod>2026-01-30</lastmod>
     </url>
     <url>
          <loc>https://example.com/links/</loc>
-         <lastmod>2026-01-29</lastmod>
+         <lastmod>2026-01-30</lastmod>
     </url>
     <url>
          <loc>https://example.com/python_tips/</loc>
-         <lastmod>2026-01-29</lastmod>
+         <lastmod>2026-01-30</lastmod>
+    </url>
+    <url>
+         <loc>https://example.com/assets/scripts/%E7%BA%B8%E6%88%BF%E5%AD%90/%E6%8F%90%E5%8F%96%E5%AD%97%E5%85%B8%E4%BB%A3%E7%A0%81/</loc>
+         <lastmod>2026-01-30</lastmod>
+    </url>
+    <url>
+         <loc>https://example.com/assets/scripts/%E7%BA%B8%E6%88%BF%E5%AD%90/%E6%8F%90%E5%8F%96%E5%AE%8C%E6%95%B4%E5%89%A7%E6%9C%AC/</loc>
+         <lastmod>2026-01-30</lastmod>
+    </url>
+    <url>
+         <loc>https://example.com/assets/scripts/%E7%BA%B8%E6%88%BF%E5%AD%90/%E7%BA%B8%E6%88%BF%E5%AD%90%E5%9F%BA%E6%9C%AC%E9%80%BB%E8%BE%91%E6%8F%90%E5%8F%96%E4%BB%A3%E7%A0%81/</loc>
+         <lastmod>2026-01-30</lastmod>
+    </url>
+    <url>
+         <loc>https://example.com/game_re/sweet_home/</loc>
+         <lastmod>2026-01-30</lastmod>
     </url>
     <url>
          <loc>https://example.com/resources/comics/</loc>
-         <lastmod>2026-01-29</lastmod>
+         <lastmod>2026-01-30</lastmod>
     </url>
     <url>
          <loc>https://example.com/resources/disks/</loc>
-         <lastmod>2026-01-29</lastmod>
+         <lastmod>2026-01-30</lastmod>
     </url>
     <url>
          <loc>https://example.com/resources/media/</loc>
-         <lastmod>2026-01-29</lastmod>
+         <lastmod>2026-01-30</lastmod>
     </url>
     <url>
          <loc>https://example.com/resources/overview/</loc>
-         <lastmod>2026-01-29</lastmod>
+         <lastmod>2026-01-30</lastmod>
     </url>
     <url>
          <loc>https://example.com/resources/tools/</loc>
-         <lastmod>2026-01-29</lastmod>
+         <lastmod>2026-01-30</lastmod>
     </url>
     <url>
          <loc>https://example.com/resources/visual_novel/</loc>
-         <lastmod>2026-01-29</lastmod>
+         <lastmod>2026-01-30</lastmod>
     </url>
     <url>
          <loc>https://example.com/resources/novels/apps/</loc>
-         <lastmod>2026-01-29</lastmod>
+         <lastmod>2026-01-30</lastmod>
     </url>
     <url>
          <loc>https://example.com/resources/novels/download/</loc>
-         <lastmod>2026-01-29</lastmod>
+         <lastmod>2026-01-30</lastmod>
     </url>
     <url>
          <loc>https://example.com/resources/novels/search/</loc>
-         <lastmod>2026-01-29</lastmod>
+         <lastmod>2026-01-30</lastmod>
     </url>
     <url>
          <loc>https://example.com/resources/novels/sites/</loc>
-         <lastmod>2026-01-29</lastmod>
+         <lastmod>2026-01-30</lastmod>
     </url>
 </urlset>
