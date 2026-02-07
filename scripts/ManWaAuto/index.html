@@ -1,0 +1,1769 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Me">
+      
+      
+        <link rel="canonical" href="https://lilly0303.github.io/PromiseWikki/scripts/ManWaAuto/">
+      
+      
+        <link rel="prev" href="../../game_re/sweet_home/">
+      
+      
+        <link rel="next" href="../../resources/overview/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>漫蛙自动签到 - PromiseWikki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tls-web" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="PromiseWikki" class="md-header__button md-logo" aria-label="PromiseWikki" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PromiseWikki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              漫蛙自动签到
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="pink"  aria-label="切换到 午夜派对🍀"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到 午夜派对🍀" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="pink" data-md-color-accent="pink"  aria-label="切换到 🍰奶油午后🍰"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到 🍰奶油午后🍰" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ・°☆首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../overview/" class="md-tabs__link">
+          
+  
+  
+  ^_^工具仓库
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../resources/overview/" class="md-tabs__link">
+          
+  
+  
+  ★ 超级pocket
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="PromiseWikki" class="md-nav__button md-logo" aria-label="PromiseWikki" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    PromiseWikki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ・°☆首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ^_^工具仓库
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ^_^工具仓库
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    杂货铺
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    游戏逆向解包
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    游戏逆向解包
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game_re/sweet_home/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    纸房子
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动化脚本
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    自动化脚本
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    漫蛙自动签到
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    漫蛙自动签到
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-background-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 项目背景与技术选型 (Background &amp; Stack)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-reconnaissance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 第一阶段：威胁建模与侦查 (Reconnaissance)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 第一阶段：威胁建模与侦查 (Reconnaissance)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-anti-debugging-bypass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 前端反调试机制 (Anti-Debugging Bypass)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 流量持久化与会话重放
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-static-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 第二阶段：静态代码审计 (Static Analysis)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 第二阶段：静态代码审计 (Static Analysis)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 关键词检索与逻辑定位
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 接口反编译
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-waf-waf-evasion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 第三阶段：WAF 渗透与防御规避 (WAF Evasion)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 第三阶段：WAF 渗透与防御规避 (WAF Evasion)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-403-forbidden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 403 Forbidden 异常分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 解决方案：TLS 指纹伪造
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 第四阶段：多账户架构与数据清洗 (Architecture)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 第四阶段：多账户架构与数据清洗 (Architecture)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 身份验证机制分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-sanitization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 数据清洗 (Sanitization)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-jitter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 并发控制与风控规避 (Jitter)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 最终成果与部署 (Conclusion)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 最终成果与部署 (Conclusion)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 执行结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 部署建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 最终交付代码 (Source Code)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ★ 超级pocket
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ★ 超级pocket
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常用链接 (总览)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    小说资源
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    小说资源
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/novels/search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    搜索与导航
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/novels/sites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    在线阅读
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/novels/download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    下载与APP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/comics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    漫画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    影视与追番
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实用工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/disks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网盘搜索
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-background-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 项目背景与技术选型 (Background &amp; Stack)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-reconnaissance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 第一阶段：威胁建模与侦查 (Reconnaissance)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 第一阶段：威胁建模与侦查 (Reconnaissance)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-anti-debugging-bypass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 前端反调试机制 (Anti-Debugging Bypass)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 流量持久化与会话重放
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-static-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 第二阶段：静态代码审计 (Static Analysis)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 第二阶段：静态代码审计 (Static Analysis)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 关键词检索与逻辑定位
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 接口反编译
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-waf-waf-evasion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 第三阶段：WAF 渗透与防御规避 (WAF Evasion)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 第三阶段：WAF 渗透与防御规避 (WAF Evasion)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-403-forbidden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 403 Forbidden 异常分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 解决方案：TLS 指纹伪造
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 第四阶段：多账户架构与数据清洗 (Architecture)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 第四阶段：多账户架构与数据清洗 (Architecture)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 身份验证机制分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-sanitization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 数据清洗 (Sanitization)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-jitter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 并发控制与风控规避 (Jitter)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 最终成果与部署 (Conclusion)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 最终成果与部署 (Conclusion)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 执行结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 部署建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 最终交付代码 (Source Code)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p>title: Reverse Engineering Report: Manwa User-Agent Automation</p>
+<p>date: 2026-02-08</p>
+<p>author: promise</p>
+<p>tags:
+  - Protocol Analysis
+  - Python
+  - WAF Evasion
+  - Network Security
+categories:
+  - Engineering Log</p>
+<h1 id="tls-web">协议逆向工程报告：基于 TLS 指纹伪造的 Web 自动化方案</h1>
+<div class="admonition abstract">
+<p class="admonition-title">摘要 (Abstract)</p>
+<p>本文档详细记录了针对目标 Web 资源站点（Manwa）的自动化签到系统的开发过程。项目旨在通过逆向分析 HTTP 通信协议，绕过前端反调试机制与后端 Cloudflare WAF 防护，实现无人值守的账户状态维护。</p>
+<p>分析过程涵盖了从 OSI 模型应用层（HTTP Payload）到表示层（TLS Handshake）的全链路调试。最终方案采用 Python 编写，集成了指纹伪造、会话劫持与多线程并发控制技术。</p>
+</div>
+<hr />
+<h2 id="1-background-stack">1. 项目背景与技术选型 (Background &amp; Stack)</h2>
+<p>在 Web 自动化领域，基于 Selenium/Playwright 的“浏览器模拟”方案虽然直观，但资源占用高、执行效率低。为了在低功耗设备（如云服务器或后台服务）上长期运行，基于 <strong>HTTP 协议逆向</strong> 的“无头（Headless）”方案是最佳选择。</p>
+<p><strong>技术栈 (Tech Stack)</strong>：</p>
+<ul>
+<li><strong>Language</strong>: Python 3.10+</li>
+<li><strong>Network Analysis</strong>: Chrome DevTools (Network/Sources Panel)</li>
+<li><strong>WAF Bypass</strong>: Cloudscraper (基于 OpenSSL 修改的底层网络库)</li>
+<li><strong>Session Management</strong>: Cookie Injection</li>
+</ul>
+<hr />
+<h2 id="2-reconnaissance">2. 第一阶段：威胁建模与侦查 (Reconnaissance)</h2>
+<h3 id="21-anti-debugging-bypass">2.1 前端反调试机制 (Anti-Debugging Bypass)</h3>
+<p>在初始化侦查阶段，尝试开启 DevTools 控制台时，目标站点立即触发了基于 JavaScript 的无限 <code>debugger</code> 循环。这是一种常见的前端防御手段，旨在阻止逆向工程师挂起线程查看变量。</p>
+<ul>
+<li><strong>现象描述</strong>：页面渲染中断，主线程被锁死在 <code>paused in debugger</code> 状态。</li>
+<li><strong>对抗策略</strong>：<ol>
+<li>进入 Chrome Sources 面板。</li>
+<li>启用 <strong>Deactivate breakpoints</strong>（禁用所有断点）功能。</li>
+<li>强制通过 <code>Step over</code> 跳出陷阱逻辑。</li>
+</ol>
+</li>
+</ul>
+<h3 id="22">2.2 流量持久化与会话重放</h3>
+<p>目标站点的登录逻辑伴随 <code>302 Found</code> 重定向，导致 Network 面板的日志在页面跳转瞬间被清空。</p>
+<div class="admonition info">
+<p class="admonition-title">关键配置</p>
+<p>启用 Network 面板的 <code>Preserve log</code> 选项，成功捕获了跳转前的 HTTP 数据包。分析发现，服务器并未通过 JSON 返回 Token，而是依赖 <code>Set-Cookie</code> 下发 <code>PHPSESSID</code> 进行状态管理。</p>
+</div>
+<hr />
+<h2 id="3-static-analysis">3. 第二阶段：静态代码审计 (Static Analysis)</h2>
+<p>由于分析时账号处于“已签到”状态，无法通过点击按钮捕获动态请求。分析转向静态源码审计，旨在还原业务逻辑。</p>
+<h3 id="31">3.1 关键词检索与逻辑定位</h3>
+<p>利用 DevTools 的全局搜索（<code>Ctrl+Shift+F</code>），针对关键词 <code>sign</code>、<code>daily</code>、<code>ucenter</code> 进行检索。在 <code>inject-web.js</code> 与 <code>ucenter</code> 模块中发现核心逻辑。</p>
+<h3 id="32">3.2 接口反编译</h3>
+<p>通过阅读压缩后的 JavaScript 代码，重构出如下伪代码逻辑：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 伪代码：重构后的前端业务逻辑</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">checkUserStatus</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 目标并非独立的“签到按钮”，而是伴随“福利/积分”页面的加载触发</span>
+<span class="w">    </span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[https://manwa.me/users/welfare](https://manwa.me/users/welfare)&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// [Target Endpoint]</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">dataType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;action&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;point&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// [Action Dispatcher]</span>
+<span class="w">            </span><span class="s2">&quot;page&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;X-Requested-With&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;XMLHttpRequest&quot;</span><span class="w"> </span><span class="c1">// 必须携带，否则会被识别为直接访问</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// 如果 response.msg == &quot;ok&quot;，则触发前端 Toast 弹窗提示“已签到”</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">err</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">renderPointList</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">list</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>结论</strong>：该接口具备“查询即执行”的特性。访问积分查询接口 (<code>/users/welfare</code>) 会产生副作用（Side Effect），即服务端会自动检查并执行签到。</p>
+<hr />
+<h2 id="4-waf-waf-evasion">4. 第三阶段：WAF 渗透与防御规避 (WAF Evasion)</h2>
+<h3 id="41-403-forbidden">4.1 403 Forbidden 异常分析</h3>
+<p>初次使用 Python 标准库 <code>requests</code> 复现 Payload 时，服务器返回 <code>403 Forbidden</code> 状态码，响应体包含 Cloudflare 的 Challenge 页面。</p>
+<ul>
+<li><strong>异常原因</strong>：TLS 指纹识别（JA3 Fingerprinting）。
+Cloudflare 的防火墙不仅检查 HTTP Headers（如 User-Agent），更会深入检查 TCP/IP 握手阶段的 <strong>TLS Client Hello</strong> 数据包。Python <code>requests</code> 库发出的加密套件（Cipher Suites）列表、TLS 扩展顺序与真实浏览器存在显著差异。</li>
+</ul>
+<h3 id="42-tls">4.2 解决方案：TLS 指纹伪造</h3>
+<p>放弃标准库，引入 <strong>Cloudscraper</strong> 中间件。该库在底层修改了 OpenSSL 的握手行为，使其能够通过 Cloudflare 的启发式检测。</p>
+<div class="admonition success">
+<p class="admonition-title">指纹配置策略</p>
+</div>
+<p><code>python # 模拟 Chrome 浏览器在 Windows 平台下的 TLS 特征 scraper = cloudscraper.create_scraper( browser={ 'browser': 'chrome', 'platform': 'windows', 'mobile': False } )</code></p>
+<p>实施该策略后，HTTP 状态码由 <code>403</code> 恢复为 <code>200 OK</code>，成功建立加密隧道。</p>
+<hr />
+<h2 id="5-architecture">5. 第四阶段：多账户架构与数据清洗 (Architecture)</h2>
+<h3 id="51">5.1 身份验证机制分析</h3>
+<p>分析 Cookie 结构发现，目标站点采用了较为传统的“明文哈希”验证：</p>
+<ul>
+<li><code>uid</code>: 用户唯一标识 ID。</li>
+<li><code>passwd</code>: 用户密码的 Hash 值。</li>
+</ul>
+<p><strong>安全隐患</strong>：该机制允许永久性会话劫持（Persistent Session Hijacking）。只要 <code>passwd</code> Hash 不变，即使 <code>PHPSESSID</code> 过期，携带这两个字段的请求也会被服务器重新认可并颁发新会话。</p>
+<h3 id="52-sanitization">5.2 数据清洗 (Sanitization)</h3>
+<p>在多账号迭代开发中，遇到 <code>Invalid Header</code> 异常。经调试，系从浏览器 Copy Cookie 时引入了 <strong>CRLF (回车换行符)</strong> 或 <strong>尾部空格</strong>。</p>
+<p>为此，在请求构造层引入了预处理逻辑：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">sanitize_cookie</span><span class="p">(</span><span class="n">raw_cookie</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    清洗 Cookie 字符串，移除隐形字符，防止 HTTP 协议解析错误</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">raw_cookie</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Empty Cookie Detected&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">raw_cookie</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="53-jitter">5.3 并发控制与风控规避 (Jitter)</h3>
+<p>为了防止高频请求触发服务端的速率限制（Rate Limiting）或 IP 封禁，我们在任务队列中引入了 <strong>随机抖动 (Jitter)</strong> 机制。</p>
+<ul>
+<li><strong>策略</strong>：在每个账号任务执行完毕后，挂起线程随机时长（2~5秒）。</li>
+<li><strong>目的</strong>：模拟真实人类操作的非线性时间间隔，降低行为分析（Behavioral Analysis）风控的触发概率。</li>
+</ul>
+<hr />
+<h2 id="6-conclusion">6. 最终成果与部署 (Conclusion)</h2>
+<h3 id="61">6.1 执行结果</h3>
+<p>脚本运行日志显示，自动化流程已跑通：</p>
+<div class="highlight"><pre><span></span><code>[INFO] 🚀 [Account 1] Starting task...
+[INFO]    -&gt; Accessing User Center (Pre-flight request)...
+[INFO]    -&gt; Fetching welfare data points...
+[SUCCESS] ✅ [Account 1] Operation successful. Response: {&quot;msg&quot;:&quot;ok&quot;,&quot;err&quot;:0,&quot;list&quot;:[]}
+[INFO] ⏳ Sleeping for 3 seconds...
+</code></pre></div>
+<h3 id="62">6.2 部署建议</h3>
+<p>该脚本已去除所有阻塞性输入（如 <code>input()</code>），适配 CI/CD 环境或系统级定时任务（Windows Task Scheduler / Linux Crontab）。</p>
+<p><strong>风险提示 (Disclaimer)</strong>：
+本逆向工程仅用于学习与个人账号维护。鉴于 Cookie 中包含敏感凭证（<code>passwd</code>），建议在代码中通过环境变量（Environment Variables）注入 Cookie，严禁将凭证硬编码上传至公共代码仓库。</p>
+<h3 id="63-source-code">6.3 最终交付代码 (Source Code)</h3>
+<p>针对多账户并发与风控规避的需求，最终封装的 Python 脚本如下。该脚本已移除阻塞性交互，可直接部署于服务器定时任务。</p>
+<details class="example">
+<summary>点击展开：完整自动化脚本 (Multi-Account Support)</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">cloudscraper</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="c1"># ================= 配置区 =================</span>
+<span class="c1"># 在这里填入你的两个账号的完整 Cookie</span>
+<span class="n">accounts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># 账号 1 的 Cookie</span>
+    <span class="s2">&quot;这里填入第一个账号的完整Cookie...&quot;</span><span class="p">,</span>
+
+    <span class="c1"># 账号 2 的 Cookie</span>
+    <span class="s2">&quot;这里填入第二个账号的完整Cookie...&quot;</span>
+<span class="p">]</span>
+
+<span class="c1"># ================= 核心代码 =================</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_sign_in</span><span class="p">(</span><span class="n">cookie_str</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🚀 [账号 </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">] 正在启动任务...&quot;</span><span class="p">)</span>
+
+    <span class="c1"># ⚡️ 优化点：明确告诉 scraper 我们要伪装成什么浏览器</span>
+    <span class="c1"># 这能有效减少 403 的概率，模拟 Windows 平台的 Chrome</span>
+    <span class="n">scraper</span> <span class="o">=</span> <span class="n">cloudscraper</span><span class="o">.</span><span class="n">create_scraper</span><span class="p">(</span>
+        <span class="n">browser</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;browser&#39;</span><span class="p">:</span> <span class="s1">&#39;chrome&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;platform&#39;</span><span class="p">:</span> <span class="s1">&#39;windows&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;mobile&#39;</span><span class="p">:</span> <span class="kc">False</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+
+    <span class="n">ucenter_url</span> <span class="o">=</span> <span class="s2">&quot;[https://manwa.me/ucenter](https://manwa.me/ucenter)&quot;</span>
+    <span class="n">welfare_url</span> <span class="o">=</span> <span class="s2">&quot;[https://manwa.me/users/welfare](https://manwa.me/users/welfare)&quot;</span>
+
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Referer&quot;</span><span class="p">:</span> <span class="s2">&quot;[https://manwa.me/ucenter](https://manwa.me/ucenter)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Origin&quot;</span><span class="p">:</span> <span class="s2">&quot;[https://manwa.me](https://manwa.me)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;X-Requested-With&quot;</span><span class="p">:</span> <span class="s2">&quot;XMLHttpRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Cookie&quot;</span><span class="p">:</span> <span class="n">cookie_str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>  <span class="c1"># 使用当前账号的 Cookie (自动去除首尾空格)</span>
+    <span class="p">}</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># 1. 访问用户中心 (预热，触发隐式签到)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   -&gt; 正在访问用户中心...&quot;</span><span class="p">)</span>
+        <span class="n">scraper</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ucenter_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+        <span class="c1"># 休息 1-3 秒，模拟真人操作速度 (Jitter)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+        <span class="c1"># 2. 请求福利接口 (查积分/补签)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   -&gt; 正在获取积分数据...&quot;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;point&quot;</span><span class="p">,</span> <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">}</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">welfare_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="c1"># 3. 结果判断</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;login&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span> <span class="ow">or</span> <span class="s2">&quot;用户登录&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ [账号 </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">] 失败：Cookie 已失效 (被重定向到登录页)。&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># 截取返回的一小段看看</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ [账号 </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">] 成功！服务器返回: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">60</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">403</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🚫 [账号 </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">] 403 被拦截：请尝试断开网络(重启路由器/切热点)换个IP再试。&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️ [账号 </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">] 未知状态: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ [账号 </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">] 报错: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ================= 主程序 =================</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📋 共加载了 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">accounts</span><span class="p">)</span><span class="si">}</span><span class="s2"> 个账号&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cookie</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">accounts</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cookie</span> <span class="ow">or</span> <span class="s2">&quot;PHPSESSID&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cookie</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️ 跳过账号 </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">：Cookie 格式看起来不对（为空或缺少PHPSESSID）&quot;</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="n">run_sign_in</span><span class="p">(</span><span class="n">cookie</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+        <span class="c1"># ⚡️ 优化点：每个账号跑完后，强制休息 5 秒</span>
+        <span class="c1"># 这是为了防止服务器觉得“怎么这人一秒钟切一个号”，从而触发 IP 风控</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">accounts</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⏳ 等待 5 秒切换下一个账号...&quot;</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># input(&quot;\n所有账号运行完毕，按回车退出...&quot;) # 自动化部署时注释此行</span>
+</code></pre></div>
+</details>
+<hr />
+<p><em>Generated by Engineering Log System v1.0</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>
