@@ -7,4 +7,4 @@
 !!! quote " 导航指引 "
 
     * [工具仓库^_^](overview.md)：小小工具箱。
-    * [˗ˏˋ ★ ˎˊ˗超级pocket](resources/overview.md)：皇帝的宝藏。
+    * [★超级pocket](resources/overview.md)：皇帝的宝藏。

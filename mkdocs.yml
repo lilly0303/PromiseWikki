@@ -63,7 +63,9 @@ nav:
       - '杂货铺': overview.md
       - '游戏逆向解包':
           - '纸房子': game_re/sweet_home.md
-  - '˗ˏˋ ★ ˎˊ˗超级pocket':
+      - '自动化脚本' :
+          - '漫蛙自动签到': scripts/ManWaAuto.md
+  - '★ 超级pocket':
       - '常用链接 (总览)': resources/overview.md
       - '小说资源':
           - '搜索与导航': resources/novels/search.md
