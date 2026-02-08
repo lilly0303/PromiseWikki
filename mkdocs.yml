@@ -65,6 +65,7 @@ nav:
           - '纸房子': game_re/sweet_home.md
       - '自动化脚本' :
           - '漫蛙自动签到': scripts/ManWaAuto.md
+          - '楽一番自动签到': scripts/Leyifan Automation.md
   - '★ 超级pocket':
       - '常用链接 (总览)': resources/overview.md
       - '小说资源':
