@@ -1,10 +1,10 @@
-#    𖠚ᐝPromiseWikki⁺.☘︎
+#    PromiseWikki⁺.☘︎
 
-!!! quote "˗ˏˋ ★ ˎˊ˗🍥家产镇楼💖&#xFE0E; "
-    ![刺客](assets/images/刺客.jpg){ align="center" }
+!!! quote "★家产镇楼 "
+    ![kk](assets/images/kk.jpg){ align="center" }
 
 
-!!! quote " 导航指引 "
+!!! quote " GUIDE"
 
-    * [工具仓库^_^](overview.md)：小小工具箱。
-    * [★超级pocket](resources/overview.md)：皇帝的宝藏。
+    * [TOOLS](overview.md)：工具箱。
+    * [POCKET](resources/overview.md)：KK。

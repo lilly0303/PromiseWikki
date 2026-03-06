@@ -58,15 +58,15 @@ markdown_extensions:
 # --- 🧭 导航菜单 ---
 # ⚠️ 注意：下面的文件路径必须真实存在！
 nav:
-  - '・°☆首页': index.md
-  - '^_^工具仓库':
+  - 'HOME': index.md
+  - 'TOOLS':
       - '杂货铺': overview.md
       - '游戏逆向解包':
           - '纸房子': game_re/sweet_home.md
       - '自动化脚本' :
           - '漫蛙自动签到': scripts/ManWaAuto.md
           - '楽一番自动签到': scripts/Leyifan Automation.md
-  - '★ 超级pocket':
+  - 'POCKET':
       - '常用链接 (总览)': resources/overview.md
       - '小说资源':
           - '搜索与导航': resources/novels/search.md

@@ -1,8 +1,8 @@
 # 网站链接汇总
 
-??? quote "📚 小说资源合集 (点击展开全部)"
+??? quote " 小说资源合集 (点击展开全部)"
 
-    ??? abstract "🔍 Part 1. 聚合搜索导航 (找书首选)"
+    ??? abstract " Part 1. 聚合搜索导航 (找书首选)"
         * [必应](https://cn.bing.com/)
         * [虫部落快搜](https://search.chongbuluo.com/)
         * [非凡搜索](https://ffsou.com/)
@@ -46,7 +46,7 @@
         * [盐选](https://www.yanxuan.org/)
         * [趣集](https://n.ifun.cool/about)
 
-    ??? success "📥 Part 4. 电子书/TXT 下载站"
+    ??? success " Part 4. 电子书/TXT 下载站"
         * [读书小站](https://ibooks.org.cn/)
         * [个人学习网](http://www.pdfbook.cn/)
         * [万本txt小说下载网](https://10000txt.com/)
@@ -66,7 +66,7 @@
         * [偶书](https://obook.cc/)
         * [trantor](https://trantor.is/)
 
-    ??? tip "📱 Part 5. 阅读 APP 与书源 (神器)"
+    ??? tip " Part 5. 阅读 APP 与书源 (神器)"
         **推荐 APP 下载：**
         * [阅读APP (Android开源神器)](https://github.com/gedoor/MyBookshelf)
         * [一起搜Pro (Android)](https://www.yqs8.com/)
@@ -75,7 +75,7 @@
         * [益达 (Android)](https://github.com/xiaohucode/yidaRule)
 
         ---
-        **🛠️ 「阅读」APP 书源导入教程：**
+        ** 「阅读」APP 书源导入教程：**
         1. 打开 APP -> 右下角「我的」 -> 「书源管理」
         2. 点击右上角三个点 -> 「网络导入」
         3. 复制下方任意一个链接填入即可：
@@ -140,7 +140,7 @@
         * [书友社区](https://sq.wgrid.cn/)
         * [Owllook](https://owlook.com.cn/)
 
-??? note "🎨 漫画 (点击展开)"
+??? note " 漫画 (点击展开)"
 
     * [嗨皮漫画](https://m.happymh.com/)
     * [漫蛙](https://manwajs.vip/)
@@ -163,7 +163,7 @@
     * [EN Yomimanga](https://yomimanga.com/)
 
 
-??? tip "🛠️ 实用工具 (AI/转换/下载)"
+??? tip " 实用工具 (AI/转换/下载)"
 
     * [简单搜索 (影视聚合)](https://jiandantv.cc/)
     * [SOTV (影视搜索)](https://www.sotvla.cc/)
@@ -176,7 +176,7 @@
     * [Vid2X (视频转文字)](https://vid2x.cn/)
     * [LiYing (证件照自动处理)](https://github.com/aoguai/LiYing/releases/tag/v3.1.1)
 
-??? note "🎬 影视 & 动漫 & 追番"
+??? note "S 影视 & 动漫 & 追番"
 
     * [七七](https://www.77kpp.com/)
     * [b-t1207](https://bt1207rv.top/)
