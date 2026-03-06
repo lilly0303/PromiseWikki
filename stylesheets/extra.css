@@ -3,18 +3,19 @@
     1. 全局配色 & 基础设置 (调暗版)
    ========================================================================== */
 :root {
-  --day-pink: #d7d7d7d8;   /* 调暗后的粉色 */
-  --cocoa-brown: #fffffa9e; /* 标准可可色 */
+  --day-pink: #d7d7d7d8;   
+  --cocoa-brown: #fffffa9e; 
+  --black:#000000
 }
 
 /* ==========================================================================
    ☀️ 2. 白天模式背景 (低密度波点 + 调暗色彩)
    ========================================================================== */
 [data-md-color-scheme="default"] {
-    --md-primary-fg-color:        var(--cocoa-brown); /* 导航栏设为可可色 */
-    --md-primary-fg-color--light: #6d5d59;
+    --md-primary-fg-color:  #4545439e; /* 导航栏 */
+    --md-primary-fg-color--light: #000000;
     
-    /* 1. 设置暗藕粉色底色 */
+    /* 1. 设置底色 */
     background-color: #d7d7d7d8 !important; 
     
     /* 2. 降低波点密度：增大 background-size，并调整位置 */
@@ -24,9 +25,9 @@
     background-size: 60px 60px !important; /* 密度减半 */
     background-position: 0 0, 30px 30px !important; 
     
-    --md-default-bg-color: #ceb5b9;
+    --md-default-bg-color: #d7d7d7d8;
 }
-/* 4. 搜索框优化：让它在可可色背景下更高级 */
+/* 4. 搜索框优化 */
 .md-search__form {
     background-color: rgba(0, 0, 0, 0.15) !important;
     border-radius: 20px !important;
@@ -40,7 +41,7 @@
 /* ==========================================================================
    ✨ 3. 内容卡片和字体样式
    ========================================================================== */
-/* 卡片 (白底粉边) */
+/* 卡片  */
 .md-typeset details,
 .md-typeset .admonition {
     background-color: rgba(255, 255, 255, 0.95) !important;
@@ -53,7 +54,7 @@
 /* 卡片标题 */
 .md-typeset summary, .md-typeset .admonition-title {
     padding: 12px 15px !important; 
-    color: #333333 !important;
+    color: #000000 !important;
     font-weight: 700 !important;
     font-size: 0.75rem !important; 
 }
@@ -61,7 +62,7 @@
 .md-typeset .admonition-content,
 .md-typeset details .md-typeset-details__content {
     padding: 20px !important;
-    color: #444 !important;
+    color: #000000 !important;
     font-size: 0.75rem !important; 
     line-height: 1.8 !important;
 }
@@ -85,8 +86,8 @@
     [data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap {
         position: sticky !important;
         top: 20px !important;
-        background-color: rgba(255, 255, 255, 0.05) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        background-color: rgba(255, 255, 255, 0.2) !important;
+        border: 1px solid rgba(255, 255, 255, 0.4) !important;
         box-shadow: none !important;
         border-radius: 12px;
         height: fit-content !important; 
@@ -94,7 +95,7 @@
         margin: 10px 0 10px 10px;
     }
     [data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link {
-        color: var(--cocoa-brown) !important;
+        color: var(--black) !important;
     }
 
    
@@ -112,7 +113,7 @@
     
     /* 大标题变粉色 */
     [data-md-color-scheme="default"] .md-typeset h1 {
-        color: var(--day-pink);
+        color: #000000;
     }
     
     /* 🎀 电脑端：顶部的粉色和纸胶带 */
