@@ -16,17 +16,10 @@ theme:
     - scheme: default
       primary: pink
       accent: pink
-      toggle:
-        icon: material/weather-sunny
-        name: 切换到 午夜派对🍀
 
-    # --- 🌙 黑夜模式 ---
-    - scheme: slate
-      primary: pink
-      accent: pink
-      toggle:
-        icon: material/weather-night
-        name: 切换到 🍰奶油午后🍰
+       
+
+   
 
   features:
     - navigation.tabs

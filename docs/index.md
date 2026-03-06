@@ -1,4 +1,4 @@
-#    PromiseWikki⁺.☘︎
+#    PromiseWikki
 
 !!! quote "★家产镇楼 "
     ![kk](assets/images/kk.jpg){ align="center" }

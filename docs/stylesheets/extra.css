@@ -1,23 +1,22 @@
 
 /* ==========================================================================
-   🌸 1. 全局配色 & 基础设置 (调暗版)
+    1. 全局配色 & 基础设置 (调暗版)
    ========================================================================== */
 :root {
-  --day-pink: #b87c86;   /* 调暗后的粉色 */
-  --cocoa-brown: #524541; /* 标准可可色 */
-  --night-pink: #ffb7c5; 
+  --day-pink: #d7d7d7d8;   
+  --cocoa-brown: #fffffa9e; 
+  --black:#000000
 }
 
 /* ==========================================================================
    ☀️ 2. 白天模式背景 (低密度波点 + 调暗色彩)
    ========================================================================== */
 [data-md-color-scheme="default"] {
-    --md-primary-fg-color:        var(--cocoa-brown); /* 导航栏设为可可色 */
-    --md-primary-fg-color--light: #6d5d59;
-    --md-primary-fg-color--dark:  #3a312e;
+    --md-primary-fg-color:  #4545439e; /* 导航栏 */
+    --md-primary-fg-color--light: #000000;
     
-    /* 1. 设置暗藕粉色底色 */
-    background-color: #ceb5b9 !important; 
+    /* 1. 设置底色 */
+    background-color: #d7d7d7d8 !important; 
     
     /* 2. 降低波点密度：增大 background-size，并调整位置 */
     background-image: 
@@ -26,9 +25,9 @@
     background-size: 60px 60px !important; /* 密度减半 */
     background-position: 0 0, 30px 30px !important; 
     
-    --md-default-bg-color: #ceb5b9;
+    --md-default-bg-color: #d7d7d7d8;
 }
-/* 4. 搜索框优化：让它在可可色背景下更高级 */
+/* 4. 搜索框优化 */
 .md-search__form {
     background-color: rgba(0, 0, 0, 0.15) !important;
     border-radius: 20px !important;
@@ -42,7 +41,7 @@
 /* ==========================================================================
    ✨ 3. 内容卡片和字体样式
    ========================================================================== */
-/* 卡片 (白底粉边) */
+/* 卡片  */
 .md-typeset details,
 .md-typeset .admonition {
     background-color: rgba(255, 255, 255, 0.95) !important;
@@ -55,7 +54,7 @@
 /* 卡片标题 */
 .md-typeset summary, .md-typeset .admonition-title {
     padding: 12px 15px !important; 
-    color: #333333 !important;
+    color: #000000 !important;
     font-weight: 700 !important;
     font-size: 0.75rem !important; 
 }
@@ -63,7 +62,7 @@
 .md-typeset .admonition-content,
 .md-typeset details .md-typeset-details__content {
     padding: 20px !important;
-    color: #444 !important;
+    color: #000000 !important;
     font-size: 0.75rem !important; 
     line-height: 1.8 !important;
 }
@@ -87,8 +86,8 @@
     [data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap {
         position: sticky !important;
         top: 20px !important;
-        background-color: rgba(255, 255, 255, 0.05) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        background-color: rgba(255, 255, 255, 0.2) !important;
+        border: 1px solid rgba(255, 255, 255, 0.4) !important;
         box-shadow: none !important;
         border-radius: 12px;
         height: fit-content !important; 
@@ -96,29 +95,10 @@
         margin: 10px 0 10px 10px;
     }
     [data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link {
-        color: var(--cocoa-brown) !important;
+        color: var(--black) !important;
     }
 
-    /* --- 🌙 黑夜模式侧边栏 --- */
-    [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
-        position: sticky !important;
-        top: 20px !important;
-        height: fit-content !important;
-        padding: 15px 10px !important;
-        margin: 10px 0 10px 10px;
-        border-radius: 12px;
-        background-color: rgba(0, 0, 0, 0.2) !important; 
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
-    }
-    [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link {
-        color: rgba(255, 255, 255, 0.7) !important; 
-    }
-    [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link--active,
-    [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link:hover {
-        color: var(--night-pink) !important; 
-        font-weight: 700;
-    }
+   
 
     /* --- ☀️ 白天模式中间内容 (白色信纸) --- */
     [data-md-color-scheme="default"] .md-content__inner {
@@ -133,7 +113,7 @@
     
     /* 大标题变粉色 */
     [data-md-color-scheme="default"] .md-typeset h1 {
-        color: var(--day-pink);
+        color: #000000;
     }
     
     /* 🎀 电脑端：顶部的粉色和纸胶带 */
@@ -208,100 +188,12 @@
         display: none !important;
     }
 
-    /* --- 🌙 夜间模式手机端适配 (形状大小和白天完全一致，但保持透明) --- */
-    [data-md-color-scheme="slate"] .md-content__inner {
-        /* 1. 形状与位置 (手机端小边距) */
-        margin: 1rem 0.8rem !important;
-        padding: 1.5rem 1rem !important; /* <--- 关键：这里是小边距 */
-        border-radius: 12px !important;
-        
-        /* 2. 颜色与质感 (保持夜间的透明磨砂) */
-        background-color: rgba(255, 255, 255, 0.03) !important; 
-        backdrop-filter: blur(15px) !important;
-        
-        /* 3. 边框处理 */
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        border-top: none !important; 
-        
-        /* 4. 阴影 */
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
-    }
+    
 
 } /* <--- 5. 手机端适配结束 */
 
 
-/* ==========================================================================
-   🌙 6. 夜间模式 (Night Mode) - 沉浸式深夜可可风格
-   ========================================================================== */
-[data-md-color-scheme="slate"] {
-  --md-primary-fg-color:        var(--night-pink);
-  --md-primary-fg-color--light: var(--night-pink);
-  
-  /* ⭐️ 核心修改 1：夜间模式波点背景 */
-  background-color: #1a1b1e !important; 
-  background-image: 
-      radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 2px),
-      radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 2px) !important;
-  background-size: 30px 30px !important;
-  background-position: 0 0, 15px 15px !important;
-  
-  --md-default-bg-color: #1a1b1e;
-}
 
-/* ⭐️ 核心修改 2：把白天那个“白色卡片”在夜间变成“深夜卡片” */
-[data-md-color-scheme="slate"] .md-typeset details,
-[data-md-color-scheme="slate"] .md-typeset .admonition {
-    background-color: rgba(30, 31, 35, 0.8) !important; 
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-left: 4px solid var(--night-pink) !important; 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
-}
-[data-md-color-scheme="slate"] .md-typeset summary, 
-[data-md-color-scheme="slate"] .md-typeset .admonition-title {
-    color: #ffffff !important; 
-}
-[data-md-color-scheme="slate"] .md-typeset .admonition-content,
-[data-md-color-scheme="slate"] .md-typeset details .md-typeset-details__content {
-    color: #cfcfcf !important; 
-}
-
-/* ⭐️ 核心修改 3：夜间模式 - 基础质感 (全局生效) */
-[data-md-color-scheme="slate"] .md-content__inner {
-    /* 1. 材质：透明磨砂 */
-    background-color: rgba(255, 255, 255, 0.03) !important; 
-    backdrop-filter: blur(15px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    
-    /* 2. 装饰细节 */
-    border-top: 4px solid var(--night-pink) !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
-    position: relative; 
-}
-
-/* ⭐️ 核心修改 3.5：【关键修正】仅在电脑端把肚子撑大！ */
-@media screen and (min-width: 76.25em) {
-    [data-md-color-scheme="slate"] .md-content__inner {
-        padding: 40px 50px !important;  /* 大内边距仅限电脑 */
-        border-radius: 12px !important; 
-        margin-top: 1rem !important;    
-    }
-}
-
-/* ⭐️ 核心修改 4：夜间模式侧边栏美化 (PC端) */
-@media screen and (min-width: 76.25em) {
-    [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
-        background-color: rgba(255, 255, 255, 0.05) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        backdrop-filter: blur(10px);
-        color: #cfcfcf !important;
-    }
-}
-
-/* ⭐️ 核心修改 5：正文标题颜色修复 */
-[data-md-color-scheme="slate"] .md-typeset h1, 
-[data-md-color-scheme="slate"] .md-typeset h2 {
-    color: var(--night-pink) !important;
-}
 /* ==========================================================================
    🖼️ 7. Logo 尺寸和位置调整 (电脑端左侧，手机端右侧)
    ========================================================================== */
@@ -373,7 +265,7 @@
         flex-grow: 1; /* 标题占据可用空间 */
         text-align: left; /* 文本左对齐 */
     }
-}
+
 
 /* --- 3. 强制背景透明，消除可能的残余底色 (全局) --- */
 .md-logo img {
